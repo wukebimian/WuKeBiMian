@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>無限進步</title>
+<meta name="description" content="面向 Process Simulate 使用者的工具，涵盖焊接、时序图、姿态、机构、归档等常见操作。" />
+<meta name="keywords" content="Process Simulate, PDPS, 自动化工具" />
+<meta name="author" content="WuKeBiMian" />
+<meta name="theme-color" content="#f5f5f7" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="無限進步" />
+<meta property="og:description" content="面向 Process Simulate 使用者的工具。" />
+<meta property="og:site_name" content="無限進步" />
+<meta property="og:locale" content="zh_CN" />
+<meta name="twitter:card" content="summary" />
+<link rel="canonical" href="https://YOUR-USERNAME.github.io/" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0a0a'/%3E%3Ctext x='16' y='22' font-size='15' font-weight='700' text-anchor='middle' fill='%23f5f5f7' font-family='Arial'%3E%E7%84%A1%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   無限進步 —— Apple 极简风
+   浅色留白 / SF 式排版 / 玻璃拟态 / 克制动效
+   ============================================================ */
+:root {
+  --bg: #f5f5f7;
+  --bg-2: #ffffff;
+  --text: #1d1d1f;
+  --text-2: #6e6e73;
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --accent-soft: rgba(0,113,227,.08);
+  --accent-border: rgba(0,113,227,.16);
+  --success: #0a7c3e;
+  --success-bg: rgba(28,173,92,.1);
+  --warning: #a15c00;
+  --warning-bg: rgba(217,124,6,.1);
+  --hover-bg: #f7f7f9;
+  --border: rgba(0,0,0,.07);
+  --shadow: 0 8px 30px rgba(0,0,0,.07), 0 2px 10px rgba(0,0,0,.04);
+  --font-h: "Inter", "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-b: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --max-w: 920px;
+  --r: 18px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: var(--font-b);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+}
+:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
+::selection { background: rgba(0,113,227,.15); color: var(--text); }
+
+/* 上层朦胧玻璃 */
+.hero-bg {
+  position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background:
+    radial-gradient(900px 500px at 80% -10%, rgba(0,113,227,.07), transparent 70%),
+    radial-gradient(700px 460px at 0% 20%, rgba(0,113,227,.045), transparent 70%);
+}
+
+/* ---------- 滚动进度条 ---------- */
+.progress { position:fixed; top:0; left:0; height:3px; width:0%;
+  background:var(--accent); z-index:100; border-radius:0 3px 3px 0; }
+
+/* ---------- 返回顶部 ---------- */
+.to-top { position:fixed; right:26px; bottom:26px; z-index:60;
+  width:44px; height:44px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; color:var(--accent);
+  background:rgba(255,255,255,.72);
+  -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+  border:1px solid var(--border); cursor:pointer;
+  box-shadow:var(--shadow);
+  opacity:0; pointer-events:none; transform:translateY(12px);
+  transition:opacity .3s, transform .3s; }
+.to-top.show { opacity:1; pointer-events:auto; transform:none; }
+.to-top:hover { background:#ffffff; }
+
+.container { max-width:var(--max-w); margin:0 auto; padding:0 26px; }
+a { color:var(--accent); text-decoration:none; transition:color .2s; }
+a:hover { color:#005fc2; }
+button { font-family:inherit; }
+
+/* ---------- 顶栏 ---------- */
+.navbar {
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  background:rgba(245,245,247,.72);
+  -webkit-backdrop-filter:blur(20px) saturate(180%); backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border); }
+.navbar .container { display:flex; align-items:center; justify-content:space-between; height:52px; }
+.brand { display:flex; align-items:center; gap:10px;
+  font-family:var(--font-h); font-size:15px; font-weight:600; letter-spacing:.2px; color:var(--text); }
+.brand .mark { width:22px; height:22px; border-radius:7px; background:#0a0a0a; color:#f5f5f7;
+  display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; }
+.brand .cn { font-weight:500; color:var(--text-2); font-size:14px; }
+.nav-links { display:flex; gap:28px; list-style:none; margin:0; }
+.nav-links a { font-size:14px; color:var(--text-2); text-decoration:none; font-weight:500; }
+.nav-links a:hover { color:var(--text); }
+
+/* ---------- Hero ---------- */
+.hero { flex:1; display:flex; align-items:center; padding:96px 0 48px; }
+.hero-inner { width:100%; text-align:left; }
+.kicker { display:inline-flex; align-items:center; gap:8px;
+  font-size:12.5px; font-weight:500; color:var(--accent);
+  background:var(--accent-soft); border:1px solid var(--accent-border);
+  padding:6px 16px; border-radius:999px;
+  opacity:0; animation:rise .6s .05s ease forwards; }
+.hero h1 { font-family:var(--font-h); font-weight:700;
+  font-size:clamp(40px, 6.5vw, 68px); line-height:1.1; letter-spacing:-.02em;
+  margin:18px 0 0;
+  background:linear-gradient(180deg, #000000 0%, #3a3a3e 45%, #86868b 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  opacity:0; animation:rise .7s .15s ease forwards; }
+.hero .sub { max-width:560px; margin:14px 0 0;
+  color:var(--text-2); font-size:19px; font-weight:400; line-height:1.5;
+  opacity:0; animation:rise .7s .28s ease forwards; }
+.hero-cta { display:flex; justify-content:flex-start; gap:14px; flex-wrap:wrap;
+  margin-top:26px;
+  opacity:0; animation:rise .7s .4s ease forwards; }
+.btn { display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--font-h); font-size:15px; font-weight:500; letter-spacing:.1px;
+  padding:13px 32px; border-radius:999px; cursor:pointer;
+  transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
+  text-decoration:none; border:none; }
+.btn-primary { background:var(--accent); color:#fff; }
+.btn-primary:hover { background:var(--accent-hover); transform:scale(1.03); box-shadow:0 6px 20px rgba(0,113,227,.3); }
+.btn-ghost { background:rgba(0,0,0,.05); color:var(--text); }
+.btn-ghost:hover { background:rgba(0,0,0,.09); }
+@keyframes rise { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+
+/* ---------- 工具清单：默认隐藏，点击展开 ---------- */
+.tools-area { display:none; }
+.tools-area.show { display:block; animation:fadeIn .5s cubic-bezier(.22,.9,.3,1); }
+@keyframes fadeIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+/* ---------- 分区通用 ---------- */
+section { padding:80px 0; }
+.sec-head { margin-bottom:44px; text-align:left; }
+.sec-title { font-family:var(--font-h); font-weight:700;
+  font-size:clamp(28px, 4vw, 44px); letter-spacing:-.02em;
+  background:linear-gradient(180deg, #000000 0%, #3a3a3e 45%, #86868b 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; display:inline-block; }
+.sec-desc { color:var(--text-2); margin-top:10px; font-size:16px; font-weight:400; }
+.reveal { opacity:0; transform:translateY(24px); transition:opacity .6s cubic-bezier(.22,.9,.3,1), transform .6s cubic-bezier(.22,.9,.3,1); }
+.reveal.in { opacity:1; transform:none; }
+
+/* ---------- 工具分组 ---------- */
+.tool-group { margin-bottom:56px; }
+.tool-group:last-child { margin-bottom:0; }
+.tg-head { display:flex; align-items:baseline; gap:12px; margin-bottom:18px; }
+.tg-head h3 { font-family:var(--font-h); font-size:20px; font-weight:600; letter-spacing:-.01em; color:var(--text); }
+.tg-head .tg-count { font-size:12px; color:var(--text-2); font-weight:500; }
+.tlist {
+  background:var(--bg-2);
+  border-radius:var(--r);
+  overflow:hidden;
+  box-shadow:0 2px 12px rgba(0,0,0,.04), 0 12px 36px rgba(0,0,0,.05); }
+.trow { display:grid; grid-template-columns:minmax(180px, 240px) 1fr auto;
+  align-items:center; gap:20px; padding:16px 24px;
+  border-bottom:1px solid rgba(0,0,0,.05);
+  transition:background .18s ease; }
+.trow:last-child { border-bottom:none; }
+.trow:hover { background:var(--hover-bg); }
+.trow .t-name { font-size:15px; font-weight:600; color:var(--text); font-family:var(--font-h); }
+.trow .t-desc { font-size:14px; color:var(--text-2); }
+.trow .t-status { font-size:12px; font-weight:600; letter-spacing:.2px;
+  padding:4px 14px; border-radius:999px; white-space:nowrap; }
+.trow .t-status.ready { color:var(--success); background:var(--success-bg); }
+.trow .t-status.wip { color:var(--warning); background:var(--warning-bg); }
+.note { margin-top:26px; text-align:left; font-size:13px; color:var(--text-2); }
+.note b { color:var(--text); font-weight:600; }
+
+/* ---------- 页脚 ---------- */
+footer { border-top:1px solid var(--border); padding:32px 0 40px;
+  background:rgba(255,255,255,.68); }
+.foot-wrap { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;
+  gap:16px; font-size:13px; color:var(--text-2); }
+.foot-wrap .cn { color:var(--text); font-weight:600; }
+.foot-links a { margin-left:22px; color:var(--text-2); font-size:13px; text-decoration:none; }
+.foot-links a:hover { color:var(--text); }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 700px) {
+  .nav-links { display:none; }
+  .trow { grid-template-columns:1fr; gap:4px; padding:14px 20px; }
+  .trow .t-status { justify-self:start; }
+}
+@media (max-width: 640px) {
+  .hero { flex:1; padding:84px 0 32px; }
+  .hero h1 { font-size:clamp(34px, 9vw, 48px); }
+  .hero .sub { font-size:15px; margin-top:10px; }
+  .hero-cta { margin-top:20px; }
+  .btn { padding:12px 22px; font-size:14px; }
+}
+/* ---------- 无障碍 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation:none !important; transition:none !important; }
+  .reveal { opacity:1; transform:none; }
+}
+/* ---------- 打印 ---------- */
+@media print {
+  .navbar, .progress, .to-top, .hero-cta, .foot-links { display:none !important; }
+  body { background:#fff; }
+  section { padding:20px 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero-bg" aria-hidden="true"></div>
+<div class="progress" id="progress" role="presentation"></div>
+
+<!-- 顶栏 -->
+<nav class="navbar" aria-label="主导航">
+  <div class="container">
+    <div class="brand"><span class="mark">無</span><span class="cn">WuKeBiMian</span></div>
+    <ul class="nav-links">
+      <li><a href="#tools">工具清单</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main style="flex:1; display:flex; flex-direction:column;">
+<!-- Hero -->
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="kicker">22 个工具 · 面向 Process Simulate 使用者</div>
+    <h1>無限進步</h1>
+    <p class="sub">将重复变的简单直接。</p>
+    <div class="hero-cta">
+      <a class="btn btn-ghost" href="https://github.com/YOUR-USERNAME/YOUR-REPO/releases" target="_blank" rel="noopener">⬇ 获取部署工具</a>
+      <button class="btn btn-primary btn-toggle" id="toggleTools" type="button" aria-expanded="false">查看清单 <span class="key">→</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- 工具清单 -->
+<section id="tools"><div class="container tools-area" id="toolsArea">
+    <div class="sec-head reveal">
+      <h2 class="sec-title">工具清单</h2>
+      <p class="sec-desc">共 22 个工具，按业务场景分为 6 组。</p>
+    </div>
+
+    <div class="tool-group reveal">
+      <div class="tg-head"><h3>焊接</h3><span class="tg-count">3</span></div>
+      <div class="tlist">
+        <div class="trow"><div class="t-name">进退枪点自动生成</div><div class="t-desc">自动在焊点前后生成进枪 / 退枪过渡点，规范焊接路径</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">焊接点快速选择</div><div class="t-desc">一键切换选择模式，直接点选场景中的焊接点</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">焊点半径检查</div><div class="t-desc">依据焊点位置与法向生成检查圆柱，核对焊接规格</div><span class="t-status ready">可用</span></div>
+      </div>
+    </div>
+
+    <div class="tool-group reveal">
+      <div class="tg-head"><h3>时序图</h3><span class="tg-count">3</span></div>
+      <div class="tlist">
+        <div class="trow"><div class="t-name">时序图转姿态</div><div class="t-desc">解析 Excel 时序图，批量生成机器人姿态，轴值对齐关节限位</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">时序图关节命名</div><div class="t-desc">从时序图提取命名规则，批量重命名设备关节</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">DWG 时序分析</div><div class="t-desc">读取 DWG 图纸时序信息，解析为表格文件</div><span class="t-status ready">可用</span></div>
+      </div>
+    </div>
+
+    <div class="tool-group reveal">
+      <div class="tg-head"><h3>姿态与运动</h3><span class="tg-count">4</span></div>
+      <div class="tlist">
+        <div class="trow"><div class="t-name">创建 OPEN / CLOSE</div><div class="t-desc">按设备开合状态批量生成 OPEN、CLOSE 姿态</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">一键回 HOME</div><div class="t-desc">批量将机器人的姿态设回 HOME</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">外部轴批量修改</div><div class="t-desc">批量修改机器人外部轴路径点参数</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">焊枪姿态导出</div><div class="t-desc">批量导出焊枪姿态，用于归档与交接</div><span class="t-status ready">可用</span></div>
+      </div>
+    </div>
+
+    <div class="tool-group reveal">
+      <div class="tg-head"><h3>机构</h3><span class="tg-count">5</span></div>
+      <div class="tlist">
+        <div class="trow"><div class="t-name">设备骨架建立</div><div class="t-desc">按 Excel 设备清单建立设备机构骨架</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">扳手关节制作</div><div class="t-desc">自动发现旋转部件，批量生成 Revolute 关节</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">伸缩气缸关节</div><div class="t-desc">按气缸参数自动生成伸缩 LINK / Joint</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">EP 耦合创建</div><div class="t-desc">一键创建设备关节的耦合关系</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">机构分析报告</div><div class="t-desc">分析设备运动机构并输出结构化报告</div><span class="t-status ready">可用</span></div>
+      </div>
+    </div>
+
+    <div class="tool-group reveal">
+      <div class="tg-head"><h3>梳理与归档</h3><span class="tg-count">4</span></div>
+      <div class="tlist">
+        <div class="trow"><div class="t-name">空 Block 清理</div><div class="t-desc">扫描并删除设备中的空 Block，保持模型整洁</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">机器人标识创建</div><div class="t-desc">批量生成机器人 Object Notes 标识</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">对象树导出</div><div class="t-desc">按层级导出对象树为 CSV，便于清单管理</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">安全区域截图</div><div class="t-desc">批量生成安全区域截图并归档</div><span class="t-status ready">可用</span></div>
+      </div>
+    </div>
+
+    <div class="tool-group reveal">
+      <div class="tg-head"><h3>布局与规划</h3><span class="tg-count">3</span></div>
+      <div class="tlist">
+        <div class="trow"><div class="t-name">自动布局</div><div class="t-desc">DGN 布局转 JT，按名称匹配设备并自动摆放</div><span class="t-status ready">可用</span></div>
+        <div class="trow"><div class="t-name">LIN → PTP 过渡点</div><div class="t-desc">在连续 LIN 段内插入 PTP 过渡点，保持轨迹平稳</div><span class="t-status wip">制作中</span></div>
+        <div class="trow"><div class="t-name">过渡点快速选择</div><div class="t-desc">一键切换模式，直接点选过渡点（Via）</div><span class="t-status ready">可用</span></div>
+      </div>
+    </div>
+
+    <p class="note">说明：工具安装后在 Process Simulate 工具栏以中文按钮出现，无需额外配置。「制作中」的工具完成开发后会持续更新。</p>
+  </div></section>
+</main>
+
+<!-- 页脚 -->
+<footer id="contact">
+  <div class="container foot-wrap">
+    <div>&copy; <span id="year">2026</span> &nbsp;<span class="cn">無限進步</span> &nbsp;·&nbsp; GitHub Pages 驱动</div>
+    <div class="foot-links">
+      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:yourname@example.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="返回顶部">↑</button>
+
+<script>
+/* ---------- 年份 ---------- */
+(function () {
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+
+/* ---------- 进度条 + 返回顶部 ---------- */
+(function () {
+  var bar = document.getElementById('progress');
+  var toTop = document.getElementById('toTop');
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    if (window.scrollY > 500) toTop.classList.add('show'); else toTop.classList.remove('show');
+  }
+  toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ---------- reveal ---------- */
+(function () {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in');
+      io.unobserve(en.target);
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function (e) { io.observe(e); });
+})();
+
+/* ---------- 工具清单展开/收起 ---------- */
+(function () {
+  var btn = document.getElementById('toggleTools');
+  var area = document.getElementById('toolsArea');
+  if (!btn || !area) return;
+  btn.addEventListener('click', function () {
+    var isOpen = area.classList.contains('show');
+    if (isOpen) {
+      area.classList.remove('show');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.innerHTML = '查看清单 <span class="key">→</span>';
+    } else {
+      area.classList.add('show');
+      btn.setAttribute('aria-expanded', 'true');
+      btn.innerHTML = '收起清单 <span class="key">↑</span>';
+      window.scrollTo({ top: area.offsetTop - 60, behavior: 'smooth' });
+    }
+  });
+})();
+</script>
+</body>
+</html>
