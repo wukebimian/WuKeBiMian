@@ -236,6 +236,7 @@ footer { border-top:1px solid var(--border); padding:32px 0 40px;
   <div class="container hero-inner">
     <div class="kicker">22 个工具 · 面向 Process Simulate 使用者</div>
     <h1>将重复变的简单直接。</h1>
+
     <div class="hero-cta">
       <button class="btn btn-ghost" id="downloadBtn" type="button" aria-label="下载最新部署工具">获取部署工具</button>
       <button class="btn btn-primary btn-toggle" id="toggleTools" type="button" aria-expanded="false">查看清单</button>
@@ -315,7 +316,7 @@ footer { border-top:1px solid var(--border); padding:32px 0 40px;
 <!-- 页脚 -->
 <footer id="contact">
   <div class="container foot-wrap">
-    <div>&copy; <span id="year">2026</span> &nbsp;GitHub Pages 驱动</div>
+    <div>&copy; <span id="year">2026</span> &nbsp;<span class="cn">WuKeBiMian</span> &nbsp;·&nbsp; GitHub Pages 驱动</div>
     <div class="foot-links">
       <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
       <a href="mailto:yourname@example.com">Email</a>
@@ -377,14 +378,61 @@ footer { border-top:1px solid var(--border); padding:32px 0 40px;
   });
 })();
 
-/* ---------- 下载最新部署工具：查最新 Release 自动下载 EXE，失败回退 Releases 页 ---------- */
+/* ---------- 下载最新部署工具：查最新 Release · 国内镜像加速自动测速 · 失败回退 Releases 页 ---------- */
 (function () {
   var btn = document.getElementById('downloadBtn');
   if (!btn) return;
   var REPO = 'Wukebimian/WuKeBiMian';
   var releasesUrl = 'https://github.com/' + REPO + '/releases';
+
+  // 国内可用的 GitHub 下载加速镜像（按优先级排序，2026-08 实测）
+  // 备注：ghproxy.net 证书失效已移除；镜像稳定性随时变化，失效可自行增删
+  var MIRRORS = [
+    'https://gh-proxy.com/',          // 浏览器实测可用（2026-08），优先
+    'https://gh.api.99988866.xyz/',   // 备用
+    'https://moeyy.cn/gh-proxy/',     // 备用
+    'https://ghproxy.homeboyc.cn/'    // 备用
+  ];
+
+  // 探测镜像可用性：no-cors 模式避免 CORS 误报，仅验证能建立连接
+  // （真正下载用 <a> 导航不受 CORS 限制，此处只需确认域名可达）
+  function probe(url, timeout) {
+    return new Promise(function (resolve) {
+      var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); resolve(false); }, timeout || 5000);
+      fetch(url, { method: 'HEAD', mode: 'no-cors', signal: ctrl ? ctrl.signal : undefined })
+        .then(function () { clearTimeout(timer); resolve(true); })   // no-cors 响应为 opaque，能送达即视为可用
+        .catch(function () { clearTimeout(timer); resolve(false); });
+    });
+  }
+
+  function pickMirror(rawUrl) {
+    var chain = MIRRORS.map(function (m) { return m + rawUrl; });
+    return chain.reduce(function (acc, url) {
+      return acc.then(function (found) {
+        if (found) return found;
+        return probe(url).then(function (ok) { return ok ? url : null; });
+      });
+    }, Promise.resolve(null));
+  }
+
+  function startDownload(asset) {
+    var raw = asset.browser_download_url;
+    btn.textContent = '正在选择最快通道…';
+    pickMirror(raw).then(function (mirrorUrl) {
+      var finalUrl = mirrorUrl || raw;
+      btn.textContent = '正在下载 ' + asset.name + ' …';
+      // 下载触发：镜像/GitHub 响应均带 Content-Disposition: attachment，
+      // 使用动态 iframe 导航触发（兼容性最佳，不跳转页面、不被新窗口拦截）
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = finalUrl;
+      document.body.appendChild(iframe);
+      setTimeout(function () { document.body.removeChild(iframe); }, 5000);
+    });
+  }
+
   btn.addEventListener('click', function () {
-    // 状态提示：防止重复点击
     if (btn.getAttribute('data-busy') === '1') return;
     btn.setAttribute('data-busy', '1');
     var origin = btn.textContent;
@@ -392,36 +440,26 @@ footer { border-top:1px solid var(--border); padding:32px 0 40px;
 
     fetch('https://api.github.com/repos/' + REPO + '/releases/latest')
       .then(function (res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status); // 404 = 还没发布 Release
+        if (!res.ok) throw new Error('HTTP ' + res.status);
         return res.json();
       })
       .then(function (release) {
         if (!release.assets || release.assets.length === 0) {
-          // 发布里没有附件 → 回退到 Releases 页
           window.location.href = releasesUrl;
           return;
         }
-        // 优先选 EXE 附件，否则取第一个附件
         var asset = release.assets.filter(function (a) { return /\.exe$/i.test(a.name); })[0]
                  || release.assets[0];
-        // 用隐藏 <a> 触发下载（不跳转页面）
-        var a = document.createElement('a');
-        a.href = asset.browser_download_url;
-        a.download = asset.name;
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+        startDownload(asset);
       })
       .catch(function () {
-        // API 失败（限流/网络）→ 回退 Releases 页
         window.location.href = releasesUrl;
       })
       .finally(function () {
         setTimeout(function () {
           btn.textContent = origin;
           btn.removeAttribute('data-busy');
-        }, 800);
+        }, 1500);
       });
   });
 })();
