@@ -1,50 +1,161 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>将重复变的简单直接</title>
-<meta name="description" content="面向 Process Simulate 使用者的工具，涵盖焊接、时序图、姿态、机构、归档等常见操作。" />
-<meta name="keywords" content="Process Simulate, PDPS, 自动化工具" />
-<meta name="author" content="WuKeBiMian" />
-<meta name="theme-color" content="#f5f5f7" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="将重复变的简单直接" />
-<meta property="og:description" content="面向 Process Simulate 使用者的工具。" />
-<meta property="og:site_name" content="将重复变的简单直接" />
-<meta property="og:locale" content="zh_CN" />
-<meta name="twitter:card" content="summary" />
-<link rel="canonical" href="https://wukebimian.github.io/WuKeBiMian/" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0a0a'/%3E%3Ctext x='16' y='22' font-size='15' font-weight='700' text-anchor='middle' fill='%23f5f5f7' font-family='Arial'%3E%E7%84%A1%3C/text%3E%3C/svg%3E" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<html lang="zh-CN" data-page-node-id="KCVADnOEVN4ftKSqVDE7bp">
+<head data-page-node-id="d379vNrRA0qo7nGEupRaFz">
+<meta charset="UTF-8" data-page-node-id="9VrFrwCrUYkxTUdlasdLWS" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="KALkYNuRnUNHE2mgyz4kKZ" />
+<title>将重复变得简单直接</title>
+<meta name="description" content="面向 Process Simulate 使用者的工具，涵盖焊接、时序图、姿态、机构、归档等常见操作。" data-page-node-id="L9dB34UV2iTwmE98OZBpXW" />
+<meta name="keywords" content="Process Simulate, PDPS, 自动化工具" data-page-node-id="lpxgSFzTw2JLVNQAyihRKo" />
+<meta name="author" content="WuKeBiMian" data-page-node-id="m3D4UsPJkHzugugNebMZGb" />
+<meta name="theme-color" content="#0b0b0d" data-page-node-id="yce40ruvW1NONqwOUWaCjh" />
+<link rel="canonical" href="https://wukebimian.github.io/WuKeBiMian/" data-page-node-id="46feQ9rcBqhLYER8yQqr55" />
+<meta property="og:type" content="website" data-page-node-id="xr0axHvyTr2AWQPtgaBM7O" />
+<meta property="og:title" content="将重复变得简单直接" data-page-node-id="G05Bqz0O0ZFfAp9CNsslmS" />
+<meta property="og:description" content="面向 Process Simulate 使用者的工具。" data-page-node-id="CaeFFPGmUv1YFmJbltMrej" />
+<meta property="og:site_name" content="将重复变得简单直接" data-page-node-id="twATsgcx0HDFNNShXHyLgD" />
+<meta property="og:locale" content="zh_CN" data-page-node-id="6JAt2QeM0MOtyEXbWzTfx7" />
+<meta property="og:url" content="https://wukebimian.github.io/WuKeBiMian/" data-page-node-id="fxBktrLWSmNm9B7vvCZRra" />
+<meta property="og:image" content="https://wukebimian.github.io/WuKeBiMian/og-image.png" data-page-node-id="H0VJFDX4kKv90GtoaJPh0J" />
+<meta property="og:image:width" content="1200" data-page-node-id="cS5x4CAQIySGLLqrz1ia5A" />
+<meta property="og:image:height" content="630" data-page-node-id="MXcEiuuBfYWhaEIYA1EyHR" />
+<meta property="og:image:alt" content="将重复变得简单直接，22 个面向 Process Simulate 的插件" data-page-node-id="xB1HMwkEnjmsE0B5aqleYn" />
+<meta name="twitter:card" content="summary_large_image" data-page-node-id="MPl1U1k68hOcDEGcCxETTu" />
+<meta name="twitter:title" content="将重复变得简单直接" data-page-node-id="gDdWQjWHjB3f19oj9Hpx5U" />
+<meta name="twitter:description" content="面向 Process Simulate 使用者的工具。" data-page-node-id="8ZU7twYyYwsAOWbY4AgEsm" />
+<meta name="twitter:image" content="https://wukebimian.github.io/WuKeBiMian/og-image.png" data-page-node-id="Oj0vuhWTHTQJFMTbScdIDZ" />
+<!-- 图标为位图 PNG：原 SVG 用 <text>+Arial 画「無」，Arial 无此字形且部分 favicon
+     渲染器不做字体回退，字符静默消失只剩空蓝方块。位图不依赖任何字体。
+     apple-touch-icon 用独立文件（iOS 只认 PNG 直角满幅图，系统自行加圆角） -->
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAIQklEQVR4nGxWa2wU1xW+986dmX3aa3vX+/B715ikQA0278aJlDQFQqnU5qE2TaNIoWojBQU1LerjJ/1R8qMSUX/0R9OqTRqh/AiIqCSIR2haWoIpNia87GVdGxuzZv3e58zce3PuzO5iICPt6Gr23HPP+c53vnNpNruIEEZIIPlg+w1rjDGBhZCfBWMMVun0NKVUCGaaVjQaIwRskKJQzrmzBZUfUVnILxQ99IBTbBszZpmm2d/f/8nx4+k76eGR4UK+wAVXqbp5y9ZEvKOtrXX9hk1ulysQqHnIe3mN7Qwe8C7dT0zc+vfZ/6TT6cMfHl7M5csxYtuiEizk2NPT09zc/Nyz34vH4263Swj+QLjLD8AVTPDVq1fee+/df352tlA0AAoh4eLLAKzYy7OERtXOeKKnd90PX/x+OBy2PUCUZbMHIaJUSSZT+/f/dmxszDA5ka6xjByTh6NzTjRM8+qNGzdTqWBD/UsvvawohHNWjYbcZ4/x2Nj4nj17RpJJ0+ISKxsu4QBTsbl/h2QDJtiwzINv/+Gjj/5BiGLb4CpE2aq5aZZ279595ep1jhQkpBHVFIqJz6Prmup16X6fhjnyuD2WVSJUyWZzJmezC0uGiYoF0zCtRKLzb+/+RVWpEF8F0YkTJ0dGRmDh9ejRhvrGYGBFS6RGpyvaos2RYKiu1u9TIVxhHw6PxTkckBq7PXV3fvj/d07898pIcvjUyZM7ntlRwRPTaqqDg4Pvv/93IOa2vk2bV8fbIw1NkWC4xkMBIZmMrLNAHJdpJI9QiHAR3J2IdSeav7lpdayx/sCfj35y/OOnv/UUAOXQnToIA5CXLg2Mj99qjQT3/mhHrMZt/09wJVhU5gZ3PtqkQqRMWUk/AH771q8f/9fAyPDI6OhoZ2enDRInzlZuPxDiz155IVbjpRAplgTAaHlJxX30EShnsNHZ3GDyroWAy8in0Z/84BnTMAqFAkTssMFhEZmfXwCImhpqH1ubUOR2UjBYamrmi9TthZJVMbM9A7hQQSFzOfrp+VffPMCwJiAZm1/dK9rWdrUbuSXGnL4h5RrAcX6PZ/WWtSqysCwjmsjMvPXOkWLR2vfqd9fEm7ANVsng2VwxUONVJFD8uae3drW1BTROuR0uxiri67taAyify2Z9fn+ZRXB0fmmuPVSzdU2HIr1DJVE8Ft734xd0l6up1o1t9YPA8wZbKBoev1/HREFcxaj3kVa76qZtAXmIUMDPENY0eo+mkLBlFFvDgUidHzvCahcgHq2FhcLtZO2W9LhVlydAqk0kf8KhSblIAhWJ2tC+UnfpDlPLGWhuX2M0Zklwy9YAlGIvJXPspmNInBu6mZ4trl8Tbwv672mebAxHquTGps7VwUgLr+gKsTNg4Vgz8of/98WoZJL9EUuJwxIJ6BVCIPuiaYUagk89uS4SrqvKIrb5Clsc7k7OZxubO8oERvdYJGFcv/EbXRv6MkVmjw98L+8y08GH0hBwW/msYRpZi1u84qQCj8F4cqYUaWviglUVq8o/wThvX7EyOW0YXED0yycHeJpZLAyOz9xYUNIoOueKT/G6BYbhu7B/YMwEHl8odfX0Qc/dF1aV4BC4qrs71mxOZgxTEAlU5RhALYs8lj/GFU8uV5y+PVnMLhFkO4JghMIQGbg5ldUbg40RqK1YNpTo8lkKn8HizmT0gxPHv/NEr0+n2CYGvOvcxKNjbJYQykFBVEV1UxhFgLUoMXbi4sg7h0/rnto33nD19vSyZRP+PrmmlPSfP/+Ln+8rlfKPdDX/8pXnVzUFJf+BJw5qNp3swoILClnOmOI3v//r+evjvBLvr3+1b9eub0MnO3nAAUvOaTDijx07duDAW8hhB8Zeb92jnR1P9HStWRHxq0QRDiNhHylydH1s+sxganqJzi7OpW+nmFV0lNHvcb/++mvbt2+nVJMI2gfAxYSfOXPm4MG3M7MLkviE1tRHGyMJqrosYYCyagqm2MTc4CbjRIWJZBENU1UIyhDLLmambw1bpZyMi/OWlujevXs3btxYlWt882by0KFDmdl5iQVS/P6GhmiHonvkHBCuYiEn/xIlwSxiCk4EVUCNCKGatzasaKqvpt6KtGUmk8KUmjE5cefIkaPt7fFwOCQ7OZ8vnDx5+tqNESbriVXVFYrFNZcXTEF6M1O3rGKWsRKXOoiUMrPswYPJ0kJG8/rrgk3+QOPSbDpvzNn3NXShf+DixYFt27ZRaNbJyclTp08xDt0Boxh5a0MgOLB79u6dmcy4JkyoKgF9ZtyyGLfJY1kW5KBQxMxifq5QWpwJ1IcoRRZimj1/CoU8DOC+vj4K18ILFy5MTU2BJGBJO9zR0qIopfm5udzMBOXgHViuaO6aUDDq9gSQjEIRnBeKS3OzUyDDkXr/T599fOuqdkC8/3Jq/x8/mM0WFUW7NDg0DbdNOODc55+DskH/wn0mHg0//1j7ox0hwzA/Pjtw+NOLil5fH2rRvbWCYBsY0AGOFayr/ojPW8pld6wLPbk2rsrocF/vytde3Pm7P31Yggsss4YuX6KmaSSTSYNBu3KPprz58s4tq5ocLQ/u7PtsIOUOJgR1SQKSyh0XO4Iob2O6x7c63kQrg5ty0Z1o0VWVAe1NE4Y8URSlKRbFcKXFNByo2/C1OKk09/xiyVffgqlbXinK0xmje2/kjMn+a+NFq6qL+GpqwrJgemCfzxfvSOBcbml6enpgYGho6MpM+vaux9cGfbIUOZNdHl0czVi5klUwCnDNtuAaJOeFHI9Ezixd0zSXrtXX6t2tvpifgngVGTp27ppQfPHOxLp13Z2JxJcAAAD//4/Ir6IAAAAGSURBVAMAx4UnNq95Q0YAAAAASUVORK5CYII=" data-page-node-id="d6fCakBXJQu0qJoukfE7ys" />
+<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAACxklEQVR4nERSy08TQRjfmdnd7ta2UNpCW5oWKPSBAoU2wXDykXiRmHghkURPGo1XjTcP/gVKImri3Qf0JAS9aUBbUSTRqCCtQFuBtmjpk9Ld2R1n5eBcf4/5fb/vY6vVMvPvEcJgjIul4uzMbCqVJkQN9vYeHx622+0cxyMEDmmACiiVwul0Zmo6Oj+/sJ3NUfkhLApCJBweH78wGBrgee6/IJFITE4+iC8uYaywLKJ+HIsAAFjBkqx43J5bN29EImEAGJZqKpXK3NzcyvdvPo9jMNDRYbcY9LzAs1QgY1wo1z7/yLxdmPf7/SaTkSWEJJOJ9dUvty+fC7odzQa9qOMRZADUIqmEYEWJBDwziz+z2e2mJj8VqMW9P6FO56mhoNSQVAZw2nyEAXQy5tmrWH/AF3Dbw4UDRsHUnWUIaBL5o50OSouvJFvMlsGONoooCuQhc/70CP2Jhgu4rBJHzakAEPMRXnTYACAnw0FAG2BItd6oy4zNKIi0GEA7JFA06s1WAIE2mbW9S0ENlchIqw3Q3AdYKdRkg8AbdVq8BlY5s1NoaqE4pAJjiw1ZPFWMtPIBrGFQ4NpEZzBbBwrNhpkS5oHJjliO1go1TwhKMnw8G1/N/CYqEBDj4WrtSq7TBClh6s3ylTuPXrx8LUuyRqZLyGTS9yYmPi59sthc/UG/z2lyWfSyhJM7xbW8ktrJ5rfWRB5dv3Z1dHSUbTQOotHo4odlg9lubPUm8vWvG/l6rUgwRiwrGpp58UizzbW3s/n0yfO+vj40NjZ2f/KhyrDerm5VkbJbG0qjxgsirxMBQvX9ksvMnRjqgaq8nvql1xvYWPx9qVIbCQUunR0o1/bvTu/qze2sToQQavcr1y+e6Y702OOtwlZ2NxZ7x3rcLp/X29/t9rusm7lim8OrQESbpXtGEOr0hlxZkjE9EMZqaz0WGvoLAAD//+9jjxAAAAAGSURBVAMAcHhKjGknmp4AAAAASUVORK5CYII=" data-page-node-id="ZfG6jTN6A7wlOYmCJiFNEW" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" data-page-node-id="Gm7VbhyiwocSDmjODgU33B" />
+<link rel="preconnect" href="https://fonts.googleapis.com" data-page-node-id="hjGDTA4zCvlIH0bFE8IuqB" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin data-page-node-id="35jhysfJHINm1QkFdjJ3XF" />
+<!-- 字体异步加载：大陆网络下 fonts.googleapis.com 慢/不可达时不阻塞首屏渲染，本地字体兜底
+     Noto Sans SC 必须包含 600 字重：--font-h 有 4 处用 font-weight:600，
+     缺 600 会触发浏览器合成粗体，Windows 上字形发虚。 -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" data-page-node-id="FA01zHKe8hxToaoYaijBJa" />
+<noscript data-page-node-id="dC26h6hhErK5JAozwL1a7i"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" data-page-node-id="gGFpXDZwNBLWdvjNOKcxAS" /></noscript>
 <style>
 /* ============================================================
    WuKeBiMian —— Apple 极简风
-   浅色留白 / SF 式排版 / 玻璃拟态 / 克制动效
+   浅色留白 / SF 式排版 / 玻璃拟态 / 克制动效 / 深色模式
    ============================================================ */
 :root {
+  color-scheme: light dark;
+
+  /* ============================================================
+     Color Tokens
+     accent 拆成两个语义，不要混用：
+       --accent-text / --accent-text-hover : 当「文字、图标、focus 环」用，
+                                             必须与背景满足 4.5:1
+       --accent-fill / --accent-fill-hover : 当「填充底色」用，
+                                             必须与白色文字满足 4.5:1
+     浅色实测：#0066cc on #f5f5f7 = 5.11:1 ／ #fff on #0071e3 = 4.70:1
+     ============================================================ */
+  --accent-text: #0066cc;
+  --accent-text-hover: #004c99;
+  --accent-fill: #0071e3;
+  --accent-fill-hover: #005bb5;
+
+  /* 强调色的 RGB 通道。所有半透明强调色（描边、光晕、光斑）都由这里派生，
+     深色模式只需改这几个通道值，装饰层就会整体跟着走，不会漏掉某个硬编码色。 */
+  --accent-text-rgb: 0,102,204;
+  --accent-fill-rgb: 0,113,227;
+  --halo-alt: 88,86,214;                 /* 次光斑：紫 */
+  --halo-alt2: 0,201,167;                /* 第三光斑：青 */
+
+  --accent-soft: rgba(var(--accent-fill-rgb),.08);
+  --accent-border: rgba(var(--accent-text-rgb),.28);
+
   --bg: #f5f5f7;
   --bg-2: #ffffff;
   --text: #1d1d1f;
   --text-2: #6e6e73;
-  --accent: #0071e3;
-  --accent-hover: #0077ed;
-  --accent-soft: rgba(0,113,227,.08);
-  --accent-border: rgba(0,113,227,.16);
-  --success: #0a7c3e;
+
+  --success: #096e37;
   --success-bg: rgba(28,173,92,.1);
-  --warning: #a15c00;
+  --success-border: rgba(10,124,62,.25);
+  --warning: #8f5200;
   --warning-bg: rgba(217,124,6,.1);
+  --warning-border: rgba(161,92,0,.25);
+
+
   --hover-bg: #f7f7f9;
   --border: rgba(0,0,0,.07);
+  --row-hover: rgba(0,0,0,.015);
+  --glass: rgba(255,255,255,.72);
+  --glass-card: rgba(255,255,255,.55);
+  --nav-bg: rgba(245,245,247,.65);
+  --foot-bg: rgba(255,255,255,.68);
   --shadow: 0 8px 30px rgba(0,0,0,.07), 0 2px 10px rgba(0,0,0,.04);
-  --font-h: "Inter", "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+
+  /* 标题渐变（浅色：黑 → 灰）。末端取到 text-2 级灰，
+     避免汉字下半部分笔画落在过浅的灰上而丧失辨识度。 */
+  --h1-from: #000000;
+  --h1-mid: #3a3a3e;
+  --h1-to: #6e6e73;
+
+  /* Spacing Tokens（4px 基线）：只收录实际用到的档位，避免定义后无人引用 */
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s5: 24px; --s6: 32px; --s7: 48px;
+
+  /* Z-index Layers（语义层级，不要直接写数字） */
+  --z-nav: 50; --z-float: 60; --z-modal: 80; --z-cursor: 90; --z-progress: 100;
+
+  /* Typography Tokens
+     --font-h 必须包含 Noto Sans SC：否则 Windows 下标题走 Microsoft YaHei、
+     正文走 Noto Sans SC，同一页面出现两套中文字形。 */
+  --font-h: "Inter", "SF Pro Display", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   --font-b: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
   --max-w: 920px;
   --r: 18px;
 }
+
+/* 深色即站点固定外观：原先跟随系统 prefers-color-scheme 切换，
+   现按要求固定为深色配色（媒体查询恒成立），浅色变量仅作回退保留。 */
+@media all {
+  :root {
+    --bg: #0b0b0d;
+    --bg-2: #151517;
+    --text: #f5f5f7;
+    --text-2: #98989d;
+
+    /* 深色下 #2997ff 作为「文字」有 6.52:1，非常出色；
+       但它当填充底色时白字只有 3.02:1，因此按钮仍用 #0071e3。 */
+    --accent-text: #2997ff;
+    --accent-text-hover: #6cb4ff;
+    --accent-fill: #0071e3;
+    --accent-fill-hover: #005bb5;
+    --accent-text-rgb: 41,151,255;
+    --accent-fill-rgb: 0,113,227;
+    --halo-alt: 124,120,255;
+    --halo-alt2: 0,220,190;
+    --accent-soft: rgba(var(--accent-fill-rgb),.14);
+    --accent-border: rgba(var(--accent-text-rgb),.38);
+
+    --success: #32d158;
+    --success-bg: rgba(50,209,88,.14);
+    --success-border: rgba(50,209,88,.45);
+    --warning: #ffb340;
+    --warning-bg: rgba(255,179,52,.14);
+    --warning-border: rgba(255,179,52,.45);
+
+
+    --hover-bg: #1b1b1e;
+    --border: rgba(255,255,255,.09);
+    --row-hover: rgba(255,255,255,.03);
+    --glass: rgba(30,30,32,.72);
+    --glass-card: rgba(30,30,32,.55);
+    --nav-bg: rgba(11,11,13,.66);
+    --foot-bg: rgba(21,21,23,.68);
+    --shadow: 0 8px 30px rgba(0,0,0,.55), 0 2px 10px rgba(0,0,0,.4);
+    --h1-from: #ffffff;
+    --h1-mid: #d6d6da;
+    --h1-to: #98989d;
+  }
+}
+
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body {
@@ -52,285 +163,556 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
+  /* 不做全局负字距：负字距是拉丁字母的优化手段，对汉字反而会压缩字面、
+     削弱笔画辨识度。只在纯大字号标题上单独收紧（见 .hero h1）。 */
+  letter-spacing: normal;
+  text-rendering: optimizeLegibility;
   min-height: 100vh;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
   display: flex;
   flex-direction: column;
+  transition: background .3s ease, color .3s ease;
 }
-:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
-::selection { background: rgba(0,113,227,.15); color: var(--text); }
+
+main { flex:1; display:flex; flex-direction:column; }
+
+/* 现代浏览器会让 outline 自动贴合元素自身的 border-radius，
+   所以这里不再改写 border-radius——旧写法会给文字链接的描边套上 18px 圆角。 */
+:focus-visible { outline:2px solid var(--accent-text); outline-offset:2px; }
+::selection { background: var(--accent-soft); color: var(--text); }
+
+/* 仅供读屏器读取的隐藏内容（用于动态状态播报） */
+.sr-only {
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
 
 /* 上层朦胧玻璃 */
 .hero-bg {
   position:fixed; inset:0; z-index:-2; pointer-events:none;
   background:
-    radial-gradient(900px 500px at 80% -10%, rgba(0,113,227,.07), transparent 70%),
-    radial-gradient(700px 460px at 0% 20%, rgba(0,113,227,.045), transparent 70%);
+    radial-gradient(900px 500px at 80% -10%, var(--accent-soft), transparent 70%),
+    radial-gradient(700px 460px at 0% 20%, rgba(var(--accent-fill-rgb),.03), transparent 70%);
+}
+
+/* ---------- 漂浮光斑：给毛玻璃提供可被模糊的色彩 ---------- */
+.orb { position:fixed; border-radius:50%; z-index:-1;
+  pointer-events:none; filter:blur(70px); opacity:.6; }
+.orb-1 { width:440px; height:440px; top:-140px; right:-100px;
+  background:radial-gradient(circle, rgba(var(--accent-fill-rgb),.22), transparent 70%);
+  animation:orbDrift1 20s ease-in-out infinite alternate; }
+.orb-2 { width:380px; height:380px; bottom:-120px; left:-120px;
+  background:radial-gradient(circle, rgba(var(--halo-alt),.16), transparent 70%);
+  animation:orbDrift2 26s ease-in-out infinite alternate; }
+.orb-3 { width:300px; height:300px; top:44%; left:58%;
+  background:radial-gradient(circle, rgba(var(--halo-alt2),.13), transparent 70%);
+  animation:orbDrift1 32s ease-in-out infinite alternate-reverse; }
+@keyframes orbDrift1 { to { transform:translate(-60px, 50px) scale(1.1); } }
+@keyframes orbDrift2 { to { transform:translate(70px, -40px) scale(.92); } }
+
+
+/* ---------- 右下角：凯迪拉克 CT5 俯视（车头朝上竖直行驶，半车身出画，大灯开启） ---------- */
+.ct5 { position:fixed; bottom:68px; right:24px; width:260px; height:360px; z-index:-1; pointer-events:none; }
+.ct5 svg { display:block; width:100%; height:100%; overflow:visible; }
+/* 道路虚线向车尾方向流动 = 车辆前行；16+24=40 恰好一个周期，无缝循环 */
+/* 虚线偏移由 JS 驱动：遇红灯时 speed→0，虚线与路旁道具一起停住 */
+.ct5 .lane { stroke-dasharray:16 24; }
+/* 大灯光锥缓慢呼吸 */
+.ct5 .beam { animation:beamPulse 2.6s ease-in-out infinite; }
+@keyframes beamPulse { 0%,100% { opacity:.5; } 50% { opacity:.85; } }
+
+
+
+/* ---------- 视图切换按钮组：位于 hero 操作区（部署工具按钮旁），用于切换功能卡片 ---------- */
+.view-tabs { display:flex; align-items:center; gap:8px; }
+.view-tab { padding:12px 22px; border-radius:12px; border:1px solid var(--border);
+  background:transparent; color:var(--text); font-size:14px; font-weight:500; cursor:pointer;
+  transition:border-color .2s ease, background .2s ease; }
+.view-tab:hover { border-color:rgba(128,128,128,.4); background:var(--hover-bg); }
+.view-tab.active { border-color:var(--accent-text); color:var(--accent-text); }
+.view-tab:focus-visible { outline:2px solid var(--accent-text); outline-offset:2px; }
+
+/* ---------- 左上角：夜晚地球 + 城市灯光（电力点） ---------- */
+.earth { position:fixed; top:-120px; left:-120px; width:560px; height:560px; z-index:-1;
+  pointer-events:none; transform:rotate(-14deg); opacity:1; } /* 倾斜地轴的观感由整体旋转近似 */
+
+/* 用户开启「降低透明度」时，去掉纯装饰性的高斯模糊层：
+   视觉损失极小，但能显著降低持续 GPU 占用。 */
+@media (prefers-reduced-transparency: reduce) {
+  .orb, .ct5, .earth { display:none; }
+  .navbar, .to-top, .modal-backdrop, .view-tab { -webkit-backdrop-filter:none; backdrop-filter:none; }
 }
 
 /* ---------- 滚动进度条 ---------- */
 .progress { position:fixed; top:0; left:0; height:3px; width:0%;
-  background:var(--accent); z-index:100; border-radius:0 3px 3px 0; }
+  background:var(--accent-fill); z-index:var(--z-progress); border-radius:0 3px 3px 0; }
 
-/* ---------- 返回顶部 ---------- */
-.to-top { position:fixed; right:26px; bottom:26px; z-index:60;
+/* ---------- 返回顶部 ----------
+   用 visibility 而不仅仅是 opacity 隐藏：visibility:hidden 会把元素移出 Tab 顺序。
+   否则键盘用户在页脚按 Tab 会聚焦到一个「看不见但能聚焦」的按钮，
+   而 opacity:0 会让元素连同 :focus-visible 描边一起消失，焦点凭空蒸发。 */
+.to-top { position:fixed; right:26px; bottom:26px; z-index:var(--z-float);
   width:44px; height:44px; border-radius:50%;
   display:flex; align-items:center; justify-content:center;
-  font-size:20px; color:var(--accent);
-  background:rgba(255,255,255,.72);
+  font-size:20px; color:var(--accent-text);
+  background:var(--glass);
   -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
   border:1px solid var(--border); cursor:pointer;
   box-shadow:var(--shadow);
-  opacity:0; pointer-events:none; transform:translateY(12px);
-  transition:opacity .3s, transform .3s; }
-.to-top.show { opacity:1; pointer-events:auto; transform:none; }
-.to-top:hover { background:#ffffff; }
+  visibility:hidden; opacity:0; transform:translateY(12px);
+  transition:opacity .3s, transform .3s, visibility .3s; }
+.to-top.show { visibility:visible; opacity:1; transform:none; }
+.to-top:hover { background:var(--bg-2); }
 
 .container { max-width:var(--max-w); margin:0 auto; padding:0 26px; }
-a { color:var(--accent); text-decoration:none; transition:color .2s; }
-a:hover { color:#005fc2; }
+a { color:var(--accent-text); text-decoration:none; transition:color .2s; }
+a:hover { color:var(--accent-text-hover); }
 button { font-family:inherit; }
 
 /* ---------- 顶栏 ---------- */
 .navbar {
-  position:fixed; top:0; left:0; right:0; z-index:50;
-  background:rgba(245,245,247,.72);
-  -webkit-backdrop-filter:blur(20px) saturate(180%); backdrop-filter:blur(20px) saturate(180%);
+  position:fixed; top:0; left:0; right:0; z-index:var(--z-nav);
+  background:var(--nav-bg);
+  -webkit-backdrop-filter:saturate(180%) blur(20px); backdrop-filter:saturate(180%) blur(20px);
   border-bottom:1px solid var(--border); }
 .navbar .container { display:flex; align-items:center; justify-content:space-between; height:52px; }
 .brand { display:flex; align-items:center; gap:10px;
   font-family:var(--font-h); font-size:15px; font-weight:600; letter-spacing:.2px; color:var(--text); }
-.brand .mark { width:22px; height:22px; border-radius:7px; background:#0a0a0a; color:#f5f5f7;
-  display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; }
+.brand .mark { display:block; width:22px; height:22px; }
 .brand .cn { font-weight:500; color:var(--text-2); font-size:14px; }
-.nav-links { display:flex; gap:28px; list-style:none; margin:0; }
-.nav-links a { font-size:14px; color:var(--text-2); text-decoration:none; font-weight:500; }
-.nav-links a:hover { color:var(--text); }
 
 /* ---------- Hero ---------- */
-.hero { flex:1; display:flex; align-items:center; padding:96px 0 48px; }
-.hero-inner { width:100%; text-align:left; }
-.kicker { display:inline-flex; align-items:center; gap:8px;
-  font-size:12.5px; font-weight:500; color:var(--accent);
-  background:var(--accent-soft); border:1px solid var(--accent-border);
-  padding:6px 16px; border-radius:999px;
-  opacity:0; animation:rise .6s .05s ease forwards; }
+.hero { flex:1; display:flex; align-items:center; padding:96px 0 var(--s7); position:relative; overflow:hidden; }
+.hero::before { content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(720px 380px at 10% 12%, var(--accent-soft), transparent 62%),
+    radial-gradient(560px 320px at 78% 20%, rgba(var(--accent-fill-rgb),.055), transparent 65%); }
+.hero-inner { width:100%; text-align:left; position:relative; z-index:1; }
 .hero h1 { font-family:var(--font-h); font-weight:700;
   font-size:clamp(40px, 6.5vw, 68px); line-height:1.1; letter-spacing:-.02em;
   margin:18px 0 0;
-  background:linear-gradient(180deg, #000000 0%, #3a3a3e 45%, #86868b 100%);
+  background:linear-gradient(180deg, var(--h1-from) 0%, var(--h1-mid) 45%, var(--h1-to) 100%);
   -webkit-background-clip:text; background-clip:text; color:transparent;
   opacity:0; animation:rise .7s .15s ease forwards; }
-.hero .sub { max-width:620px; margin:14px 0 0;
-  color:var(--text); font-size:21px; font-weight:700; line-height:1.5;
-  opacity:0; animation:rise .7s .28s ease forwards; }
+.hero-sub { margin-top:18px; max-width:600px;
+  font-size:17px; font-weight:400; color:var(--text-2); line-height:1.75;
+  opacity:0; animation:rise .7s .25s ease forwards; }
+/* 宽屏下副标题整句一行：取消 600px 限宽、禁止换行，字号 14px
+   （容器内容宽 868px，整句约 855px，14.5px 会超宽，14px 是单行上限）；
+   窄屏放不下一行，恢复默认换行，避免横向溢出。 */
+@media (min-width: 960px) {
+  .hero-sub { max-width:none; white-space:nowrap; font-size:14px; line-height:1.6; }
+}
+.hero-stats { display:flex; gap:0; margin-top:34px;
+  opacity:0; animation:rise .7s .32s ease forwards; }
+.hero-stats .stat { padding:0 var(--s6); border-left:1px solid var(--border); }
+.hero-stats .stat:first-child { padding-left:0; border-left:none; }
+.hero-stats b { display:block; font-family:var(--font-h); font-size:24px;
+  font-weight:700; letter-spacing:-.02em; color:var(--text); line-height:1.2; }
+.hero-stats span { display:block; margin-top:2px; font-size:12.5px; color:var(--text-2); }
+/* ---------- 插件图标带 ---------- */
+.icon-strip-wrap { display:flex; align-items:center; gap:24px; padding:18px 24px;
+  margin:-56px 0 56px calc((100% - min(var(--max-w), 100%)) / 2 + 26px); /* 左缘 = 容器轨道左缘 + 26px，与 hero 按钮严格同源对齐（不随视口漂移） */
+  width:fit-content; max-width:calc(100% - 52px);
+  background:var(--bg-2); border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow); }
+.strip-label { flex-shrink:0; font-size:17px; font-weight:600; letter-spacing:.02em; color:var(--text-2); }
+.icon-strip { flex:1; display:flex; flex-wrap:wrap; justify-content:flex-start; gap:12px; }
+.icon-item { width:84px; padding:12px 2px 9px; display:flex; flex-direction:column; align-items:center; gap:6px;
+  position:relative;
+  border:1px solid var(--border); border-radius:14px; background:var(--bg-2); color:var(--text);
+  cursor:default; transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+.icon-item:hover, .icon-item:focus-visible { transform:scale(1.18); border-color:var(--accent-border);
+  box-shadow:var(--shadow); z-index:1; position:relative; }
+.icon-item svg { height:42px; width:auto; max-width:72px; fill:currentColor; display:block; }
+.icon-name { font-size:9.5px; line-height:1.25; color:var(--text-2); text-align:center; word-break:normal; overflow-wrap:break-word; }
+/* 悬浮功能提示：读取 data-desc，悬停/键盘聚焦时在磁贴上方浮现 */
+.icon-item::after { content:attr(data-desc); position:absolute; bottom:calc(100% + 10px); left:50%;
+  transform:translate(-50%, 4px); width:max-content; max-width:220px; padding:8px 12px;
+  border-radius:10px; background:var(--bg-2); border:1px solid var(--border); box-shadow:var(--shadow);
+  color:var(--text); font-size:12px; font-weight:400; line-height:1.55; text-align:left; white-space:normal;
+  opacity:0; visibility:hidden; transition:opacity .18s ease, transform .18s ease, visibility .18s;
+  z-index:5; pointer-events:none; }
+.icon-item:hover::after, .icon-item:focus-visible::after { opacity:1; visibility:visible; transform:translate(-50%, 0); }
+@media (max-width: 640px) { .icon-strip-wrap { flex-direction:column; gap:10px; } .strip-label { font-size:12.5px; } .icon-strip { gap:14px; } .icon-item { width:88px; } .icon-item svg { height:36px; } }
 .hero-cta { display:flex; justify-content:flex-start; gap:14px; flex-wrap:wrap;
-  margin-top:26px;
-  opacity:0; animation:rise .7s .4s ease forwards; }
-.btn { display:inline-flex; align-items:center; gap:8px;
+  margin-top:34px;
+  opacity:0; animation:rise .7s .42s ease forwards; }
+/* 无 JS 时替代下载按钮的静态入口（脚本不可用时按钮点了没反应，必须换成一个真链接） */
+.noscript-cta { display:flex; gap:14px; flex-wrap:wrap; margin-top:34px;
+  opacity:0; animation:rise .7s .42s ease forwards; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:var(--s2);
+  position:relative; overflow:hidden;
   font-family:var(--font-h); font-size:15px; font-weight:500; letter-spacing:.1px;
-  padding:13px 32px; border-radius:999px; cursor:pointer;
-  transition:transform .15s ease, background .15s ease, box-shadow .15s ease;
-  text-decoration:none; border:none; }
-.btn-primary { background:var(--accent); color:#fff; }
-.btn-primary:hover { background:var(--accent-hover); transform:scale(1.03); box-shadow:0 6px 20px rgba(0,113,227,.3); }
-.btn-ghost { background:rgba(0,0,0,.05); color:var(--text); }
-.btn-ghost:hover { background:rgba(0,0,0,.09); }
+  padding:13px var(--s6); border-radius:999px; cursor:pointer;
+  max-width:100%; min-width:0;
+  transition:transform .15s ease, background .15s ease, box-shadow .15s ease, border-color .15s ease;
+  text-decoration:none; border:none;
+  -webkit-tap-highlight-color:transparent; }
+.btn:focus-visible { outline:2px solid var(--accent-text); outline-offset:3px; }
+/* 文案用独立层级包一层：下载按钮会塞进完整文件名，没有它会在 320px 下撑破容器 */
+.btn-label { display:block; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; position:relative; z-index:1; }
+/* 点击涟漪：从按下点扩散的水波。overflow:hidden 把波纹裁进胶囊；
+   文字 z-index:1 保证波纹从文字下方经过；
+   prefers-reduced-motion 下 JS 不生成波纹节点。 */
+.btn .ripple { position:absolute; border-radius:50%; pointer-events:none;
+  background:currentColor; opacity:.28; transform:scale(0);
+  animation:ripple 1.1s ease-out forwards; }
+@keyframes ripple { to { transform:scale(1); opacity:0; } }
+
+/* ---------- 全页面涟漪：三圈错峰扩散的描边圆环 ---------- */
+.page-wave { position:fixed; border-radius:50%; pointer-events:none; z-index:var(--z-float);
+  border:2px solid var(--accent-text); opacity:0;
+  animation:pageWave 1.5s cubic-bezier(.2,.65,.3,1) forwards; }
+.page-wave:nth-child(2) { border-width:1px; }
+@keyframes pageWave { 0% { transform:scale(.02); opacity:.5; } 70% { opacity:.18; } 100% { transform:scale(1); opacity:0; } }
+.btn-primary { background:var(--accent-fill); color:#fff; }
+.btn-primary:hover { background:var(--accent-fill-hover); transform:scale(1.02); }
+.btn-ghost { background:transparent; border:1px solid var(--border); color:var(--text); }
+.btn-ghost:hover { border-color:rgba(128,128,128,.4); background:var(--hover-bg); }
+/* 按下态：缺了它点击会偏「软」，实测补上后手感明显更实 */
+.btn:active { transform:scale(.97); transition-duration:.06s; }
+.btn[data-busy="1"] { opacity:.62; cursor:progress; transform:none; }
+/* 降级态：按钮语义从「本页直接下载」变成「去 Releases 页兜底」。
+   只改文案不够——用户扫一眼按钮形状是看不出它已经换了含义的，补一个虚线描边。 */
+.btn[data-fallback="1"] { border-style:dashed; border-color:var(--accent-text); }
+/* 下载按钮的文案在 4~18 字之间来回变（进度 / 文件名 / 兜底提示）。
+   不锁下限，hero 那一行会跟着每次点击横向抖动。 */
+#downloadBtn { min-width:210px; }
 @keyframes rise { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
 
-/* ---------- 工具清单：默认隐藏，点击展开 ---------- */
-.tools-area { display:none; }
-.tools-area.show { display:block; animation:fadeIn .5s cubic-bezier(.22,.9,.3,1); }
-@keyframes fadeIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
-/* ---------- 分区通用 ---------- */
-section { padding:80px 0; }
-.sec-head { margin-bottom:44px; text-align:left; }
-.sec-title { font-family:var(--font-h); font-weight:700;
-  font-size:clamp(28px, 4vw, 44px); letter-spacing:-.02em;
-  background:linear-gradient(180deg, #000000 0%, #3a3a3e 45%, #86868b 100%);
-  -webkit-background-clip:text; background-clip:text; color:transparent; display:inline-block; }
-.sec-desc { color:var(--text-2); margin-top:10px; font-size:16px; font-weight:400; }
 .reveal { opacity:0; transform:translateY(24px); transition:opacity .6s cubic-bezier(.22,.9,.3,1), transform .6s cubic-bezier(.22,.9,.3,1); }
 .reveal.in { opacity:1; transform:none; }
 
-/* ---------- 工具分组 ---------- */
-.tool-group { margin-bottom:56px; }
-.tool-group:last-child { margin-bottom:0; }
-.tg-head { display:flex; align-items:baseline; gap:12px; margin-bottom:18px; }
-.tg-head h3 { font-family:var(--font-h); font-size:20px; font-weight:600; letter-spacing:-.01em; color:var(--text); }
-.tg-head .tg-count { font-size:12px; color:var(--text-2); font-weight:500; }
-.tlist {
-  background:var(--bg-2);
-  border-radius:var(--r);
-  overflow:hidden;
-  box-shadow:0 2px 12px rgba(0,0,0,.04), 0 12px 36px rgba(0,0,0,.05); }
-.trow { display:grid; grid-template-columns:minmax(180px, 240px) 1fr auto;
-  align-items:center; gap:20px; padding:16px 24px;
-  border-bottom:1px solid rgba(0,0,0,.05);
-  transition:background .18s ease; }
-.trow:last-child { border-bottom:none; }
-.trow:hover { background:var(--hover-bg); }
-.trow .t-name { font-size:15px; font-weight:600; color:var(--text); font-family:var(--font-h); }
-.trow .t-desc { font-size:14px; color:var(--text-2); }
-.trow .t-status { font-size:12px; font-weight:600; letter-spacing:.2px;
-  padding:4px 14px; border-radius:999px; white-space:nowrap; }
-.trow .t-status.ready { color:var(--success); background:var(--success-bg); }
-.trow .t-status.wip { color:var(--warning); background:var(--warning-bg); }
-.note { margin-top:26px; text-align:left; font-size:13px; color:var(--text-2); }
-.note b { color:var(--text); font-weight:600; }
+/* ---------- 反馈弹窗 ---------- */
+.modal-backdrop { position:fixed; inset:0; z-index:var(--z-modal);
+  display:flex; align-items:center; justify-content:center; padding:var(--s5);
+  background:rgba(0,0,0,.4);
+  -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+  opacity:0; transition:opacity .25s ease; }
+.modal-backdrop.open { opacity:1; }
+.modal-backdrop[hidden] { display:none; }
+.modal { position:relative; width:100%; max-width:380px; text-align:center;
+  background:var(--bg-2); border:1px solid var(--border);
+  border-radius:22px; padding:36px 30px 30px;
+  box-shadow:var(--shadow);
+  transform:translateY(16px) scale(.96); opacity:0;
+  transition:transform .25s cubic-bezier(.22,.9,.3,1), opacity .25s ease; }
+.modal-backdrop.open .modal { transform:none; opacity:1; }
+.modal h3 { font-family:var(--font-h); font-size:19px; font-weight:600;
+  letter-spacing:-.01em; color:var(--text); }
+.modal p { margin-top:10px; font-size:14.5px; line-height:1.75; color:var(--text-2); }
+.modal p b { color:var(--text); font-weight:600; }
+.modal .modal-ok { margin-top:22px; width:100%; justify-content:center; }
+.modal-close { position:absolute; top:12px; right:12px;
+  width:32px; height:32px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  border:none; background:var(--row-hover); color:var(--text-2);
+  font-size:16px; line-height:1; cursor:pointer; transition:background .15s, color .15s; }
+.modal-close:hover { background:var(--border); color:var(--text); }
+/* 三种联络方式：行内「类型 + 值 + 复制」。值超长时省略号，完整内容在 title 里。 */
+.contact-list { list-style:none; margin:18px 0 0; padding:0; text-align:left; }
+.contact-list li { display:flex; align-items:center; gap:10px; padding:11px 2px;
+  border-top:1px solid var(--border); }
+.contact-list li:last-child { border-bottom:1px solid var(--border); }
+.c-type { flex:none; width:36px; font-size:12.5px; color:var(--text-2); }
+.c-value { flex:1; min-width:0; font-size:13.5px; color:var(--text);
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+a.c-value:hover, a.c-value:focus-visible { color:var(--accent-text); text-decoration:underline; }
+a.c-value:focus-visible, .c-copy:focus-visible { outline:2px solid var(--accent-text); outline-offset:2px; }
+.c-copy { flex:none; font-family:var(--font-h); font-size:12.5px; padding:5px 12px;
+  border-radius:999px; border:1px solid var(--border); background:transparent;
+  color:var(--text); cursor:pointer;
+  transition:border-color .15s ease, background .15s ease, color .15s ease; }
+.c-copy:hover { border-color:var(--accent-text); color:var(--accent-text); }
+.c-copy.done { border-color:var(--accent-text); color:var(--accent-text); }
+
+/* ---------- 鼠标滑动特效 ---------- */
+.cursor-dot, .cursor-ring { pointer-events:none; will-change:transform, opacity; }
+.cursor-dot { position:fixed; top:0; left:0; z-index:calc(var(--z-cursor) + 1);
+  width:7px; height:7px; border-radius:50%; background:var(--accent-fill);
+  opacity:0; transition:opacity .3s; }
+.cursor-ring { position:fixed; top:0; left:0; z-index:var(--z-cursor);
+  width:34px; height:34px; border-radius:50%;
+  border:1.5px solid var(--accent-border);
+  opacity:0; transition:opacity .3s, border-color .2s, box-shadow .2s; }
+.cursor-ring.hover { border-color:var(--accent-text); box-shadow:0 0 0 6px var(--accent-soft); }
+
+/* 指针拖尾：Canvas 绘制的连续光线，取代原先一串离散圆点。
+   旧做法是每次指针移动生成一个 5px 圆点、各自做一次 .6s 缩放淡出，
+   粒子彼此独立 → 快速划动是一串断珠，慢速移动几乎看不见；
+   现在记录轨迹点、逐段描边，线宽与透明度沿尾长连续变化，收细收淡，不抢内容。
+   全屏固定画布；pointer-events:none 不挡任何交互；层级沿用旧拖尾的 --z-cursor-1。
+   注意 canvas 不认 CSS 变量，颜色由 JS 从 --accent-fill-rgb 读出；
+   读不到时 JS 会自动退成只有光点 + 光环，不会写死色值。 */
+.cursor-tail { position:fixed; inset:0; z-index:calc(var(--z-cursor) - 1);
+  pointer-events:none; opacity:0; transition:opacity .3s; }
 
 /* ---------- 页脚 ---------- */
-footer { border-top:1px solid var(--border); padding:32px 0 40px;
-  background:rgba(255,255,255,.68); }
+footer { border-top:1px solid var(--border); padding:var(--s6) 0 40px;
+  background:var(--foot-bg); }
 .foot-wrap { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;
-  gap:16px; font-size:13px; color:var(--text-2); }
+  gap:var(--s4); font-size:13px; color:var(--text-2); }
 .foot-wrap .cn { color:var(--text); font-weight:600; }
 .foot-links a { margin-left:22px; color:var(--text-2); font-size:13px; text-decoration:none; }
 .foot-links a:hover { color:var(--text); }
 
 /* ---------- 响应式 ---------- */
+/* 平板横屏及以下就转单列。原来只在 700px 转，导致 768px 平板下两栏各约 330px，
+   15px 的中文工具名会和右侧 nowrap 的「可用」徽章互相挤压，单行 49px 涨到 80px+。
+   「转单列」与「折叠导航」是两件事，这里解耦。 */
+@media (max-width: 860px) {
+}
 @media (max-width: 700px) {
-  .nav-links { display:none; }
-  .trow { grid-template-columns:1fr; gap:4px; padding:14px 20px; }
-  .trow .t-status { justify-self:start; }
+  .hero-stats .stat { padding:0 20px; }
 }
 @media (max-width: 640px) {
   .hero { flex:1; padding:84px 0 32px; }
   .hero h1 { font-size:clamp(34px, 9vw, 48px); }
-  .hero .sub { font-size:15px; margin-top:10px; }
-  .hero-cta { margin-top:20px; }
+  .hero-sub { font-size:15.5px; }
+  .hero-stats { margin-top:26px; }
+  .hero-stats b { font-size:20px; }
+  .hero-cta { margin-top:24px; }
   .btn { padding:12px 22px; font-size:14px; }
+  /* 小屏下两个按钮各占一行，避免一长一短 */
+  .hero-cta .btn { flex:1 1 100%; }
 }
 /* ---------- 无障碍 ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation:none !important; transition:none !important; }
-  .reveal { opacity:1; transform:none; }
+  /* 入场动画以 opacity:0 为起始态，这里必须强制复位，
+     否则减少动效的用户会看到一片空白。 */
+  .reveal, .hero-sub, .hero-stats, .hero-cta, .hero h1 { opacity:1; transform:none; }
+}
+/* 强制高对比度模式（Windows 高对比度等）：
+   渐变标题依赖 color:transparent + background-clip，系统替换背景后文字会整段消失，
+   必须退回实色。打印样式里已处理同一问题，这里补上另一条路径。 */
+@media (forced-colors: active) {
+  .hero h1 {
+    background:none !important;
+    -webkit-background-clip:initial; background-clip:initial;
+    -webkit-text-fill-color:CanvasText; color:CanvasText; }
+  .modal-backdrop, .navbar, .to-top, .modal {
+    -webkit-backdrop-filter:none; backdrop-filter:none; }
 }
 /* ---------- 打印 ---------- */
 @media print {
-  .navbar, .progress, .to-top, .hero-cta, .foot-links { display:none !important; }
-  body { background:#fff; }
-  section { padding:20px 0; }
+  .navbar, .progress, .to-top, .hero-cta, .noscript-cta, .foot-links, .hero-stats, .modal-backdrop, .cursor-dot, .cursor-ring, .cursor-tail, .orb, .sr-only { display:none !important; }
+  body { background:#fff; color:#1d1d1f; }
+  section { padding:20px 0 !important; display:block !important; }
+  .hero h1 {
+    background:none !important;
+    -webkit-background-clip:initial; background-clip:initial;
+    -webkit-text-fill-color:#1d1d1f; color:#1d1d1f; }
 }
 </style>
+<!-- 无 JS 兜底：.reveal 靠 JS 加类才显形、下载按钮完全依赖 JS，
+     一旦脚本被拦截或加载失败这些内容会不可见。
+     原则是「JS 打开的就得由 CSS 重新打开，纯 JS 控件换成静态链接」。 -->
+<noscript data-page-node-id="vioylMM3YaWU5EBU4RF88K"><style>
+  .reveal { opacity:1 !important; transform:none !important; }
+  #downloadBtn { display:none !important; }
+</style></noscript>
 </head>
-<body>
+<body data-page-node-id="jv7TQqE3jHACossOaxZKXd">
 
-<div class="hero-bg" aria-hidden="true"></div>
-<div class="progress" id="progress" role="presentation"></div>
+<!-- 跳过导航：键盘用户第一个 Tab 就能直达正文 -->
+
+<!-- 下载状态的读屏播报区 -->
+<p id="dlStatus" class="sr-only" role="status" aria-live="polite" data-page-node-id="vaXe7x9v4eq0gX4bVObw7X"></p>
+<div class="hero-bg" aria-hidden="true" data-page-node-id="XEu6p1QRIJj0iAiD9obbsr"></div>
+<div class="orb orb-1" aria-hidden="true" data-page-node-id="q63LX5kjm0GRs0BGKAI4mA"></div>
+<div class="orb orb-2" aria-hidden="true" data-page-node-id="0LCdG1OTFF94tkxpPUlEzZ"></div>
+<div class="orb orb-3" aria-hidden="true" data-page-node-id="7gkt9PwfIExmCFnkMRwRdl"></div>
+<div class="ct5" aria-hidden="true">
+<svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ct5Body" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#434956"/><stop offset=".38" stop-color="#20242c"/><stop offset=".62" stop-color="#1c2027"/><stop offset="1" stop-color="#39404c"/>
+    </linearGradient>
+    <linearGradient id="ct5Roof" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#363c48"/><stop offset=".5" stop-color="#191d24"/><stop offset="1" stop-color="#2c313a"/>
+    </linearGradient>
+    <linearGradient id="ct5Beam" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="rgba(223,236,255,.8)"/><stop offset="1" stop-color="rgba(223,236,255,0)"/>
+    </linearGradient>
+  </defs>
+  <!-- 道路：沥青 + 两侧流动虚线（车速加快） -->
+  <rect x="96" y="-800" width="128" height="1620" fill="#14171d"/>
+  <line class="lane" x1="102" y1="-800" x2="102" y2="820" stroke="#8a93a6" stroke-width="3" opacity=".45"/>
+  <line class="lane" x1="218" y1="-800" x2="218" y2="820" stroke="#8a93a6" stroke-width="3" opacity=".45"/>
+  <!-- 路旁道具：稻草人/路标/信号灯，由 JS 随机生成并随道路滚动 -->
+  <g id="ct5Props"></g>
+  <!-- 车底投影 -->
+  <ellipse cx="160" cy="170" rx="60" ry="126" fill="#000" opacity=".4"/>
+  <!-- CT5 俯视：长车头 + 后移座舱 + 宽后肩（车头朝上），比例近似 4.92m/1.88m -->
+  <g>
+    <!-- 大灯光锥（分列盾形格栅两侧，向后上无——向前上照射） -->
+    <path class="beam" d="M120,60 L58,-190 L152,-190 L128,60 Z" fill="url(#ct5Beam)"/>
+    <path class="beam" d="M200,60 L262,-190 L168,-190 L192,60 Z" fill="url(#ct5Beam)"/>
+    <!-- 车身轮廓：前部收窄、后肩加宽，CT5 标志性长后悬 -->
+    <path d="M123,66 Q124,57 134,56 L186,56 Q196,57 197,66 L199,98 L201,150 L203,226 Q203,272 192,274 L128,274 Q117,272 117,226 L119,150 L121,98 Z"
+          fill="url(#ct5Body)" stroke="#59627a" stroke-width="1.5"/>
+    <!-- 盾形格栅（CT5 前脸签名） -->
+    <path d="M138,57 L182,57 L179,90 L141,90 Z" fill="#0a0c10" stroke="#454c5a" stroke-width="1"/>
+    <circle cx="160" cy="70" r="4" fill="#b9c1cf"/>
+    <!-- 钻石切面前大灯（分体式上灯带） -->
+    <path d="M122,64 L134,61 L134,70 L122,71 Z" fill="#eaf3ff"/>
+    <path d="M198,64 L186,61 L186,70 L198,71 Z" fill="#eaf3ff"/>
+    <!-- 引擎盖棱线 -->
+    <path d="M130,96 Q160,90 190,96" stroke="#59627a" stroke-width="1" opacity=".5" fill="none"/>
+    <path d="M128,104 L140,96" stroke="#59627a" stroke-width="1" opacity=".4" fill="none"/>
+    <path d="M192,104 L180,96" stroke="#59627a" stroke-width="1" opacity=".4" fill="none"/>
+    <!-- 前挡风（后移座舱：玻璃起点在全长约 34% 处） -->
+    <path d="M128,136 L143,106 L177,106 L192,136 Z" fill="#0b0e14"/>
+    <!-- 车顶（溜背收窄） -->
+    <path d="M132,136 L188,136 L184,192 L136,192 Z" fill="url(#ct5Roof)" stroke="#59627a" stroke-width="1"/>
+    <!-- 后挡风 -->
+    <path d="M136,192 L184,192 L178,216 L142,216 Z" fill="#0b0e14"/>
+    <!-- 后肩肩线 + 鸭尾扰流板 -->
+    <path d="M119,228 L201,228" stroke="#59627a" stroke-width="1" opacity=".55" fill="none"/>
+    <rect x="120" y="266" width="80" height="5" rx="2.5" fill="#14171d" stroke="#454c5a" stroke-width="1"/>
+    <!-- 竖直 LED 尾灯 -->
+    <rect x="121" y="238" width="9" height="22" rx="3" fill="#a4322c"/>
+    <rect x="190" y="238" width="9" height="22" rx="3" fill="#a4322c"/>
+    <!-- 左右后视镜 -->
+    <rect x="105" y="126" width="14" height="9" rx="3" fill="#31363f"/>
+    <rect x="201" y="126" width="14" height="9" rx="3" fill="#31363f"/>
+  </g>
+</svg></div>
+<div class="progress" id="progress" role="presentation" data-page-node-id="IZn6GzO2MVWZx7tOXHgsdu"></div>
 
 <!-- 顶栏 -->
-<nav class="navbar" aria-label="主导航">
-  <div class="container">
-    <div class="brand"><span class="mark">無</span><span class="cn">WuKeBiMian</span></div>
-    <ul class="nav-links">
-      <li><a href="#tools">工具清单</a></li>
-    </ul>
+<nav class="navbar" aria-label="主导航" data-page-node-id="NVTPgSdF83KlWZQxyy02eZ">
+  <div class="container" data-page-node-id="DecYSihJFIkIpYr8GcjB1v">
+<div class="brand" data-page-node-id="DflxPlrJ0F6Z0xUfJFo9sd"><img class="mark" src="data:image/png;base64,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" alt="" width="22" height="22" data-page-node-id="bvXgZF9zvvFHZvv6LvaXkM"><span class="cn" data-page-node-id="JvEAlp7pEv5gCDdANBxY43">WuKeBiMian</span></div>
   </div>
 </nav>
 
-<main style="flex:1; display:flex; flex-direction:column;">
+<main data-page-node-id="cljO0m5lwoumuFQ2n2VZ8b">
 <!-- Hero -->
-<header class="hero">
-  <div class="container hero-inner">
-    <div class="kicker">22 个工具 · 面向 Process Simulate 使用者</div>
-    <h1>将重复变的简单直接。</h1>
+<header class="hero" data-page-node-id="98Int42zNHIvzersRHuca6">
+  <div class="container hero-inner" data-page-node-id="3TiDyuiBYxQjRHD0ArIbaS">
+        <h1 data-page-node-id="Hb7mUU42j9J8LLl9ToG7RY">将重复变得简单直接</h1>
+    <p class="hero-sub" data-page-node-id="ODTB5Gpnh9mLHtjl3wFbQQ">为 Process Simulate 打造的工具集：从焊接、时序图、姿态调整，到机构搭建与模型归档，把重复几十次的操作，变成一次点击。</p>
 
-    <div class="hero-cta">
-      <button class="btn btn-ghost" id="downloadBtn" type="button" aria-label="下载最新部署工具">获取部署工具</button>
-      <button class="btn btn-primary btn-toggle" id="toggleTools" type="button" aria-expanded="false">查看清单</button>
+    <div class="hero-stats" role="list" aria-label="工具概览数据" data-page-node-id="u0UfrN9dtjXxfrSGf7Z15Q">
+      <div class="stat" role="listitem" data-page-node-id="SefhrqaJedxanmKJj9oSqs"><b data-page-node-id="64a2vGtEWFmsV6vDfBTBb5">持续</b><span data-page-node-id="LBAaDiNEpUCXBghs3bv9Js">版本</span></div>
     </div>
+
+    <div class="hero-cta" data-page-node-id="j4DejZCxcaLEV77ekhN0rS">
+      <button class="btn btn-ghost" id="downloadBtn" type="button" data-page-node-id="IHoHjs1K7wpJVqdGH5Gj1r">
+        <span class="btn-label" id="downloadBtnLabel" data-page-node-id="G7OCMa2ESccXCXNICzUHun">获取部署工具</span>
+      </button>
+      <!-- 视图切换按钮组：后续新增卡片时在此追加按钮（data-target 指向卡片选择器） -->
+      <nav class="view-tabs" aria-label="卡片视图切换">
+        <button class="view-tab active" type="button" data-target=".icon-strip-wrap" aria-pressed="true">机构链路</button>
+      </nav>
+          </div>
+    <!-- 下载按钮是纯 JS 控件：脚本不可用时它点了没任何反应。
+         此时换成一条指向 Releases 页的静态链接（上方 noscript 样式已隐藏原按钮），
+         保证无 JS 环境下「拿到工具」这条主路径依然走得通。 -->
+    <noscript data-page-node-id="YPA64CINoRDnZJRK2zS79M">
+      <div class="noscript-cta" data-page-node-id="z5HyJZXS2s3AjhxwMjPesr">
+        <a class="btn btn-ghost" href="https://github.com/Wukebimian/WuKeBiMian/releases" data-page-node-id="xvAIS355KDAf5CpCtc0tgg">前往 Releases 页下载</a>
+      </div>
+    </noscript>
   </div>
 </header>
 
-<!-- 工具清单 -->
-<section id="tools"><div class="container tools-area" id="toolsArea">
-    <div class="sec-head reveal">
-      <h2 class="sec-title">工具清单</h2>
-      <p class="sec-desc">共 22 个工具，按业务场景分为 6 组。</p>
-    </div>
-
-    <div class="tool-group reveal">
-      <div class="tg-head"><h3>焊接</h3><span class="tg-count">3</span></div>
-      <div class="tlist">
-        <div class="trow"><div class="t-name">进退枪点自动生成</div><div class="t-desc">自动在焊点前后生成进枪 / 退枪过渡点，规范焊接路径</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">焊接点快速选择</div><div class="t-desc">一键切换选择模式，直接点选场景中的焊接点</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">焊点半径检查</div><div class="t-desc">依据焊点位置与法向生成检查圆柱，核对焊接规格</div><span class="t-status ready">可用</span></div>
+<!-- 插件图标带：六款插件图标，悬停放大 -->
+<section class="icon-strip-sec" aria-label="插件图标展示">
+  <div class="container icon-strip-wrap reveal">
+    <span class="strip-label">机构链路</span>
+    <div class="icon-strip" role="list">
+      <div class="icon-item" role="listitem" tabindex="0" aria-label="旋转气缸机构制作" data-desc="通过接触关系搜寻旋转气缸的运动零件并生成旋转关节；每次运行处理一组。">
+        <svg fill="currentColor" aria-hidden="true" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M405.333333 277.333333v170.666667h213.333334v-170.666667H405.333333z m170.666667 128h-128v-85.333333h128v85.333333z"></path><path d="M320 832V405.333333h384v426.666667h-42.666667V448H362.666667v384h-42.666667zM704 853.333333H320c46.933333 53.333333 115.2 85.333333 192 85.333334s145.066667-32 192-85.333334zM138.666667 311.466667c6.4 6.4 17.066667 8.533333 25.6 8.533333l168.533333-23.466667-10.666667-64-96 12.8c8.533333-8.533333 21.333333-19.2 34.133334-29.866666 51.2-38.4 132.266667-76.8 253.866666-76.8 119.466667 0 200.533333 38.4 251.733334 76.8 12.8 10.666667 25.6 19.2 34.133333 29.866666l-96-14.933333-12.8 64 168.533333 25.6c8.533333 2.133333 19.2-2.133333 25.6-8.533333 6.4-6.4 10.666667-14.933333 12.8-25.6l6.4-164.266667h-64L838.4 192c-10.666667-10.666667-21.333333-19.2-36.266667-29.866667-59.733333-42.666667-153.6-87.466667-290.133333-87.466666-136.533333 0-230.4 44.8-290.133333 89.6-14.933333 10.666667-25.6 19.2-36.266667 27.733333V121.6l-64-2.133333 4.266667 164.266666c0 12.8 4.266667 21.333333 12.8 27.733334z"></path><path d="M512 554.666667c-36.266667 0-64 27.733333-64 64s27.733333 64 64 64 64-27.733333 64-64-27.733333-64-64-64z m0 85.333333c-12.8 0-21.333333-8.533333-21.333333-21.333333s8.533333-21.333333 21.333333-21.333334 21.333333 8.533333 21.333333 21.333334-8.533333 21.333333-21.333333 21.333333z"></path></svg>
+        <span class="icon-name">旋转气缸机构制作</span>
+      </div>
+      <div class="icon-item" role="listitem" tabindex="0" aria-label="伸缩气缸机构制作" data-desc="选取伸缩杆及销子自动生成机构">
+        <svg fill="currentColor" aria-hidden="true" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M395.636364 116.363636h232.727272v186.181819h232.727273v69.818181h-139.636364v488.727273h139.636364v69.818182H162.909091v-69.818182h139.636364V372.363636H162.909091v-69.818181h232.727273V116.363636z m69.818181 186.181819h93.09091V186.181818h-93.09091v116.363637z m-93.090909 69.818181v488.727273h279.272728V372.363636H372.363636z m-186.181818 46.545455h69.818182v395.636364H186.181818V418.909091z m581.818182 0h69.818182v395.636364h-69.818182V418.909091z"></path></svg>
+        <span class="icon-name">伸缩气缸机构制作</span>
+      </div>
+      <div class="icon-item" role="listitem" tabindex="0" aria-label="EPCoupling创建" data-desc="选中Equipment，自动分析子资源关节，创建LINK并设置Joint Dependency Coupling">
+        <svg fill="currentColor" aria-hidden="true" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M425.6 311.68v-38.4l-32-7.04A113.92 113.92 0 0 0 384 238.72l17.92-26.88-26.88-26.88-27.52 17.28A100.48 100.48 0 0 0 320 192l-7.04-31.36h-38.4L266.88 192a96 96 0 0 0-27.52 11.52l-27.52-17.28-26.88 26.88 17.28 26.88a113.92 113.92 0 0 0-10.24 26.24l-32 7.04v38.4L192 320c2.56 9.664 6.4 18.944 11.52 27.52l-17.28 27.52 26.88 26.88 25.6-17.92c8.576 5.312 17.792 9.408 27.52 12.16l7.04 31.36h38.4L320 393.6A100.48 100.48 0 0 0 345.6 384l27.52 17.92 26.88-26.88L384 345.6c4.48-8.064 8-16.64 10.24-25.6l31.36-8.32z m-133.12 28.16a48 48 0 0 1-48-47.36 48.64 48.64 0 0 1 48-48 48 48 0 0 1 47.36 48 47.36 47.36 0 0 1-47.36 47.36zM865.92 717.44v-49.28l-41.6-8.96a136.32 136.32 0 0 0-14.72-35.84l22.4-35.84-34.56-35.2-35.2 23.68a119.04 119.04 0 0 0-35.84-15.36l-8.96-41.6h-49.28l-8.96 41.6a119.04 119.04 0 0 0-35.84 15.36l-35.84-23.68-34.56 35.2 23.04 35.84a119.04 119.04 0 0 0-15.36 35.84l-41.6 8.96v49.28l41.6 8.96c3.2 12.672 8.448 24.704 15.36 35.84l-23.04 35.2 34.56 35.2 35.2-23.04c11.2 6.656 23.296 11.84 35.84 15.36l9.6 40.96h49.28l8.96-41.6a136.32 136.32 0 0 0 35.84-14.72l35.84 23.04 34.56-35.2-23.04-35.2c6.848-11.136 12.032-23.232 15.36-35.84l40.96-8.96z m-173.44 37.12a64 64 0 1 1 0-128 64 64 0 0 1 0 128z"></path><path d="M603.2 970.688a278.976 278.976 0 0 0 107.84 21.312v0.64A280.96 280.96 0 0 0 908.16 512L435.2 92.8A242.56 242.56 0 0 0 92.8 435.2L512 909.44c26.048 26.24 57.088 47.104 91.2 61.248z m108.48-45.632a222.08 222.08 0 0 1-152.96-61.056L140.8 392.96A178.56 178.56 0 0 1 392.96 140.8l471.68 416a217.6 217.6 0 0 1 64 153.6 215.104 215.104 0 0 1-64 153.6 222.08 222.08 0 0 1-152.96 61.056z"></path></svg>
+        <span class="icon-name">EPCoupling创建</span>
+      </div>
+      <div class="icon-item" role="listitem" tabindex="0" aria-label="joint名称修改" data-desc="读取时序图 Mengengerät_Pneumatisch 分页，按 Baugruppe 七位号匹配设备单元并批量重命名 Joint 为 Zylinder 名称">
+        <svg fill="currentColor" aria-hidden="true" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M172.76 924.37V816.8c0-19.8 16.05-35.86 35.86-35.86 19.8 0 35.86 16.05 35.86 35.86v107.57c0 19.8-16.05 35.86-35.86 35.86-19.81-0.01-35.86-16.06-35.86-35.86zM172.76 601.67V494.1c0-19.8 16.05-35.86 35.86-35.86 19.8 0 35.86 16.05 35.86 35.86v107.57c0 19.8-16.05 35.86-35.86 35.86-19.81-0.01-35.86-16.06-35.86-35.86zM172.76 207.26V99.69c0-19.8 16.05-35.86 35.86-35.86 19.8 0 35.86 16.05 35.86 35.86v107.57c0 19.8-16.05 35.86-35.86 35.86-19.81-0.01-35.86-16.06-35.86-35.86z"></path><path d="M352.04 350.68c0 79.21-64.21 143.42-143.42 143.42S65.19 429.89 65.19 350.68s64.21-143.42 143.42-143.42 143.43 64.21 143.43 143.42z m-143.42-71.71c-39.6 0-71.71 32.11-71.71 71.71s32.11 71.71 71.71 71.71 71.71-32.11 71.71-71.71-32.11-71.71-71.71-71.71zM352.04 709.23c0 79.21-64.21 143.42-143.42 143.42S65.19 788.44 65.19 709.23s64.21-143.42 143.42-143.42 143.43 64.21 143.43 143.42z m-143.42-71.71c-39.6 0-71.71 32.11-71.71 71.71 0 39.61 32.11 71.71 71.71 71.71s71.71-32.11 71.71-71.71c0-39.6-32.11-71.71-71.71-71.71zM925.73 350.68H423.75c-19.8 0-35.86-16.05-35.86-35.86 0-19.8 16.05-35.86 35.86-35.86h501.98c19.8 0 35.86 16.05 35.86 35.86-0.01 19.81-16.06 35.86-35.86 35.86zM640.93 458.24H421.7c-18.67 0-33.8-15.13-33.8-33.8v-4.1c0-18.67 15.14-33.8 33.8-33.8h219.23c18.67 0 33.8 15.13 33.8 33.8v4.1c0.01 18.67-15.13 33.8-33.8 33.8zM925.73 709.23H423.75c-19.8 0-35.86-16.05-35.86-35.86 0-19.8 16.05-35.86 35.86-35.86h501.98c19.8 0 35.86 16.05 35.86 35.86-0.01 19.81-16.06 35.86-35.86 35.86zM640.93 816.8H421.7c-18.67 0-33.8-15.13-33.8-33.8v-4.1c0-18.67 15.14-33.8 33.8-33.8h219.23c18.67 0 33.8 15.14 33.8 33.8v4.1c0.01 18.67-15.13 33.8-33.8 33.8z"></path></svg>
+        <span class="icon-name">joint名称修改</span>
+      </div>
+      <div class="icon-item" role="listitem" tabindex="0" aria-label="DWG时序分析" data-desc="DWG 时序分析 PDPS 插件：从 DWG 时序图/气路图提取单元-气缸映射与动作步骤">
+        <svg fill="currentColor" aria-hidden="true" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M873.074627 556.933731V145.19403a16.964776 16.964776 0 0 0-16.888358-16.81194H331.730149A16.888358 16.888358 0 0 0 314.841791 145.19403v368.869254c160.706866-33.318209 275.257313 91.854328 558.232836 42.870447zM458.507463 234.144478h271.283582a33.241791 33.241791 0 1 1 0 66.483582H458.048955a33.241791 33.241791 0 1 1 0-66.483582z m0 122.268656h141.373134A33.241791 33.241791 0 0 1 633.198806 389.731343a33.623881 33.623881 0 0 1-33.318209 33.318209H458.048955a33.318209 33.318209 0 1 1 0-66.56zM912.964776 696.854925c-81.002985 18.340299-206.328358 87.345672-206.328358 87.345672s-90.249552 27.43403-153.370746 8.711642c-44.093134-12.838209-102.247164-32.401194-125.09612-55.250149-21.702687-21.626269-19.180896-43.252537-0.917015-40.348657 37.444776 5.807761 181.721791 19.486567 221.153433 7.641791s61.134328-58.612537 44.093134-87.345672c0 0-51.123582-2.827463-169.189253-29.038806s-147.562985-44.551642-198.686567-22.008358C285.26806 583.832836 197.998806 635.797015 93.229851 662.772537a31.789851 31.789851 0 0 0-24.53015 38.208956H68.776119c11.615522 51.123582 35.763582 151.76597 59.835224 202.048955 1.299104 2.445373 2.139701 4.967164 3.28597 7.030448a27.586866 27.586866 0 0 0 23.307463 13.296716 24.14806 24.14806 0 0 0 8.329552-1.681194c0.840597-0.38209 1.681194-0.38209 2.903881-0.840597 33.318209-7.641791 68.164776-16.964776 91.090149-19.945075 50.665075-6.648358 281.829254 53.492537 346.249552 58.230448s136.78806-61.898507 184.167165-87.269254 198.686567-123.873433 198.686567-123.873433 7.412537-69.387463-73.666866-51.123582z"></path></svg>
+        <span class="icon-name">DWG时序分析</span>
+      </div>
+      <div class="icon-item" role="listitem" tabindex="0" aria-label="时序图转换Pose" data-desc="从 Excel 时序图解析运动步骤并自动创建 PDPS 设备位姿">
+        <svg fill="currentColor" aria-hidden="true" viewBox="0 0 1509 1024" xmlns="http://www.w3.org/2000/svg"><path d="M1262.853300148148 579.2896758518517H1046.102689185185V332.2929872592592c45.36790281481481 0 80.65418429629628-37.80820385185185 80.65418429629628-80.65297066666668 0-42.843553185185186-35.28628148148148-80.65297066666668-80.65418429629628-80.65297066666668-40.85441422222222 0-73.5192557037037 30.664779851851847-79.61653096296297 68.05185422222222h-258.1147496296296v-68.05185422222222c-2.519495111111111-15.118184296296297-12.601116444444443-25.201019259259258-27.721728-25.201019259259258H239.581477925926c-15.118184296296297 0-25.201019259259258 12.599902814814813-25.201019259259258 25.201019259259258v272.20377599999995c0 15.118184296296297 10.082834962962961 25.202232888888886 25.201019259259258 25.202232888888886h443.58648414814814c15.12546607407407 0 25.202232888888886-10.084048592592591 25.202232888888886-25.202232888888886V269.2825505185185H967.6160474074075c6.1130524444444445 25.01897481481481 24.702217481481476 46.40919703703704 48.2429914074074 56.613394962962964v253.39373037037038H819.2680296296297c-12.602330074074075 0-25.202232888888886 12.599902814814813-25.202232888888886 25.201019259259258v163.8242228148148H530.289464888889c-7.440763259259259-22.073495703703703-24.31506962962963-40.470907259259256-46.22957985185185-49.47725274074074V526.3608604444445h80.65175703703703v-30.243650370370364H358.0462933333334v30.243650370370364H453.81380740740747v186.50817422222224c-45.36790281481481 0-80.65175703703703 37.80456296296296-80.65175703703703 80.65418429629628 0 42.844766814814804 37.80820385185185 80.6469025185185 80.65175703703703 80.6469025185185 41.15660799999999 0 77.64438281481482-34.88578370370371 80.45878992592593-75.61033955555557h259.79198577777777v78.13468918518518c0 15.119397925925924 12.599902814814813 25.201019259259258 25.202232888888886 25.201019259259258h443.5852705185185c12.602330074074075 0 25.202232888888886-10.081621333333334 25.202232888888886-25.201019259259258V604.4894814814814c0-15.118184296296297-12.599902814814813-25.199805629629626-25.202232888888886-25.199805629629626zM657.9657291851852 390.26322014814804c0 17.641320296296293-12.599902814814813 30.243650370370364-30.243650370370364 30.243650370370364H292.5102933333333c-17.642533925925928 0-30.243650370370364-12.602330074074075-30.243650370370364-30.243650370370364V223.9146477037038c0-17.642533925925928 12.601116444444443-30.243650370370364 30.243650370370364-30.243650370370364h335.2142127407407c17.642533925925928 0 30.243650370370364 12.601116444444443 30.243650370370364 30.243650370370364v166.34857244444444zM453.81502103703707 841.4094032592593c-25.201019259259258 0-47.88497066666667-20.165669925925922-47.88497066666667-47.88618429629629 0-27.725368888888884 20.159601777777777-47.89225244444445 47.88497066666667-47.89225244444445 27.726582518518516 0 47.88618429629629 20.166883555555557 47.88618429629629 47.89225244444445 0 27.71930074074074-22.682737777777778 47.88618429629629-47.88618429629629 47.88618429629629zM998.2165048888892 251.63880296296298c0-27.725368888888884 20.15838814814815-47.88618429629629 47.88618429629629-47.88618429629629 27.725368888888884 0 47.88618429629629 20.16081540740741 47.88618429629629 47.88618429629629 0 27.726582518518516-20.16081540740741 47.88618429629629-47.88618429629629 47.88618429629629-25.202232888888886 0-47.88618429629629-20.159601777777777-47.88618429629629-47.88618429629629z m211.71040711111112 602.3692894814814H872.1944177777779c-17.642533925925928 0-30.243650370370364-12.599902814814813-30.243650370370364-30.243650370370364V657.4195105185188c0-17.643747555555553 12.601116444444443-30.244864 30.243650370370364-30.244864h335.2142127407407c17.642533925925928 0 30.243650370370364 12.601116444444443 30.243650370370364 30.243650370370364v166.3473588148148h2.5170678518518512c0 17.643747555555553-12.599902814814813 30.243650370370364-30.243650370370364 30.243650370370364z"></path><path d="M282.2065777777779 199.00125866666673h358.1469582222222v213.5381333333333H282.2065777777779z m579.780001185185 434.8228645925926h358.1481718518519v213.5381333333333H861.9865789629629zM412.8222530370371 793.5195780740742a40.76581925925927 40.76581925925927 0 1 0 81.53163851851853 0 40.76581925925927 40.76581925925927 0 1 0-81.53163851851853 0zM1005.3368699259263 251.63880296296298a40.76581925925927 40.76581925925927 0 1 0 81.53163851851853 0 40.76581925925927 40.76581925925927 0 1 0-81.53163851851853 0z"></path></svg>
+        <span class="icon-name">时序图转换Pose</span>
+      </div>
+      <div class="icon-item" role="listitem" tabindex="0" aria-label="创建OPEN/CLOSE" data-desc="为设备创建OPEN/CLOSE">
+        <svg fill="currentColor" aria-hidden="true" viewBox="0 0 1030 1024" xmlns="http://www.w3.org/2000/svg"><path d="M496.280555 977.284702c-266.557649 0-483.419951-216.862302-483.419951-483.415771C12.860604 227.311282 229.722906 10.44898 496.280555 10.44898s483.419951 216.862302 483.419951 483.419951c0 28.847543-23.393176 52.244898-52.244898 52.244898s-52.244898-23.397355-52.244898-52.244898c0-208.941976-169.98818-378.930155-378.930155-378.930155s-378.930155 169.98818-378.930155 378.930155c0 208.937796 169.98818 378.925976 378.930155 378.925975 28.851722 0 52.244898 23.393176 52.244898 52.244898s-23.393176 52.244898-52.244898 52.244898z"></path><path d="M783.694367 992.406465c-119.527967 0-216.761992-97.246563-216.761991-216.766171a216.135053 216.135053 0 0 1 12.747755-73.397812c9.767706-27.150629 39.693584-41.240033 66.844212-31.484866 27.150629 9.771886 41.244212 39.697763 31.476506 66.848392a112.013061 112.013061 0 0 0-6.578678 38.034286c0 61.908114 50.368261 112.276376 112.272196 112.276375 61.912294 0 112.284735-50.368261 112.284735-112.276375 0-10.469878-1.425241-20.810188-4.242286-30.72-7.878531-27.760849 8.237976-56.646008 35.990466-64.524539 27.760849-7.870171 56.654367 8.233796 64.524538 35.990465a217.021127 217.021127 0 0 1 8.208719 59.249894c0.008359 119.532147-97.238204 216.770351-216.766172 216.770351z"></path><path d="M783.698547 828.579004c-28.847543 0-52.244898-23.397355-52.244898-52.244898v-191.053322c0-28.851722 23.397355-52.244898 52.244898-52.244898 28.851722 0 52.244898 23.393176 52.244898 52.244898v191.053322c0 28.847543-23.393176 52.244898-52.244898 52.244898zM496.280555 546.113829c-28.851722 0-52.244898-23.397355-52.244898-52.244898V245.989878c0-28.851722 23.393176-52.244898 52.244898-52.244898s52.244898 23.393176 52.244898 52.244898v247.879053c0 28.847543-23.393176 52.244898-52.244898 52.244898z"></path></svg>
+        <span class="icon-name">创建OPEN/CLOSE</span>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="tool-group reveal">
-      <div class="tg-head"><h3>时序图</h3><span class="tg-count">3</span></div>
-      <div class="tlist">
-        <div class="trow"><div class="t-name">时序图转姿态</div><div class="t-desc">解析 Excel 时序图，批量生成机器人姿态，轴值对齐关节限位</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">时序图关节命名</div><div class="t-desc">从时序图提取命名规则，批量重命名设备关节</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">DWG 时序分析</div><div class="t-desc">读取 DWG 图纸时序信息，解析为表格文件</div><span class="t-status ready">可用</span></div>
-      </div>
-    </div>
 
-    <div class="tool-group reveal">
-      <div class="tg-head"><h3>姿态与运动</h3><span class="tg-count">4</span></div>
-      <div class="tlist">
-        <div class="trow"><div class="t-name">创建 OPEN / CLOSE</div><div class="t-desc">按设备开合状态批量生成 OPEN、CLOSE 姿态</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">一键回 HOME</div><div class="t-desc">批量将机器人的姿态设回 HOME</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">外部轴批量修改</div><div class="t-desc">批量修改机器人外部轴路径点参数</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">焊枪姿态导出</div><div class="t-desc">批量导出焊枪姿态，用于归档与交接</div><span class="t-status ready">可用</span></div>
-      </div>
-    </div>
 
-    <div class="tool-group reveal">
-      <div class="tg-head"><h3>机构</h3><span class="tg-count">5</span></div>
-      <div class="tlist">
-        <div class="trow"><div class="t-name">设备骨架建立</div><div class="t-desc">按 Excel 设备清单建立设备机构骨架</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">扳手关节制作</div><div class="t-desc">自动发现旋转部件，批量生成 Revolute 关节</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">伸缩气缸关节</div><div class="t-desc">按气缸参数自动生成伸缩 LINK / Joint</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">EP 耦合创建</div><div class="t-desc">一键创建设备关节的耦合关系</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">机构分析报告</div><div class="t-desc">分析设备运动机构并输出结构化报告</div><span class="t-status ready">可用</span></div>
-      </div>
-    </div>
-
-    <div class="tool-group reveal">
-      <div class="tg-head"><h3>梳理与归档</h3><span class="tg-count">4</span></div>
-      <div class="tlist">
-        <div class="trow"><div class="t-name">空 Block 清理</div><div class="t-desc">扫描并删除设备中的空 Block，保持模型整洁</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">机器人标识创建</div><div class="t-desc">批量生成机器人 Object Notes 标识</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">对象树导出</div><div class="t-desc">按层级导出对象树为 CSV，便于清单管理</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">安全区域截图</div><div class="t-desc">批量生成安全区域截图并归档</div><span class="t-status ready">可用</span></div>
-      </div>
-    </div>
-
-    <div class="tool-group reveal">
-      <div class="tg-head"><h3>布局与规划</h3><span class="tg-count">3</span></div>
-      <div class="tlist">
-        <div class="trow"><div class="t-name">自动布局</div><div class="t-desc">DGN 布局转 JT，按名称匹配设备并自动摆放</div><span class="t-status ready">可用</span></div>
-        <div class="trow"><div class="t-name">LIN → PTP 过渡点</div><div class="t-desc">在连续 LIN 段内插入 PTP 过渡点，保持轨迹平稳</div><span class="t-status wip">制作中</span></div>
-        <div class="trow"><div class="t-name">过渡点快速选择</div><div class="t-desc">一键切换模式，直接点选过渡点（Via）</div><span class="t-status ready">可用</span></div>
-      </div>
-    </div>
-
-    <p class="note">说明：工具安装后在 Process Simulate 工具栏以中文按钮出现，无需额外配置。「制作中」的工具完成开发后会持续更新。</p>
-  </div></section>
 </main>
 
 <!-- 页脚 -->
-<footer id="contact">
-  <div class="container foot-wrap">
-    <div>&copy; <span id="year">2026</span> &nbsp;<span class="cn">WuKeBiMian</span> &nbsp;·&nbsp; GitHub Pages 驱动</div>
-    <div class="foot-links">
-      <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-      <a href="mailto:yourname@example.com">Email</a>
+<footer id="contact" data-page-node-id="IHKE43Y28C2Aj9v9zttplF">
+  <div class="container foot-wrap" data-page-node-id="SOqfPTSAohPQiyo82TDxum">
+    <div data-page-node-id="ln5yNxmsFeyjw7Mvwsdypc">&copy; <span id="year" data-page-node-id="QzNEPEcz63IFzZ3zT8Vj5i">2026</span> &nbsp;<span class="cn" data-page-node-id="cFAxXngZReGFvutZHFVSAR">WuKeBiMian</span> &nbsp;·&nbsp; GitHub Pages 驱动</div>
+    <div class="foot-links" data-page-node-id="P7KMKddzbQn0cOfAnF4MEN">
+      <a href="https://github.com/Wukebimian/WuKeBiMian" target="_blank" rel="noopener" data-page-node-id="wHwMlzSJ034Zm2ak3jOe9i">GitHub</a>
+      <a href="#feedback" id="feedbackLink" data-page-node-id="QZmLUxneopQrDgajySJi8T">问题反馈</a>
     </div>
   </div>
 </footer>
 
-<button class="to-top" id="toTop" aria-label="返回顶部"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m18 11-6-6-6 6"/></svg></button>
+<!-- 左上角装饰：夜晚地球，城市灯光点随自转移动（Canvas，纯装饰不挡交互） -->
+<canvas id="nightEarth" class="earth" width="800" height="800" aria-hidden="true"></canvas>
+<button class="to-top" id="toTop" aria-label="返回顶部" data-page-node-id="tsz7GQTd5AMCMCDjmWLozv"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-page-node-id="TEENsHUxaJolVprOmlC2tw"><path d="M12 19V5" data-page-node-id="PxCAUyqCdWUwB7bzBz3Cpm"/><path d="m18 11-6-6-6 6" data-page-node-id="QJ8QsIyLYe58Dn2HOJT5dM"/></svg></button>
+
+<!-- 指针特效：光点 + 延迟光环 + 拖尾光线（不挑浏览器/设备，触屏点按自动过滤） -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true" data-page-node-id="f0TD2Vd10MnziEscC3uKT3"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true" data-page-node-id="A9ARs2c1bWdF84g5r4ZQHp"></div>
+<canvas class="cursor-tail" id="cursorTail" aria-hidden="true" data-page-node-id="U5GD38Ku7jeEQbo4LYi0OY"></canvas>
+
+<!-- 问题反馈弹窗：三种联络方式（邮箱可直达、手机可拨打、钉钉号一键复制） -->
+<div class="modal-backdrop" id="feedbackModal" role="dialog" aria-modal="true"
+     aria-labelledby="fbTitle" aria-describedby="fbDesc" hidden data-page-node-id="ESTTVvf24SXZABga9qgRAK">
+  <div class="modal" data-page-node-id="DDUgxOkhSMR8mMVa6zFsgi">
+    <button class="modal-close" type="button" aria-label="关闭弹窗" data-page-node-id="0LYxEgY7DVJIGCrdr18paD">&times;</button>
+    <h3 id="fbTitle" data-page-node-id="wDSypA6GKinF4iLcazEGBt">问题反馈</h3>
+    <p id="fbDesc" data-page-node-id="kQg6mvC78raFH0fihM0aDi">发现BUG、功能建议、提新需求、<br data-page-node-id="1yzQhfYcxPM3PN4BMmU3Gt">通过以下方式联系作者。</p>
+    <ul class="contact-list" data-page-node-id="WRODc1EtieVHv864gOWZE0">
+      <li data-page-node-id="X2cLIN5sEOOJtDI8FB3SAF">
+        <span class="c-type" id="cTypeMail" data-page-node-id="EgFHDaHPwNWcGM9eKJKMar">邮箱</span>
+        <a class="c-value" href="mailto:liweihao@dlautotech.com" aria-labelledby="cTypeMail cValueMail" title="liweihao@dlautotech.com" data-page-node-id="LbQZySWBh4wmbOo4NlMLYr"><span id="cValueMail" data-page-node-id="logsActZ8DeBhtJXUvJSmc">liweihao@dlautotech.com</span></a>
+        <button class="c-copy" type="button" data-copy="liweihao@dlautotech.com" aria-label="复制邮箱 liweihao@dlautotech.com" data-page-node-id="fcFz75Mv4ywzUEcKz5vkLn">复制</button>
+      </li>
+      <li data-page-node-id="IpDGWwbBnkRrHthalyaU0X">
+        <span class="c-type" id="cTypeTel" data-page-node-id="Sc2VHzWUXL2yYsr5OgjBdT">手机</span>
+        <a class="c-value" href="tel:17111911119" aria-labelledby="cTypeTel cValueTel" data-page-node-id="p17JkWDy94q1UjGsMb4HTk"><span id="cValueTel" data-page-node-id="7AHnCf2rW30qIXqpa849qP">17111911119</span></a>
+        <button class="c-copy" type="button" data-copy="17111911119" aria-label="复制手机号 17111911119" data-page-node-id="osOHy5QvquCeCgn1WRz934">复制</button>
+      </li>
+      <li data-page-node-id="foXsTyjjWF4VCMmqs7SXH3">
+        <span class="c-type" id="cTypeDd" data-page-node-id="hnIdmvbOHj1OVlfOSeeqbM">钉钉</span>
+        <span class="c-value" id="cValueDd" title="在钉钉中搜索 lwhn1ce" data-page-node-id="LXnpz8k3jBBJYyaPzdPToM">lwhn1ce</span>
+        <button class="c-copy" type="button" data-copy="lwhn1ce" aria-label="复制钉钉号 lwhn1ce" data-page-node-id="RklrrkWxxZoHrQUiiRQEBh">复制</button>
+      </li>
+    </ul>
+    <button class="btn btn-primary modal-ok" type="button" data-page-node-id="Wa62w9i85ZkbZF56L5GyT5">我知道了</button>
+  </div>
+</div>
 
 <script>
 /* ---------- 年份 ---------- */
 (function () {
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
+
 
 /* ---------- 进度条 + 返回顶部 ---------- */
 (function () {
@@ -344,6 +726,154 @@ footer { border-top:1px solid var(--border); padding:32px 0 40px;
   toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  /* ---------- 视图切换按钮组：点击滚到对应卡片并置激活态。
+     后续新增卡片时，只需在 .view-tabs 里加一个带 data-target 的按钮即可接入。 ---------- */
+  document.querySelectorAll('.view-tab[data-target]').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      document.querySelectorAll('.view-tab').forEach(function (t) {
+        t.classList.remove('active'); t.setAttribute('aria-pressed', 'false');
+      });
+      tab.classList.add('active'); tab.setAttribute('aria-pressed', 'true');
+      var card = document.querySelector(tab.getAttribute('data-target'));
+      if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+
+    (function () {
+    var cv = document.getElementById('nightEarth');
+    if (!cv || !cv.getContext) return;
+    var ctx = cv.getContext('2d');
+    var S = cv.width, R = S * 0.42, CX = S / 2, CY = S / 2;
+
+    // 确定性伪随机（LCG）：每次刷新分布一致，避免闪变
+    var seed = 20260911;
+    function rnd() { seed = (seed * 48271) % 2147483647; return seed / 2147483647; }
+    function ll2v(lon, lat) {
+      var la = lat * Math.PI / 180, lo = lon * Math.PI / 180, cl = Math.cos(la);
+      return { x: cl * Math.cos(lo), y: Math.sin(la), z: cl * Math.sin(lo) };
+    }
+    function inPoly(lon, lat, poly) {
+      var inside = false;
+      for (var i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+        var xi = poly[i][0], yi = poly[i][1], xj = poly[j][0], yj = poly[j][1];
+        if (((yi > lat) !== (yj > lat)) && (lon < (xj - xi) * (lat - yi) / (yj - yi) + xi)) inside = !inside;
+      }
+      return inside;
+    }
+
+    // 简化世界大陆轮廓（[经度,纬度] 多边形，含主要岛屿）
+    var LAND = [
+      [[-168,66],[-140,70],[-120,72],[-95,72],[-80,70],[-70,62],[-55,52],[-65,45],[-75,40],[-80,32],[-82,25],[-90,20],[-97,16],[-105,22],[-112,30],[-120,35],[-125,42],[-130,55],[-150,60],[-165,60]],
+      [[-80,8],[-70,12],[-60,10],[-52,0],[-40,-5],[-35,-8],[-38,-15],[-48,-25],[-55,-32],[-62,-40],[-65,-48],[-70,-54],[-72,-45],[-72,-35],[-70,-20],[-78,-5],[-80,2]],
+      [[-17,15],[-10,28],[0,34],[10,36],[20,32],[32,31],[35,25],[40,12],[43,10],[51,12],[48,-2],[42,-12],[40,-22],[35,-30],[28,-33],[20,-35],[15,-28],[12,-18],[9,-5],[5,4],[-5,6],[-12,10]],
+      [[-9,38],[-8,43],[-2,45],[0,49],[5,51],[10,55],[20,55],[28,60],[35,65],[45,68],[60,68],[60,55],[50,50],[40,45],[30,42],[22,38],[15,38],[5,36],[-5,36]],
+      [[60,68],[75,72],[95,76],[115,74],[130,72],[145,68],[155,62],[142,52],[135,45],[128,40],[122,32],[115,25],[108,18],[103,8],[98,8],[95,18],[88,22],[80,15],[72,20],[65,25],[58,28],[50,30],[48,40],[52,45],[60,50],[65,58]],
+      [[115,-20],[122,-15],[130,-12],[138,-12],[145,-16],[150,-22],[153,-28],[148,-36],[140,-38],[132,-34],[125,-32],[118,-34],[113,-28],[114,-23]],
+      [[-45,60],[-40,65],[-30,68],[-22,70],[-25,76],[-35,78],[-50,78],[-58,74],[-55,68],[-50,62]],
+      [[44,-12],[50,-16],[47,-25],[44,-20]],
+      [[-5,50],[1,52],[-1,57],[-6,58]],
+      [[130,31],[136,35],[141,40],[145,43],[141,36],[135,33]],
+      [[95,5],[105,2],[115,5],[118,-3],[110,-6],[100,-2]],
+      [[166,-45],[174,-41],[178,-37],[172,-34],[168,-44]]
+    ];
+
+    // 大陆板块：2° 经纬网格（原 4°，密度 4 倍）+ 0.8° 抖动；6% 标记为山峰（更亮更大）
+    var land = [], la, lo, i2, k, hit, jlo, jla;
+    for (la = -56; la <= 78; la += 2) {
+      for (lo = -180; lo < 180; lo += 2) {
+        hit = -1;
+        for (i2 = 0; i2 < LAND.length; i2++) {
+          if (inPoly(lo, la, LAND[i2])) { hit = i2; break; }
+        }
+        if (hit >= 0) {
+          jlo = lo + (rnd() - 0.5) * 0.8; jla = la + (rnd() - 0.5) * 0.8;
+          var v = ll2v(jlo, jla);
+          land.push({ x: v.x, y: v.y, z: v.z, mtn: rnd() < 0.06 });
+        }
+      }
+    }
+    // 城市电力点：陆地多边形包围盒内拒绝采样
+    function randLandLL() {
+      var poly = LAND[Math.floor(rnd() * LAND.length)];
+      var minLo = 1e9, maxLo = -1e9, minLa = 1e9, maxLa = -1e9;
+      for (k = 0; k < poly.length; k++) {
+        if (poly[k][0] < minLo) minLo = poly[k][0];
+        if (poly[k][0] > maxLo) maxLo = poly[k][0];
+        if (poly[k][1] < minLa) minLa = poly[k][1];
+        if (poly[k][1] > maxLa) maxLa = poly[k][1];
+      }
+      for (var t2 = 0; t2 < 40; t2++) {
+        var lo2 = minLo + rnd() * (maxLo - minLo), la2 = minLa + rnd() * (maxLa - minLa);
+        if (inPoly(lo2, la2, poly)) return [lo2, la2];
+      }
+      return poly[0];
+    }
+    var lights = [];
+    for (i2 = 0; i2 < 420; i2++) {
+      var ll = randLandLL(), v2 = ll2v(ll[0], ll[1]);
+      lights.push({ x: v2.x, y: v2.y, z: v2.z, m: Math.pow(rnd(), 1.6) });
+    }
+
+    // 海洋底纹：只画一次的离屏层（径向深浅 + 海域明暗斑块 + 向日侧微光 + 边缘暗环）
+    var off = document.createElement('canvas'); off.width = S; off.height = S;
+    var octx = off.getContext('2d');
+    var g = octx.createRadialGradient(CX - R * 0.35, CY - R * 0.35, R * 0.1, CX, CY, R);
+    g.addColorStop(0, '#101a2e'); g.addColorStop(0.65, '#0a1120'); g.addColorStop(1, '#04060c');
+    octx.fillStyle = g; octx.beginPath(); octx.arc(CX, CY, R, 0, 6.2832); octx.fill();
+    octx.save(); octx.beginPath(); octx.arc(CX, CY, R, 0, 6.2832); octx.clip();
+    for (var b = 0; b < 60; b++) {          // 洋流/海沟明暗斑块
+      var ba = rnd() * 6.2832, br = Math.sqrt(rnd()) * R * 0.96;
+      octx.fillStyle = rnd() < 0.5 ? 'rgba(30,52,96,.10)' : 'rgba(6,10,20,.12)';
+      octx.beginPath(); octx.arc(CX + br * Math.cos(ba), CY + br * Math.sin(ba), R * (0.05 + rnd() * 0.16), 0, 6.2832); octx.fill();
+    }
+    octx.restore();
+    var rim = octx.createRadialGradient(CX, CY, R * 0.86, CX, CY, R);
+    rim.addColorStop(0, 'rgba(0,0,0,0)'); rim.addColorStop(1, 'rgba(0,0,0,.42)');
+    octx.fillStyle = rim; octx.beginPath(); octx.arc(CX, CY, R, 0, 6.2832); octx.fill();
+    octx.strokeStyle = 'rgba(120,160,230,.30)'; octx.lineWidth = 1.8; octx.stroke();
+
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var t = 4.0;   // 初始角：正对大西洋（美洲与欧非同框）
+    function frame() {
+      ctx.clearRect(0, 0, S, S);
+      ctx.drawImage(off, 0, 0);
+      var cosT = Math.cos(t), sinT = Math.sin(t), k2, p, x, z, px, py, a, s;
+      var ds = 2.4 * (S / 800), ms = 3.1 * (S / 800);
+      for (k2 = 0; k2 < land.length; k2++) {          // 板块点阵（冷灰蓝）+ 山峰（亮白）
+        p = land[k2];
+        x = p.x * cosT + p.z * sinT; z = -p.x * sinT + p.z * cosT;
+        if (z <= 0.02) continue;
+        px = CX + x * R; py = CY - p.y * R;
+        a = 0.16 + z * 0.36;
+        if (p.mtn) {
+          ctx.fillStyle = 'rgba(205,218,238,' + Math.min(1, a * 1.7).toFixed(3) + ')';
+          ctx.fillRect(px - ms / 2, py - ms / 2, ms, ms);
+        } else {
+          ctx.fillStyle = 'rgba(138,168,214,' + a.toFixed(3) + ')';
+          ctx.fillRect(px - ds / 2, py - ds / 2, ds, ds);
+        }
+      }
+      for (k2 = 0; k2 < lights.length; k2++) {        // 城市电力点（暖黄）
+        p = lights[k2];
+        x = p.x * cosT + p.z * sinT; z = -p.x * sinT + p.z * cosT;
+        if (z <= 0.03) continue;
+        px = CX + x * R; py = CY - p.y * R;
+        a = (0.45 + z * 0.5) * (0.5 + p.m * 0.5);
+        s = (0.9 + p.m * 1.8) * (S / 800);
+        ctx.fillStyle = 'rgba(255,209,128,' + a.toFixed(3) + ')';
+        ctx.fillRect(px - s / 2, py - s / 2, s, s);
+        if (p.m > 0.82) {                             // 特大城市外圈光晕
+          ctx.fillStyle = 'rgba(255,190,90,' + (a * 0.28).toFixed(3) + ')';
+          ctx.beginPath(); ctx.arc(px, py, s * 2.6, 0, 6.2832); ctx.fill();
+        }
+      }
+    }
+    if (reduced) { frame(); }
+    else {
+      (function loop() { t += 0.0022; frame(); requestAnimationFrame(loop); })();
+    }
+  })();
 })();
 
 /* ---------- reveal ---------- */
@@ -358,111 +888,729 @@ footer { border-top:1px solid var(--border); padding:32px 0 40px;
   document.querySelectorAll('.reveal').forEach(function (e) { io.observe(e); });
 })();
 
-/* ---------- 工具清单展开/收起 ---------- */
+
+/* ---------- 指针特效：光点 + 延迟光环 + 拖尾光线 ----------
+   这一版刻意"不挑环境"，不按浏览器或设备做硬性开关：
+   - 不判断 (pointer: fine) 之类的媒体特性。只要收得到指针事件就有反馈；
+     触屏点按用 pointerType 过滤，避免误闪。
+   - pointermove 优先、mousemove 兜底；matchMedia / rAF / getComputedStyle
+     一律先探测再使用，缺失时退到安全分支而不是抛错。
+   - 整段包 try/catch：装饰性效果出问题绝不能连累页面后续脚本。
+   - 拖尾画布是可选的：拿不到 2d 上下文、或读不到 --accent-fill-rgb 时，
+     自动退成只有光点 + 光环（不写死色值，保持 token 单一来源）。 */
 (function () {
-  var btn = document.getElementById('toggleTools');
-  var area = document.getElementById('toolsArea');
-  if (!btn || !area) return;
+  try {
+    var dot = document.getElementById('cursorDot');
+    var ring = document.getElementById('cursorRing');
+    if (!dot || !ring) return;
+
+    // 系统开了"减少动效"就静默退出；matchMedia 缺失时视为未开启
+    var motion = null;
+    if (window.matchMedia) {
+      try { motion = window.matchMedia('(prefers-reduced-motion: reduce)'); } catch (eM) {}
+      if (motion && motion.matches) return;
+    }
+
+    // 帧调度：标准 rAF → 各厂商前缀版 → 定时器兜底
+    var raf = window.requestAnimationFrame ||
+              window.webkitRequestAnimationFrame ||
+              window.mozRequestAnimationFrame ||
+              function (fn) { return setTimeout(fn, 16); };
+    // 时间戳：性能计时优先，缺失时退到 Date
+    function nowMs() {
+      return (window.performance && performance.now) ? performance.now() : Date.now();
+    }
+    function readVar(name) {
+      if (!window.getComputedStyle) return '';
+      var cs = window.getComputedStyle(document.documentElement);
+      if (!cs) return '';
+      return String(cs.getPropertyValue(name) || '').replace(/^\s+|\s+$/g, '');
+    }
+
+    // 拖尾画布：拿不到上下文或读不到强调色通道就放弃拖尾，只保留光点 + 光环
+    var tail = document.getElementById('cursorTail');
+    var ctx = null;
+    var accentRGB = '';
+    if (tail && tail.getContext) {
+      ctx = tail.getContext('2d');
+      accentRGB = readVar('--accent-fill-rgb');
+      if (!ctx || !accentRGB) { ctx = null; tail = null; }
+    }
+
+    var tx = -100, ty = -100;   // 目标位置（指针实际位置）
+    var rx = -100, ry = -100;   // 光环当前位置（逐帧逼近目标）
+    var shown = false;          // 是否已经首次收到指针事件
+    var idleFrames = 0;         // 连续静止帧数，用来停帧
+    var running = false;        // 帧循环是否在跑
+    var codeOn = true;          // 减少动效中途开启时置 false，用来彻底刹车
+
+    /* ---- 拖尾参数：细、短、淡的"光线"，不抢内容 ---- */
+    var LIFE = 330;     // 尾点存活时长(ms)，越大尾巴越长
+    var MAXP = 20;      // 尾点上限，兜住高刷屏下的数组膨胀
+    var HEAD_W = 3.4;   // 头部最粗处线宽(px)
+    var MAX_A = 0.5;    // 最不透明处的 alpha
+    var pts = [];       // 轨迹采样点：头部在后、尾部在前
+    var prevX = NaN, prevY = NaN;   // 上一次已入列的采样位置，用于去重
+
+    /* ---- 画布尺寸与 DPR ----
+       后备缓冲按 devicePixelRatio 放大、再用 setTransform 归一化，
+       否则 Retina 屏上 1px 细线会糊成一片灰边。倍率封顶 2：
+       全屏 canvas 的像素量随 DPR 平方增长，3 倍屏上填充率会成为滚动负担。 */
+    var dpr = 1, cw = 0, ch = 0;
+    function resize() {
+      if (!tail) return;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cw = window.innerWidth; ch = window.innerHeight;
+      tail.width = Math.round(cw * dpr);
+      tail.height = Math.round(ch * dpr);
+      tail.style.width = cw + 'px';
+      tail.style.height = ch + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener('resize', function () { resize(); pts.length = 0; }, { passive: true });
+
+    /* ---- 颜色 ----
+       深色为固定主题（不随系统外观切换），
+       accentRGB 在初始化时读取一次即可，无需监听配色变化。 */
+
+    /* ---- 绘制 ---- */
+    function draw(now) {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, cw, ch);
+      // 先淘汰过期尾点。这一句必须无条件执行、且不能挪到下面 n<2 的早退之后：
+      // 超出生命期的段本就会被 age<=0 跳过绘制（视觉上已经消失），
+      // 但数组若不跟着缩短，停帧条件 pts.length>1 就永远成立，rAF 会一直空转。
+      while (pts.length && now - pts[0].t > LIFE) pts.shift();
+      var n = pts.length;
+      if (n < 2) return;
+
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.strokeStyle = 'rgb(' + accentRGB + ')';
+
+      for (var i = 1; i < n; i++) {
+        var a = pts[i - 1], b = pts[i];
+        // 该段的年龄衰减：老段先变透明，指针停下时尾巴自然消散
+        var age = 1 - (now - b.t) / LIFE;
+        if (age <= 0) continue;
+        var dx = b.x - a.x, dy = b.y - a.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        // 段内细分：线宽沿段插值，快速甩动时才不会出现一节节的"竹节"。
+        // 只在位移超过 30px 时才分两段，免得每帧凭白多出上百次 stroke。
+        var m = dist > 30 ? 2 : 1;
+        for (var j = 1; j <= m; j++) {
+          var t0 = (j - 1) / m, t1 = j / m;
+          // k 取 0~1：0 是尾尖、1 是靠近指针的头部
+          var k = (i - 1 + t1) / (n - 1);
+          // 用幂次而非线性，尾部收细更快，短距离移动也能看出"尖"
+          var ease = Math.pow(k, 1.6);
+          ctx.globalAlpha = age * ease * MAX_A;
+          ctx.lineWidth = 0.5 + HEAD_W * ease;
+          ctx.beginPath();
+          ctx.moveTo(a.x + dx * t0, a.y + dy * t0);
+          ctx.lineTo(a.x + dx * t1, a.y + dy * t1);
+          ctx.stroke();
+        }
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    // 渲染循环：光点即时跟随，光环以缓动逼近产生"拖拽感"，拖尾在 draw 里成形。
+    // 指针静止且尾巴散尽后停帧 —— 但只要尾巴还没过期干净就必须继续跑，
+    // 否则拖尾会僵在半途不消失。
+    function loop() {
+      var now = nowMs();
+
+      // 采样放在帧循环里，而不是指针事件里：
+      // 指针事件频率可达 1000Hz，逐事件采样会堆出一串几乎重合的点把 MAXP 挤满，
+      // 且点密度随设备而异。逐帧采样让尾巴密度只跟帧率走，跨设备观感一致。
+      // 判重用的是独立游标 prevX/prevY，而不是"数组最后一个点"——
+      // 后者在尾巴过期清空后会重新把静止的指针位置推成新点，形成永动的空数组→单点循环。
+      if (tx !== prevX || ty !== prevY) {
+        prevX = tx; prevY = ty;
+        if (ctx) {
+          pts.push({ x: tx, y: ty, t: now });
+          if (pts.length > MAXP) pts.shift();
+        }
+      }
+
+      dot.style.transform = 'translate3d(' + (tx - 3.5) + 'px,' + (ty - 3.5) + 'px,0)';
+      rx += (tx - rx) * 0.16;
+      ry += (ty - ry) * 0.16;
+      ring.style.transform = 'translate3d(' + (rx - 17) + 'px,' + (ry - 17) + 'px,0)';
+
+      draw(now);
+
+      var settled = Math.abs(tx - rx) < 0.5 && Math.abs(ty - ry) < 0.5;
+      idleFrames = (!shown || settled) ? idleFrames + 1 : 0;
+      if (codeOn && (idleFrames < 30 || pts.length > 1)) {
+        raf(loop);
+      } else {
+        running = false;
+        if (ctx) ctx.clearRect(0, 0, cw, ch);
+      }
+    }
+    function wake() {
+      if (running || !codeOn) return;
+      running = true; idleFrames = 0;
+      raf(loop);
+    }
+    function setVisible(on) {
+      var v = on ? '1' : '0';
+      dot.style.opacity = v;
+      ring.style.opacity = v;
+      if (tail) tail.style.opacity = v;
+    }
+
+    // 触摸后浏览器会补发一串"兼容鼠标事件"（mousemove 等）。不挡掉的话，
+    // 手指点一下就会在触点留下一个不消失的光点 —— 触屏上没有 mouseleave 来收尾。
+    var touchAt = -1e9;
+    document.addEventListener('touchstart', function () { touchAt = nowMs(); }, { passive: true });
+
+    function onMove(e) {
+      // 触屏的 pointermove 直接过滤：触屏没有"悬停光标"这回事
+      if (e.pointerType === 'touch') return;
+      // 触摸后 1 秒内忽略兼容鼠标事件，避免误闪与"粘点"
+      if (e.type === 'mousemove' && nowMs() - touchAt < 1000) return;
+      tx = e.clientX; ty = e.clientY;
+      if (!shown) { shown = true; rx = tx; ry = ty; setVisible(true); }
+      wake();
+    }
+    // 两种事件都听：pointermove 能区分来源、mousemove 覆盖面最广。
+    // 一次鼠标移动可能两者都触发，重复写同一坐标无害 —— 采样处已按位置去重。
+    document.addEventListener('pointermove', onMove, { passive: true });
+    document.addEventListener('mousemove', onMove, { passive: true });
+
+    // 悬浮在链接/按钮上时，光环放大提示"可点击"。
+    // 用 add/remove 而不是 classList.toggle(cls, force)：后者两参形式在老浏览器上不受支持。
+    document.addEventListener('mouseover', function (e) {
+      if (!ring.classList) return;
+      var hot = !!(e.target && e.target.closest && e.target.closest('a, button'));
+      if (hot) ring.classList.add('hover'); else ring.classList.remove('hover');
+    }, { passive: true });
+
+    // 指针离开窗口时隐藏，回来时显示
+    document.addEventListener('mouseleave', function () { setVisible(false); });
+    document.addEventListener('mouseenter', function () {
+      if (shown && codeOn) { setVisible(true); wake(); }
+    });
+
+    // 用户在系统设置里中途打开"减少动效"时要能立刻停下，不必刷新页面
+    if (motion) {
+      var onMotionChange = function () {
+        if (!motion.matches) return;
+        codeOn = false; running = false;
+        pts.length = 0;
+        if (ctx) ctx.clearRect(0, 0, cw, ch);
+        setVisible(false);
+      };
+      if (motion.addEventListener) motion.addEventListener('change', onMotionChange);
+      else if (motion.addListener) motion.addListener(onMotionChange);
+    }
+  } catch (e) {
+    // 纯装饰性效果，任何异常都静默吞掉，不影响页面其余部分
+  }
+})();
+
+/* ---------- 问题反馈弹窗 ---------- */
+(function () {
+  var link = document.getElementById('feedbackLink');
+  var modal = document.getElementById('feedbackModal');
+  if (!link || !modal) return;
+  var lastFocus = null;
+  var FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), ' +
+                  'select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+  /* 焦点陷阱：Tab / Shift+Tab 在弹窗内部循环。
+     少了这一步，键盘用户按一次 Tab 就会跑到弹窗背后的页面上——
+     视觉上「人还在弹窗里，焦点已经出去了」。 */
+  function trapFocus(ev) {
+    if (ev.key !== 'Tab') return;
+    var f = modal.querySelectorAll(FOCUSABLE);
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+    else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+  }
+
+  function open() {
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    // 下一帧再加 open，保证过渡动画生效
+    requestAnimationFrame(function () { modal.classList.add('open'); });
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', trapFocus);
+    modal.querySelector('.modal-ok').focus();
+  }
+  function close() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', trapFocus);
+    setTimeout(function () { modal.hidden = true; }, 250);
+    if (lastFocus) lastFocus.focus();
+  }
+
+  link.addEventListener('click', function (ev) { ev.preventDefault(); open(); });
+  modal.querySelector('.modal-ok').addEventListener('click', close);
+  modal.querySelector('.modal-close').addEventListener('click', close);
+  // 点击遮罩关闭（点在弹窗本体上不关）
+  modal.addEventListener('click', function (ev) { if (ev.target === modal) close(); });
+  // Esc 关闭
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape' && !modal.hidden) close();
+  });
+
+  /* 复制联络方式：Clipboard API 需要 https（GitHub Pages 满足），
+     不可用时退回 execCommand 临时 textarea，http 部署 / 老浏览器也能用。
+     按钮就地变「已复制」给出确认，1.6s 后还原。 */
+  function copyText(text, done) {
+    var viaExec = function () {
+      try {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        done(!!ok);
+      } catch (e) { done(false); }
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, viaExec);
+    } else viaExec();
+  }
+  Array.prototype.forEach.call(modal.querySelectorAll('.c-copy'), function (btn) {
+    btn.addEventListener('click', function () {
+      copyText(btn.getAttribute('data-copy'), function (ok) {
+        btn.textContent = ok ? '已复制' : '复制失败';
+        if (ok) btn.classList.add('done');   // 不用两参 toggle：老浏览器不支持
+        setTimeout(function () {
+          btn.textContent = '复制';
+          btn.classList.remove('done');
+        }, 1600);
+      });
+    });
+  });
+})();
+
+/* ---------- 按钮点击涟漪 ----------
+   从按下点生成一个直径两倍于按钮的圆，scale 0→1 扩散并淡出，
+   覆盖胶囊任意角落；animationend 后移除节点避免堆积；
+   prefers-reduced-motion 用户直接跳过（入场动画同理会被禁用）。 */
+(function () {
+  var btn = document.getElementById('downloadBtn');
+  if (!btn) return;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  btn.addEventListener('pointerdown', function (e) {
+    if (reduced && reduced.matches) return;
+    var rect = btn.getBoundingClientRect();
+    var d = Math.max(rect.width, rect.height) * 2;
+    var px = (e.clientX || rect.left + rect.width / 2) - rect.left - d / 2;
+    var py = (e.clientY || rect.top + rect.height / 2) - rect.top - d / 2;
+    var el = document.createElement('span');
+    el.className = 'ripple';
+    el.style.width = el.style.height = d + 'px';
+    el.style.left = px + 'px';
+    el.style.top = py + 'px';
+    el.addEventListener('animationend', function () { el.remove(); });
+    btn.appendChild(el);
+  });
+})();
+
+/* ---------- 全页面涟漪 ----------
+   点击下载按钮时，以按钮中心为圆心向外扩出三圈全屏波纹，
+   半透明描边圆环、错峰 140ms，覆盖整个视口后淡出；
+   pointer-events:none 不挡交互；reduced-motion 用户跳过。 */
+(function () {
+  var btn = document.getElementById('downloadBtn');
+  if (!btn) return;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
   btn.addEventListener('click', function () {
-    var isOpen = area.classList.contains('show');
-    if (isOpen) {
-      area.classList.remove('show');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.innerHTML = '查看清单';
-    } else {
-      area.classList.add('show');
-      btn.setAttribute('aria-expanded', 'true');
-      btn.innerHTML = '收起清单';
-      window.scrollTo({ top: area.offsetTop - 60, behavior: 'smooth' });
+    if (reduced && reduced.matches) return;
+    var rect = btn.getBoundingClientRect();
+    var cx = rect.left + rect.width / 2, cy = rect.top + rect.height / 2;
+    var d = Math.hypot(window.innerWidth, window.innerHeight) * 2.3;
+    for (var i = 0; i < 3; i++) {
+      (function (i) {
+        setTimeout(function () {
+          var ring = document.createElement('span');
+          ring.className = 'page-wave';
+          ring.style.width = ring.style.height = d + 'px';
+          ring.style.left = (cx - d / 2) + 'px';
+          ring.style.top = (cy - d / 2) + 'px';
+          ring.style.animationDelay = '0ms';
+          ring.addEventListener('animationend', function () { ring.remove(); });
+          document.body.appendChild(ring);
+        }, i * 140);
+      })(i);
     }
   });
 })();
 
-/* ---------- 下载最新部署工具：查最新 Release · 国内镜像加速自动测速 · 失败回退 Releases 页 ---------- */
+/* ---------- 下载最新部署工具 ----------
+   流程：并行探测国内镜像 → 触发下载（不走 api.github.com）。
+   版本发现用 GitHub 官方 latest 静态直链（见 GitHub Docs「Linking to releases」）：
+   服务端 302 到最新非预发版的同名资产，无 API 调用、无 60 次/小时/IP 的限流——
+   那个限流按 IP 共享，校园网/CGNAT 下多个访客会互相挤掉额度。
+   关键约束：镜像不带 Access-Control-Allow-Origin 且不响应预检（2026-09 实测），
+   浏览器永远读不到镜像的状态码，探测只能证明「域名连通」。 */
 (function () {
   var btn = document.getElementById('downloadBtn');
+  var label = document.getElementById('downloadBtnLabel');
   if (!btn) return;
+  var status = document.getElementById('dlStatus');
   var REPO = 'Wukebimian/WuKeBiMian';
   var releasesUrl = 'https://github.com/' + REPO + '/releases';
 
-  // 国内可用的 GitHub 下载加速镜像（按优先级排序，2026-08 实测）
-  // 备注：ghproxy.net 证书失效已移除；镜像稳定性随时变化，失效可自行增删
+  /* 发版约定（必须遵守）：Release 资产文件名固定为 WKBMDLL.exe，且不要带版本号。
+     改名后官方直链 404，而镜像无 CORS 头，客户端检测不出来——
+     按钮会照常触发下载却拿不到文件。改名时必须同步更新这里。 */
+  var EXE_NAME = 'WKBMDLL.exe';
+  var latestUrl = 'https://github.com/' + REPO + '/releases/latest/download/' + EXE_NAME;
+
+  // 国内可用的 GitHub 下载加速镜像。2026-09-11 用真实资产（TEST/WKBMDLL.exe，8.7MB）
+  // 逐个实测 Range 0-0，只保留「返回 206 且带 Content-Disposition: attachment」的条目。
+  // 宁缺毋滥的原因：no-cors 探测只能证明域名连通，而「域名活着但代理已死」的镜像
+  // （moeyy.cn 404 / ghproxy.homeboyc.cn 403 / gh.api.99988866.xyz 连不上）会被误判可用，
+  // 结果是隐藏 iframe 加载到一张 404 页，用户什么都没拿到还毫无察觉。
+  // 镜像稳定性随时变化，定期按上面标准复测增删。
   var MIRRORS = [
-    'https://gh-proxy.com/',          // 浏览器实测可用（2026-08），优先
-    'https://gh.api.99988866.xyz/',   // 备用
-    'https://moeyy.cn/gh-proxy/',     // 备用
-    'https://ghproxy.homeboyc.cn/'    // 备用
+    'https://gh-proxy.com/',
+    'https://ghfast.top/',
+    'https://ghproxy.net/'
   ];
 
-  // 探测镜像可用性：no-cors 模式避免 CORS 误报，仅验证能建立连接
-  // （真正下载用 <a> 导航不受 CORS 限制，此处只需确认域名可达）
+  /* 文案与读屏播报同步更新：改一个未聚焦按钮的文字，屏幕阅读器不一定会播报，
+     必须同时写进 live region。文件名放进 title，避免长文案撑破按钮。 */
+  function say(text, titleText) {
+    if (label) label.textContent = text; else btn.textContent = text;
+    btn.title = titleText || '';
+    if (status) status.textContent = titleText ? text + ' ' + titleText : text;
+  }
+
+  /* busy 是「按钮正在办事」的状态。data-busy 只给 CSS 用，辅助技术读不到，
+     必须同步维护 aria-busy，否则读屏用户点完就没了任何进展反馈。 */
+  function setBusy(on) {
+    if (on) {
+      btn.setAttribute('data-busy', '1');
+      btn.setAttribute('aria-busy', 'true');
+    } else {
+      btn.removeAttribute('data-busy');
+      btn.removeAttribute('aria-busy');
+    }
+  }
+
+  /* 所有「去 Releases 页自行下载」的收尾统一走这里：
+     跳转的同时把 busy 清掉——万一跳转被拦（沙箱 iframe / 页面被嵌入），
+     按钮不能一直停在「正在获取」上。 */
+  function goReleases() {
+    say('正在打开 Releases 页…');
+    setBusy(false);
+    window.location.href = releasesUrl;
+  }
+
+  function resetBtn(delay) {
+    setTimeout(function () {
+      say('获取部署工具');
+      setBusy(false);
+      btn.removeAttribute('data-fallback');
+    }, delay || 0);
+  }
+
+  /* 探测镜像：
+     1) Range GET 能读到状态码——但 Range 不属于 CORS 安全列表头，会触发预检，
+        而镜像不响应预检（2026-09 实测 OPTIONS 直接 404），这条路在浏览器里必然失败；
+     2) 失败后回退 no-cors HEAD，只能验证域名连通（opaque response 读不到状态码，
+        也没有 Access-Control-Allow-Origin 可言）。
+        所以 confirmed 几乎永远是 false——它只是给未来支持 CORS 的镜像留的增强位，
+        绝不能当作文案的分叉条件（否则「已开始下载」永远不出现）。 */
   function probe(url, timeout) {
     return new Promise(function (resolve) {
-      var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
-      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); resolve(false); }, timeout || 5000);
-      fetch(url, { method: 'HEAD', mode: 'no-cors', signal: ctrl ? ctrl.signal : undefined })
-        .then(function () { clearTimeout(timer); resolve(true); })   // no-cors 响应为 opaque，能送达即视为可用
-        .catch(function () { clearTimeout(timer); resolve(false); });
+      var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); resolve({ ok: false, confirmed: false }); }, timeout || 6000);
+      fetch(url, { method: "GET", headers: { "Range": "bytes=0-0" }, signal: ctrl ? ctrl.signal : undefined })
+        .then(function (res) {
+          clearTimeout(timer);
+          // 206(部分内容)/200(全文) 均视为确认可用，其余(404/403/405)算失败
+          var good = (res.status === 206 || res.status === 200);
+          resolve({ ok: good, confirmed: good });
+        })
+        .catch(function () {
+          // Range GET 被 CORS 拦截 -> 回退 no-cors HEAD 仅测可达性
+          var c2 = typeof AbortController !== "undefined" ? new AbortController() : null;
+          var t2 = setTimeout(function () { if (c2) c2.abort(); resolve({ ok: false, confirmed: false }); }, 3000);
+          fetch(url, { method: "HEAD", mode: "no-cors", signal: c2 ? c2.signal : undefined })
+            .then(function () { clearTimeout(t2); resolve({ ok: true, confirmed: false }); })
+            .catch(function () { clearTimeout(t2); resolve({ ok: false, confirmed: false }); });
+        });
     });
   }
+
+  /* 并行探测。注意：因为是并行，「MIRRORS 的书写顺序」并不决定谁被选中——
+     确认可用的镜像先返回者胜出，同级别内同样是竞速。
+
+     GRACE_MS：一旦已经拿到「仅可达」的降级候选，就最多再等这么久看有没有镜像
+     能给出确认（206/200）。否则一个挂起的镜像会把已经确定可用的候选硬拖到
+     6s 超时才返回，用户得对着「正在选择最快通道…」干等。 */
+  var GRACE_MS = 1200;
 
   function pickMirror(rawUrl) {
     var chain = MIRRORS.map(function (m) { return m + rawUrl; });
-    return chain.reduce(function (acc, url) {
-      return acc.then(function (found) {
-        if (found) return found;
-        return probe(url).then(function (ok) { return ok ? url : null; });
+    // 列表为空：没有候选可探测。必须在这里直接给出结果，
+    // 否则下面的 forEach 一次都不执行，pending===0 的判定永远不会触发，Promise 永久挂起。
+    if (chain.length === 0) return Promise.resolve(null);
+    return new Promise(function (resolve) {
+      var settled = false;        // 已给出结果（resolve 只会生效一次）
+      var fallback = null;        // 首个"仅可达"镜像（降级候选）
+      var pending = chain.length;
+      var grace = null;           // 降级候选的「等确认」窗口
+      function done(v) {
+        if (settled) return;
+        settled = true;
+        if (grace) clearTimeout(grace);
+        resolve(v);
+      }
+      chain.forEach(function (url) {
+        probe(url).then(function (r) {
+          pending--;
+          if (r.ok && r.confirmed) {
+            done({ url: url, confirmed: true });              // Range 校验通过 -> 立即使用
+            return;
+          }
+          if (r.ok && !fallback) {
+            fallback = url;                                   // 记录可达但不可验证的镜像
+            grace = setTimeout(function () { done({ url: fallback, confirmed: false }); }, GRACE_MS);
+          }
+          if (pending === 0) {
+            done(fallback ? { url: fallback, confirmed: false } : null);  // 全部完成：有可达用可达，否则 null
+          }
+        }).catch(function () {
+          /* 极端环境下 fetch 连同步抛错都会让 probe 的 Promise 变成 reject。
+             这里必须接住，否则 pending 永远减不到 0，pickMirror 又挂成不 resolve。 */
+          pending--;
+          if (pending === 0) done(fallback ? { url: fallback, confirmed: false } : null);
+        });
       });
-    }, Promise.resolve(null));
-  }
-
-  function startDownload(asset) {
-    var raw = asset.browser_download_url;
-    btn.textContent = '正在选择最快通道…';
-    pickMirror(raw).then(function (mirrorUrl) {
-      var finalUrl = mirrorUrl || raw;
-      btn.textContent = '正在下载 ' + asset.name + ' …';
-      // 下载触发：镜像/GitHub 响应均带 Content-Disposition: attachment，
-      // 使用动态 iframe 导航触发（兼容性最佳，不跳转页面、不被新窗口拦截）
-      var iframe = document.createElement('iframe');
-      iframe.style.display = 'none';
-      iframe.src = finalUrl;
-      document.body.appendChild(iframe);
-      setTimeout(function () { document.body.removeChild(iframe); }, 5000);
     });
   }
 
-  btn.addEventListener('click', function () {
-    if (btn.getAttribute('data-busy') === '1') return;
-    btn.setAttribute('data-busy', '1');
-    var origin = btn.textContent;
-    btn.textContent = '正在获取最新版本…';
+  /* 下载触发：镜像/GitHub 响应均带 Content-Disposition: attachment，
+     使用动态 iframe 导航触发（兼容性最佳，不跳转页面、不被新窗口拦截） */
+  function fireDownload(url) {
+    var iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    iframe.src = url;
+    document.body.appendChild(iframe);
+    // iframe 停留 8s 供下载发起，随后移除
+    setTimeout(function () {
+      if (iframe.parentNode) document.body.removeChild(iframe);
+    }, 8000);
+  }
 
-    fetch('https://api.github.com/repos/' + REPO + '/releases/latest')
-      .then(function (res) {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return res.json();
-      })
-      .then(function (release) {
-        if (!release.assets || release.assets.length === 0) {
-          window.location.href = releasesUrl;
-          return;
-        }
-        var asset = release.assets.filter(function (a) { return /\.exe$/i.test(a.name); })[0]
-                 || release.assets[0];
-        startDownload(asset);
-      })
-      .catch(function () {
-        window.location.href = releasesUrl;
-      })
-      .finally(function () {
-        setTimeout(function () {
-          btn.textContent = origin;
-          btn.removeAttribute('data-busy');
-        }, 1500);
-      });
+  function startDownload(raw) {
+    say('正在选择最快通道…', EXE_NAME);
+    pickMirror(raw).then(function (m) {
+      if (!m) {
+        /* 连一个连通的镜像都没有：先试官方直链。
+           直链带 Content-Disposition: attachment，是下载、页面不会真的跳走；
+           万一 GitHub 也到不了，data-fallback 让下一次点击直接去 Releases 页，
+           而不是原地重走一遍注定失败的探测流程。 */
+        say('正在打开官方下载链接…');
+        setBusy(false);
+        btn.setAttribute('data-fallback', '1');
+        window.location.href = raw;
+        return;
+      }
+      fireDownload(m.url);
+      /* 「已开始下载」不按 confirmed 分叉：
+         镜像不带 Access-Control-Allow-Origin（2026-09 实测），浏览器永远读不到
+         状态码，confirmed 只在镜像支持 CORS 时才可能为 true。若当分叉条件，
+         每个用户每次都会看到「若未开始下载」这种失败式主文案。
+         现在文件存在性由官方 latest 直链 + 发版命名约定保证，镜像连通即可下载；
+         「若未开始」的兜底说明放进 title 与读屏播报，不占主文案。 */
+      say('已开始下载', m.confirmed ? EXE_NAME : '若未开始，再点一次前往 Releases 页');
+      /* 8 秒内再点 = 去 Releases 页兜底（resetBtn 复位后恢复为重新下载） */
+      btn.setAttribute('data-fallback', '1');
+      resetBtn(8000);   // 反馈跟随流程完成，避免"点完恢复太快像没反馈"
+    });
+  }
+
+  btn.addEventListener("click", function () {
+    // 上一轮下载可能没成功：这一击直接去 Releases 页兜底（复位后恢复重新下载）
+    if (btn.getAttribute("data-fallback") === "1") { goReleases(); return; }
+    if (btn.getAttribute("data-busy") === "1") return;
+    setBusy(true);
+    startDownload(latestUrl);
   });
 })();
-</script>
+  /* ---------- CT5 路景：路旁随机道具 + 红灯停车等待 ----------
+     道路虚线与道具同速向车尾滚动（= 车辆前行）；信号灯随机红绿切换，
+     红灯进入停车区时 speed 平滑降到 0（虚线、道具一起停），绿灯后重新起步。 ---------- */
+  (function () {
+    var svg = document.querySelector('.ct5 svg');
+    var propsG = document.getElementById('ct5Props');
+    if (!svg || !propsG) return;
+    var NS = 'http://www.w3.org/2000/svg';
+    var lanes = document.querySelectorAll('.ct5 .lane');
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var CRUISE = 250;          // 巡航速度（px/s，与原虚线流速一致）
+    var CAR_FRONT = 60;        // 车头 y（svg 坐标）
+    var BRAKE_DIST = 460;      // 开始渐近制动的距离
+    var STOP_GAP = 40;         // 停车线：距红灯的最终停车间距
+    var speed = CRUISE, dash = 0, last = null;
+
+    function el(name, attrs, parent) {
+      var e = document.createElementNS(NS, name);
+      for (var k in attrs) e.setAttribute(k, attrs[k]);
+      (parent || propsG).appendChild(e);
+      return e;
+    }
+
+    function buildProp(type, x) {
+      var g = el('g', {});
+      var dir = x === 64 ? 1 : -1;            // 路灯悬臂朝向路侧
+      if (type === 'scarecrow') {            // 稻草人
+        el('line', { x1: 0, y1: 0, x2: 0, y2: -30, stroke: '#6b5433', 'stroke-width': 3 }, g);
+        el('line', { x1: -12, y1: -23, x2: 12, y2: -23, stroke: '#6b5433', 'stroke-width': 3 }, g);
+        el('path', { d: 'M-11,-21 L11,-21', stroke: '#a4844e', 'stroke-width': 6, 'stroke-linecap': 'round' }, g);
+        el('circle', { cx: 0, cy: -32, r: 5, fill: '#c9a15e' }, g);
+        el('path', { d: 'M-8,-36 L8,-36 L0,-45 Z', fill: '#8a6b3f' }, g);
+      } else if (type === 'sign-blue') {     // 蓝底箭头指路牌
+        el('line', { x1: 0, y1: 0, x2: 0, y2: -34, stroke: '#7d8798', 'stroke-width': 3 }, g);
+        el('rect', { x: -17, y: -60, width: 34, height: 27, rx: 4, fill: '#1d4e89', stroke: '#dfe6ee', 'stroke-width': 1.5 }, g);
+        el('path', { d: 'M-10,-46 L4,-46 M0,-51 L8,-46 L0,-41', stroke: '#fff', 'stroke-width': 2, fill: 'none' }, g);
+      } else if (type === 'sign-green') {    // 绿底指路牌
+        el('line', { x1: 0, y1: 0, x2: 0, y2: -34, stroke: '#7d8798', 'stroke-width': 3 }, g);
+        el('rect', { x: -17, y: -60, width: 34, height: 27, rx: 4, fill: '#146c43', stroke: '#dfe6ee', 'stroke-width': 1.5 }, g);
+        el('path', { d: 'M-9,-46 L9,-46 M-9,-40 L4,-40', stroke: '#fff', 'stroke-width': 2, fill: 'none' }, g);
+      } else if (type === 'sign-warn') {     // 三角警示牌
+        el('line', { x1: 0, y1: 0, x2: 0, y2: -30, stroke: '#7d8798', 'stroke-width': 3 }, g);
+        el('path', { d: 'M0,-62 L17,-34 L-17,-34 Z', fill: '#e8c33a', stroke: '#b3452f', 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, g);
+        el('line', { x1: 0, y1: -56, x2: 0, y2: -46, stroke: '#1b1e24', 'stroke-width': 2.5 }, g);
+        el('circle', { cx: 0, cy: -41, r: 1.6, fill: '#1b1e24' }, g);
+      } else if (type === 'sign-limit') {    // 限速圆牌
+        el('line', { x1: 0, y1: 0, x2: 0, y2: -36, stroke: '#7d8798', 'stroke-width': 3 }, g);
+        el('circle', { cx: 0, cy: -48, r: 14, fill: '#f2f2f2', stroke: '#c0392b', 'stroke-width': 3.5 }, g);
+        var tx = el('text', { x: 0, y: -43, 'font-size': 12, 'font-weight': 700, fill: '#1b1e24', 'text-anchor': 'middle', 'font-family': 'Arial,sans-serif' }, g);
+        tx.textContent = '60';
+      } else if (type === 'tree') {          // 树
+        el('line', { x1: 0, y1: 0, x2: 0, y2: -18, stroke: '#4a3a28', 'stroke-width': 3.5 }, g);
+        el('circle', { cx: 0, cy: -30, r: 13, fill: '#2e5d3a' }, g);
+        el('circle', { cx: -9, cy: -23, r: 9, fill: '#356842' }, g);
+        el('circle', { cx: 9, cy: -24, r: 9, fill: '#275234' }, g);
+        el('circle', { cx: -3, cy: -35, r: 4, fill: 'rgba(255,255,255,.10)' }, g);
+      } else if (type === 'bush') {          // 灌木丛
+        el('circle', { cx: -7, cy: -6, r: 8, fill: '#31573d' }, g);
+        el('circle', { cx: 4, cy: -9, r: 10, fill: '#3a6847' }, g);
+        el('circle', { cx: 12, cy: -4, r: 7, fill: '#2b4f37' }, g);
+      } else if (type === 'streetlamp') {    // 路灯（弯臂灯头照亮路侧）
+        el('line', { x1: 0, y1: 0, x2: 0, y2: -58, stroke: '#3a4150', 'stroke-width': 4 }, g);
+        el('path', { d: 'M0,-58 Q0,-72 ' + (dir * 16) + ',-72', stroke: '#3a4150', 'stroke-width': 3.5, fill: 'none' }, g);
+        el('circle', { cx: dir * 18, cy: -72, r: 11, fill: 'rgba(255,233,168,.14)' }, g);
+        el('ellipse', { cx: dir * 18, cy: -71, rx: 6, ry: 4, fill: '#ffe9a8' }, g);
+        el('ellipse', { cx: dir * 18, cy: -58, rx: 14, ry: 42, fill: 'rgba(255,233,168,.05)' }, g);
+      } else {                                // 信号灯（红绿两灯）
+        el('line', { x1: 0, y1: 0, x2: 0, y2: -44, stroke: '#3a4150', 'stroke-width': 4 }, g);
+        el('rect', { x: -10, y: -80, width: 20, height: 38, rx: 5, fill: '#14171d', stroke: '#454c5a', 'stroke-width': 1.5 }, g);
+        el('circle', { cx: 0, cy: -70, r: 6, fill: '#3d1512', 'data-lamp': 'r' }, g);
+        el('circle', { cx: 0, cy: -55, r: 6, fill: '#12331d', 'data-lamp': 'g' }, g);
+      }
+      return g;
+    }
+
+    // 路景类型池（信号灯占两席提高出现率）；相邻道具不放同款
+    var TYPES = ['sign-blue', 'sign-green', 'sign-warn', 'sign-limit', 'scarecrow', 'tree', 'bush', 'streetlamp', 'light', 'light'];
+    var lastType = '';
+    function pickType() {
+      var t2 = lastType, tries = 0;
+      while (t2 === lastType && tries < 9) { t2 = TYPES[Math.floor(Math.random() * TYPES.length)]; tries++; }
+      lastType = t2;
+      return t2;
+    }
+
+    function applyLight(p) {
+      var r = p.g.querySelector('[data-lamp="r"]'), g2 = p.g.querySelector('[data-lamp="g"]');
+      if (p.state === 'red') { r.setAttribute('fill', '#ff5340'); g2.setAttribute('fill', '#12331d'); }
+      else { r.setAttribute('fill', '#3d1512'); g2.setAttribute('fill', '#4ce068'); }
+    }
+
+    var props = [];
+    function spawn(y) {
+      var type = pickType();
+      var x = Math.random() < 0.5 ? 64 : 256;   // 路两侧路肩
+      var g = buildProp(type, x);
+      g.setAttribute('transform', 'translate(' + x + ',' + y.toFixed(1) + ')');
+      var p = { g: g, y: y, x: x, type: type };
+      if (type === 'light') { p.state = 'green'; p.timer = 5 + Math.random() * 5; applyLight(p); }
+      props.push(p);
+    }
+    // 初始沿路撒一批（车前方渐远渐疏）
+    (function seed() {
+      var y = -170;
+      while (y > -760) { spawn(y); y -= 150 + Math.random() * 190; }
+    })();
+
+    function recycle() {
+      var minY = 1e9;
+      for (var j = 0; j < props.length; j++) if (props[j].y < minY) minY = props[j].y;
+      var old = props.shift();
+      old.g.remove();
+      var type = pickType();
+      var x = Math.random() < 0.5 ? 64 : 256;
+      var g = buildProp(type, x);
+      var ny = minY - (160 + Math.random() * 240);
+      g.setAttribute('transform', 'translate(' + x + ',' + ny.toFixed(1) + ')');
+      var p = { g: g, y: ny, x: x, type: type };
+      if (type === 'light') { p.state = 'green'; p.timer = 5 + Math.random() * 5; applyLight(p); }
+      props.push(p);
+    }
+
+    function tick(now) {
+      if (last == null) last = now;
+      var dt = Math.min(0.05, (now - last) / 1000); last = now;
+      var i, p;
+      for (i = 0; i < props.length; i++) {        // 信号灯随机红绿切换
+        p = props[i];
+        if (p.type !== 'light') continue;
+        p.timer -= dt;
+        if (p.timer <= 0) {
+          p.state = p.state === 'red' ? 'green' : 'red';
+          p.timer = p.state === 'red' ? 2.5 + Math.random() * 2.5 : 4 + Math.random() * 5;
+          applyLight(p);
+        }
+      }
+      var dRed = 1e9;                             // 最近红灯与车头的距离（灯在车前为正）
+      for (i = 0; i < props.length; i++) {
+        p = props[i];
+        if (p.type === 'light' && p.state === 'red') {
+          var d = CAR_FRONT - p.y;
+          if (d > 0 && d < dRed) dRed = d;
+        }
+      }
+      /* 渐近式减速：目标速度随红灯距离线性下降（远则快、近则慢），起步后同样平滑拉满 */
+      var target = CRUISE;
+      if (dRed < BRAKE_DIST) target = Math.max(0, CRUISE * (dRed - STOP_GAP) / (BRAKE_DIST - STOP_GAP));
+      speed += (target - speed) * Math.min(1, dt * 2.0);
+      if (speed < 3 && dRed < STOP_GAP + 40) speed = 0;
+      dash -= speed * dt;
+      for (i = 0; i < lanes.length; i++) lanes[i].setAttribute('stroke-dashoffset', dash.toFixed(1));
+      for (i = 0; i < props.length; i++) {        // 世界随车速滚动；驶过即回收到最前方
+        p = props[i];
+        p.y += speed * dt;
+        if (p.y > 500) { recycle(); continue; }
+        p.g.setAttribute('transform', 'translate(' + p.x + ',' + p.y.toFixed(1) + ')');
+      }
+      requestAnimationFrame(tick);
+    }
+    if (reduced) return;   // 减少动效：静态道具保留，不跑动画
+    requestAnimationFrame(tick);
+  })();
+
+  </script>
 </body>
 </html>
