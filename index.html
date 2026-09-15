@@ -802,7 +802,7 @@ footer { border-top:1px solid var(--border); padding:var(--s6) 0 40px;
          保证无 JS 环境下「拿到工具」这条主路径依然走得通。 -->
     <noscript data-page-node-id="YPA64CINoRDnZJRK2zS79M">
       <div class="noscript-cta" data-page-node-id="z5HyJZXS2s3AjhxwMjPesr">
-        <a class="btn btn-ghost" href="https://gitee.com/WKBM/WuKeBiMian/raw/main/WKBMDLL.exe" data-page-node-id="xvAIS355KDAf5CpCtc0tgg">下载 WKBMDLL.exe</a>
+        <a class="btn btn-ghost" href="https://gitee.com/WKBM/WuKeBiMian/releases/download/v0.9.9/WKBMDLL.exe" data-page-node-id="xvAIS355KDAf5CpCtc0tgg">下载 WKBMDLL.exe</a>
       </div>
     </noscript>
   </div>
@@ -3599,11 +3599,13 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
 })();
 
 /* ---------- 下载最新部署工具 ----------
-   架构（2026-09-15 定稿，方案 D 唯一通道）：Gitee raw 仓库文件直链，零镜像、零双通道。
-   大陆直连、免登录（2026-09-15 匿名实测可用）；不再探测公共镜像（实测 4 天寿命，
-   详见 AGENTS.md §2.4 事故记录）。下载未开始时再点按钮 = 重试同一地址。
-   ⚠️ 发版约定（必须遵守）：Gitee 仓库 main 分支根目录的 WKBMDLL.exe 每次发版同步覆盖，
-   即时生效（Gitee raw 无 CDN 缓存层）。改名 = 静默 404，改名时必须同步更新这里。
+   架构（2026-09-15 三稿定稿，方案 D 唯一通道）：Gitee 发行版附件直链，零镜像、零双通道。
+   大陆直连、免登录、Content-Disposition 强制下载（实测附件二进制 200+attachment）。
+   不用 raw：Gitee raw 对二进制 exe 强制登录（301→/login，X-Frame-Options: DENY）——
+   iframe 被拦即「点了没反应」，这正是本日事故根因之一。
+   不再探测公共镜像（实测 4 天寿命，详见 AGENTS.md §2.4 事故记录）。
+   ⚠️ 发版约定（必须遵守）：Gitee 发新发行版（tag 变化）+ 附件恒名 WKBMDLL.exe，
+   同步改 EXE_URL 里的 tag。改名/改 tag 不同步 = 静默 404（302 链无 CORS 检测不出来）。
    独立提醒：GitHub Release 资产（工具自更新链路用）与本页无关，发版时另行同步。 */
 (function () {
   var btn = document.getElementById('downloadBtn');
@@ -3639,9 +3641,11 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
     /* 先收回透明度再清宽度，避免「缩回」动画被看见 */
     setTimeout(function () { setBar(0); }, 300);
   }
-  /* 下载通道（唯一）：Gitee raw 仓库文件直链（大陆直连、免登录，2026-09-15 匿名实测可用）。
-     exe 需存在于 Gitee 仓库 main 分支根目录；发版同步覆盖即可，无缓存层、即时生效。 */
-  var EXE_URL = 'https://gitee.com/WKBM/WuKeBiMian/raw/main/WKBMDLL.exe';
+  /* 下载通道（唯一）：Gitee 发行版附件直链（大陆直连、免登录、Content-Disposition 强制下载）。
+     2026-09-15 实测：raw 对二进制 exe 强制登录（301→/login，不可用）；
+     发行版附件匿名 302→302→200，终响应 attachment，iframe 导航即下载。
+     ⚠️ URL 含 tag 号：每次发版换了 tag 就要同步改这里（附件文件名恒为 WKBMDLL.exe）。 */
+  var EXE_URL = 'https://gitee.com/WKBM/WuKeBiMian/releases/download/v0.9.9/WKBMDLL.exe';
 
   /* 文案与读屏播报同步更新：改一个未聚焦按钮的文字，屏幕阅读器不一定会播报，
      必须同时写进 live region。文件名放进 title，避免长文案撑破按钮。 */
@@ -3687,7 +3691,7 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
   function startDownload() {
     say('正在下载');
     barStart();
-    /* Gitee raw 直链：大陆直连免登录，即时生效（raw 无 CDN 缓存层）。
+    /* Gitee 发行版附件直链：终响应 Content-Disposition attachment，iframe 导航即下载。
        「若未开始」的重试说明放进 title 与读屏播报，不占主文案；
        未开始时再点一次即重试同一地址。 */
     fireDownload(EXE_URL);
