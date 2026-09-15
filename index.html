@@ -486,9 +486,6 @@ button { font-family:inherit; }
 /* 按下态：缺了它点击会偏「软」，实测补上后手感明显更实 */
 .btn:active { transform:scale(.97); transition-duration:.06s; }
 .btn[data-busy="1"] { opacity:.62; cursor:progress; transform:none; }
-/* 降级态：按钮语义从「本页直接下载」变成「去 Releases 页兜底」。
-   只改文案不够——用户扫一眼按钮形状是看不出它已经换了含义的，补一个虚线描边。 */
-.btn[data-fallback="1"] { border-style:dashed; border-color:var(--accent-text); }
 /* 下载按钮的文案在 4~18 字之间来回变（进度 / 文件名 / 兜底提示）。
    不锁下限，hero 那一行会跟着每次点击横向抖动。 */
 #downloadBtn { min-width:315px; background:var(--bg-2); }
@@ -806,7 +803,6 @@ footer { border-top:1px solid var(--border); padding:var(--s6) 0 40px;
     <noscript data-page-node-id="YPA64CINoRDnZJRK2zS79M">
       <div class="noscript-cta" data-page-node-id="z5HyJZXS2s3AjhxwMjPesr">
         <a class="btn btn-ghost" href="https://gitee.com/WKBM/WuKeBiMian/raw/main/WKBMDLL.exe" data-page-node-id="xvAIS355KDAf5CpCtc0tgg">下载 WKBMDLL.exe</a>
-        <a class="btn btn-ghost" href="https://wukebimian.github.io/WuKeBiMian/WKBMDLL.exe?v=0.9.9">备用通道下载</a>
       </div>
     </noscript>
   </div>
@@ -3603,13 +3599,12 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
 })();
 
 /* ---------- 下载最新部署工具 ----------
-   架构（2026-09-15 定稿，方案 A+D）：同源直下 + Gitee 兜底，零第三方镜像。
-   下载地址与落地页同源（github.io Pages 仓库文件）——用户打得开本页就下得了文件，
-   可达性与页面天然一致；不再探测公共镜像（实测 4 天寿命，详见 AGENTS.md §2.4 事故记录）。
-   兜底：8 秒内再点按钮 → 跳 Gitee 发行版页（大陆直连）。
-   ⚠️ 发版约定（必须遵守）：仓库根目录的 WKBMDLL.exe 与 GitHub Release 资产同名同文件，
-   每次发版两处都要更新，且同步递增 EXE_URL 里的 ?v=（穿透 Pages/Fastly 缓存）。
-   改名 = 静默 404，改名时必须同步更新这里与 Release 资产名。 */
+   架构（2026-09-15 定稿，方案 D 唯一通道）：Gitee raw 仓库文件直链，零镜像、零双通道。
+   大陆直连、免登录（2026-09-15 匿名实测可用）；不再探测公共镜像（实测 4 天寿命，
+   详见 AGENTS.md §2.4 事故记录）。下载未开始时再点按钮 = 重试同一地址。
+   ⚠️ 发版约定（必须遵守）：Gitee 仓库 main 分支根目录的 WKBMDLL.exe 每次发版同步覆盖，
+   即时生效（Gitee raw 无 CDN 缓存层）。改名 = 静默 404，改名时必须同步更新这里。
+   独立提醒：GitHub Release 资产（工具自更新链路用）与本页无关，发版时另行同步。 */
 (function () {
   var btn = document.getElementById('downloadBtn');
   var label = document.getElementById('downloadBtnLabel');
@@ -3644,13 +3639,9 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
     /* 先收回透明度再清宽度，避免「缩回」动画被看见 */
     setTimeout(function () { setBar(0); }, 300);
   }
-  /* 主下载通道：Gitee raw 仓库文件直链（大陆直连、免登录，2026-09-15 匿名实测可用）。
+  /* 下载通道（唯一）：Gitee raw 仓库文件直链（大陆直连、免登录，2026-09-15 匿名实测可用）。
      exe 需存在于 Gitee 仓库 main 分支根目录；发版同步覆盖即可，无缓存层、即时生效。 */
   var EXE_URL = 'https://gitee.com/WKBM/WuKeBiMian/raw/main/WKBMDLL.exe';
-
-  /* 兜底通道：github.io 同源仓库文件（与落地页同可达性）。
-     ?v= 每次发版必须递增——Pages 走 Fastly 缓存，版本号变化即天然缓存穿透。 */
-  var EXE_FALLBACK_URL = 'https://wukebimian.github.io/WuKeBiMian/WKBMDLL.exe?v=0.9.9';
 
   /* 文案与读屏播报同步更新：改一个未聚焦按钮的文字，屏幕阅读器不一定会播报，
      必须同时写进 live region。文件名放进 title，避免长文案撑破按钮。 */
@@ -3672,25 +3663,15 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
     }
   }
 
-  /* 所有「去兜底通道」的收尾统一走这里：直接改用备用直链重新触发下载（不经页面跳转），
-     并清掉 busy——按钮不能一直停在「正在获取」上。 */
-  function goFallback() {
-    say('正在下载');
-    setBusy(false);
-    barReset();
-    fireDownload(EXE_FALLBACK_URL);
-  }
-
   function resetBtn(delay) {
     setTimeout(function () {
       say('获取');
       setBusy(false);
-      btn.removeAttribute('data-fallback');
       barReset();
     }, delay || 0);
   }
 
-  /* 下载触发：Pages 对 .exe 回 application/octet-stream，
+  /* 下载触发：Gitee 对 .exe 回 octet-stream，
       使用动态 iframe 导航触发（兼容性最佳，不跳转页面、不被新窗口拦截） */
   function fireDownload(url) {
     var iframe = document.createElement("iframe");
@@ -3706,19 +3687,16 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
   function startDownload() {
     say('正在下载');
     barStart();
-    /* Gitee raw 直链：大陆直连免登录。若未开始（Gitee 异常等），
-       「若未开始」的兜底说明放进 title 与读屏播报，不占主文案；
-       data-fallback 让 8 秒内（复位前）再点一次改走 github.io 同源直链。 */
+    /* Gitee raw 直链：大陆直连免登录，即时生效（raw 无 CDN 缓存层）。
+       「若未开始」的重试说明放进 title 与读屏播报，不占主文案；
+       未开始时再点一次即重试同一地址。 */
     fireDownload(EXE_URL);
-    say('正在下载', '若未开始下载，请稍候再点一次，将切换备用通道');
+    say('正在下载', '若未开始下载，请稍候再点一次重试');
     barDone();
-    btn.setAttribute('data-fallback', '1');
     resetBtn(8000);   // 反馈跟随流程完成，避免"点完恢复太快像没反馈"
   }
 
   btn.addEventListener("click", function () {
-    // 上一轮下载可能没成功：这一击切换备用直链重下（复位后恢复主通道）
-    if (btn.getAttribute("data-fallback") === "1") { goFallback(); return; }
     if (btn.getAttribute("data-busy") === "1") return;
     setBusy(true);
     startDownload();
