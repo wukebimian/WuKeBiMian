@@ -3599,11 +3599,12 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
 })();
 
 /* ---------- 下载最新部署工具 ----------
-   架构（2026-09-15 三稿定稿，方案 D 唯一通道）：Gitee 发行版附件直链，零镜像、零双通道。
-   大陆直连、免登录、Content-Disposition 强制下载（实测附件二进制 200+attachment）。
-   不用 raw：Gitee raw 对二进制 exe 强制登录（301→/login，X-Frame-Options: DENY）——
-   iframe 被拦即「点了没反应」，这正是本日事故根因之一。
-   不再探测公共镜像（实测 4 天寿命，详见 AGENTS.md §2.4 事故记录）。
+   架构（2026-09-15 终稿，方案 D 唯一通道）：顶层导航 → Gitee 发行版附件（attachment 强制下载）。
+   大陆直连、免登录。三连排除记录（均有实测证据，勿走回头路）：
+   ① 公共镜像探测：无 SLA，4 天寿命（9-15 全灭）→ 删；
+   ② Gitee raw 仓库文件：二进制 exe 强制登录（301→/login）→ 死路；
+   ③ 隐藏 iframe 触发：Gitee 全站 CSP frame-ancestors 'self' *.gitee.com，第三方嵌入被 Chrome 硬拦
+      （浏览器控制台实录）→ 只剩顶层导航一条路；终响应 attachment 保证页面不跳走。
    ⚠️ 发版约定（必须遵守）：Gitee 发新发行版（tag 变化）+ 附件恒名 WKBMDLL.exe，
    同步改 EXE_URL 里的 tag。改名/改 tag 不同步 = 静默 404（302 链无 CORS 检测不出来）。
    独立提醒：GitHub Release 资产（工具自更新链路用）与本页无关，发版时另行同步。 */
@@ -3675,26 +3676,15 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
     }, delay || 0);
   }
 
-  /* 下载触发：Gitee 对 .exe 回 octet-stream，
-      使用动态 iframe 导航触发（兼容性最佳，不跳转页面、不被新窗口拦截） */
-  function fireDownload(url) {
-    var iframe = document.createElement("iframe");
-    iframe.style.display = "none";
-    iframe.src = url;
-    document.body.appendChild(iframe);
-    // iframe 停留 8s 供下载发起，随后移除
-    setTimeout(function () {
-      if (iframe.parentNode) document.body.removeChild(iframe);
-    }, 8000);
-  }
-
   function startDownload() {
     say('正在下载');
     barStart();
-    /* Gitee 发行版附件直链：终响应 Content-Disposition attachment，iframe 导航即下载。
-       「若未开始」的重试说明放进 title 与读屏播报，不占主文案；
-       未开始时再点一次即重试同一地址。 */
-    fireDownload(EXE_URL);
+    /* Gitee 发行版附件终响应带 Content-Disposition: attachment →
+       顶层导航被浏览器拦截转为下载，当前页面不会跳走。
+       ⚠️ 不能用隐藏 iframe：Gitee 全站下发 CSP frame-ancestors 'self' *.gitee.com，
+       第三方页面嵌入即被 Chrome 拦截（2026-09-15 实测报错），iframe 路线彻底不可用。
+       顶层导航若遇异常（如跳登录页）会真离开本页——属可接受的失败形态，用户后退即回。 */
+    window.location.href = EXE_URL;
     say('正在下载', '若未开始下载，请稍候再点一次重试');
     barDone();
     resetBtn(8000);   // 反馈跟随流程完成，避免"点完恢复太快像没反馈"
