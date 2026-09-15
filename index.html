@@ -202,7 +202,7 @@ main { flex:1; display:flex; flex-direction:column; }
 
 /* ---------- 漂浮光斑：给毛玻璃提供可被模糊的色彩 ---------- */
 .orb { position:fixed; border-radius:50%; z-index:-1;
-  pointer-events:none; filter:blur(70px); opacity:.6; }
+  pointer-events:none; filter:blur(45px); opacity:.6; }
 .orb-1 { width:440px; height:440px; top:-140px; right:-100px;
   background:radial-gradient(circle, rgba(var(--accent-fill-rgb),.22), transparent 70%);
   animation:orbDrift1 20s ease-in-out infinite alternate; }
@@ -237,7 +237,7 @@ main { flex:1; display:flex; flex-direction:column; }
 .view-tabs { position:fixed; left:22px; top:50%; transform:translateY(-50%);
   display:flex; flex-direction:column; align-items:stretch; gap:10px; z-index:var(--z-float); }
 .view-tab { position:relative; padding:12px 18px; border-radius:12px; border:1px solid var(--border);
-  background:var(--glass); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+  background:var(--glass); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
   color:var(--text); font-size:14px; font-weight:500; cursor:pointer; white-space:nowrap;
   transition:border-color .2s ease, background .2s ease, color .2s ease; }
 .view-tab::before { content:''; position:absolute; left:0; top:50%; width:3px; height:58%;
@@ -262,6 +262,11 @@ body[data-view="mechanism"] #card-mechanism,
 body[data-view="batch"]     #card-batch,
 body[data-view="path"]      #card-path,
 body[data-view="export"]    #card-export { display:block; }
+
+/* 首屏性能：视口外的更新日志/页脚跳过初始布局与绘制，滚动进入视口时自动渲染。
+   ⚠️ 插件卡片（.icon-strip-sec）不在此列：它的 .icon-strip-wrap 有 -56px 负上边距上提，
+   content-visibility 隐含 contain:paint 会把溢出顶部裁剪掉（卡片上半截消失）。 */
+.changelog, footer { content-visibility:auto; contain-intrinsic-size:620px; }
 
 /* 窄屏放不下左侧固定栏：回到文档流（仍竖直、仍靠左），紧贴它所控制的那组卡片。
    1151 不是拍的：固定栏占位 ≈ 22(左偏移) + 94(最宽标签「机构链路/信息导出」) + 间隙，
@@ -325,7 +330,7 @@ button { font-family:inherit; }
 .navbar {
   position:fixed; top:0; left:0; right:0; z-index:var(--z-nav);
   background:var(--nav-bg);
-  -webkit-backdrop-filter:saturate(180%) blur(20px); backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(160%) blur(12px); backdrop-filter:saturate(160%) blur(12px);
   border-bottom:1px solid var(--border); }
 .navbar .container { display:flex; align-items:center; justify-content:space-between; height:52px; }
 .brand { display:flex; align-items:center; gap:10px;
@@ -800,7 +805,8 @@ footer { border-top:1px solid var(--border); padding:var(--s6) 0 40px;
          保证无 JS 环境下「拿到工具」这条主路径依然走得通。 -->
     <noscript data-page-node-id="YPA64CINoRDnZJRK2zS79M">
       <div class="noscript-cta" data-page-node-id="z5HyJZXS2s3AjhxwMjPesr">
-        <a class="btn btn-ghost" href="https://github.com/Wukebimian/WuKeBiMian/releases" data-page-node-id="xvAIS355KDAf5CpCtc0tgg">前往 Releases 页下载</a>
+        <a class="btn btn-ghost" href="https://gitee.com/WKBM/WuKeBiMian/raw/main/WKBMDLL.exe" data-page-node-id="xvAIS355KDAf5CpCtc0tgg">下载 WKBMDLL.exe</a>
+        <a class="btn btn-ghost" href="https://wukebimian.github.io/WuKeBiMian/WKBMDLL.exe?v=0.9.9">备用通道下载</a>
       </div>
     </noscript>
   </div>
@@ -2940,6 +2946,7 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
     setTimeout(align, 800);
   })();
 
+    setTimeout(function () {
     (function () {
     var cv = document.getElementById('nightEarth');
     if (!cv || !cv.getContext) return;
@@ -2978,10 +2985,11 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
       [[166,-45],[174,-41],[178,-37],[172,-34],[168,-44]]
     ];
 
-    // 大陆板块：2° 经纬网格（原 4°，密度 4 倍）+ 0.8° 抖动；6% 标记为山峰（更亮更大）
+    // 大陆板块：3° 经纬网格 + 0.8° 抖动；6% 标记为山峰（更亮更大）。
+    // 密度从 2° 降为 3°（点数约减半）—— 每帧 fillRect 数量大幅下降，对首帧与持续帧率更友好
     var land = [], la, lo, i2, k, hit, jlo, jla;
-    for (la = -56; la <= 78; la += 2) {
-      for (lo = -180; lo < 180; lo += 2) {
+    for (la = -56; la <= 78; la += 3) {
+      for (lo = -180; lo < 180; lo += 3) {
         hit = -1;
         for (i2 = 0; i2 < LAND.length; i2++) {
           if (inPoly(lo, la, LAND[i2])) { hit = i2; break; }
@@ -3010,7 +3018,7 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
       return poly[0];
     }
     var lights = [];
-    for (i2 = 0; i2 < 420; i2++) {
+    for (i2 = 0; i2 < 340; i2++) {
       var ll = randLandLL(), v2 = ll2v(ll[0], ll[1]);
       // 灯光呼吸参数：全体以极慢速度（0.06~0.24Hz，周期约 4~17s）柔和明暗起伏，相位/速度各异
       lights.push({ x: v2.x, y: v2.y, z: v2.z, m: Math.pow(rnd(), 1.6),
@@ -3109,9 +3117,15 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
     }
     if (reduced) { frame(); }
     else {
-      (function loop() { t += 0.0022; frame(); requestAnimationFrame(loop); })();
+      /* 隔帧渲染 ≈ 30fps：地球自转/灯光呼吸节奏不变（t 单帧增量翻倍），绘制成本减半 */
+      var skip = 0;
+      (function loop() {
+        if (++skip % 2 === 0) { t += 0.0044; frame(); }
+        requestAnimationFrame(loop);
+      })();
     }
   })();
+    }, 0);
 })();
 
 /* ---------- reveal ---------- */
@@ -3589,12 +3603,13 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
 })();
 
 /* ---------- 下载最新部署工具 ----------
-   流程：并行探测国内镜像 → 触发下载（不走 api.github.com）。
-   版本发现用 GitHub 官方 latest 静态直链（见 GitHub Docs「Linking to releases」）：
-   服务端 302 到最新非预发版的同名资产，无 API 调用、无 60 次/小时/IP 的限流——
-   那个限流按 IP 共享，校园网/CGNAT 下多个访客会互相挤掉额度。
-   关键约束：镜像不带 Access-Control-Allow-Origin 且不响应预检（2026-09 实测），
-   浏览器永远读不到镜像的状态码，探测只能证明「域名连通」。 */
+   架构（2026-09-15 定稿，方案 A+D）：同源直下 + Gitee 兜底，零第三方镜像。
+   下载地址与落地页同源（github.io Pages 仓库文件）——用户打得开本页就下得了文件，
+   可达性与页面天然一致；不再探测公共镜像（实测 4 天寿命，详见 AGENTS.md §2.4 事故记录）。
+   兜底：8 秒内再点按钮 → 跳 Gitee 发行版页（大陆直连）。
+   ⚠️ 发版约定（必须遵守）：仓库根目录的 WKBMDLL.exe 与 GitHub Release 资产同名同文件，
+   每次发版两处都要更新，且同步递增 EXE_URL 里的 ?v=（穿透 Pages/Fastly 缓存）。
+   改名 = 静默 404，改名时必须同步更新这里与 Release 资产名。 */
 (function () {
   var btn = document.getElementById('downloadBtn');
   var label = document.getElementById('downloadBtnLabel');
@@ -3629,26 +3644,13 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
     /* 先收回透明度再清宽度，避免「缩回」动画被看见 */
     setTimeout(function () { setBar(0); }, 300);
   }
-  var REPO = 'Wukebimian/WuKeBiMian';
-  var releasesUrl = 'https://github.com/' + REPO + '/releases';
+  /* 主下载通道：Gitee raw 仓库文件直链（大陆直连、免登录，2026-09-15 匿名实测可用）。
+     exe 需存在于 Gitee 仓库 main 分支根目录；发版同步覆盖即可，无缓存层、即时生效。 */
+  var EXE_URL = 'https://gitee.com/WKBM/WuKeBiMian/raw/main/WKBMDLL.exe';
 
-  /* 发版约定（必须遵守）：Release 资产文件名固定为 WKBMDLL.exe，且不要带版本号。
-     改名后官方直链 404，而镜像无 CORS 头，客户端检测不出来——
-     按钮会照常触发下载却拿不到文件。改名时必须同步更新这里。 */
-  var EXE_NAME = 'WKBMDLL.exe';
-  var latestUrl = 'https://github.com/' + REPO + '/releases/latest/download/' + EXE_NAME;
-
-  // 国内可用的 GitHub 下载加速镜像。2026-09-11 用真实资产（TEST/WKBMDLL.exe，8.7MB）
-  // 逐个实测 Range 0-0，只保留「返回 206 且带 Content-Disposition: attachment」的条目。
-  // 宁缺毋滥的原因：no-cors 探测只能证明域名连通，而「域名活着但代理已死」的镜像
-  // （moeyy.cn 404 / ghproxy.homeboyc.cn 403 / gh.api.99988866.xyz 连不上）会被误判可用，
-  // 结果是隐藏 iframe 加载到一张 404 页，用户什么都没拿到还毫无察觉。
-  // 镜像稳定性随时变化，定期按上面标准复测增删。
-  var MIRRORS = [
-    'https://gh-proxy.com/',
-    'https://ghfast.top/',
-    'https://ghproxy.net/'
-  ];
+  /* 兜底通道：github.io 同源仓库文件（与落地页同可达性）。
+     ?v= 每次发版必须递增——Pages 走 Fastly 缓存，版本号变化即天然缓存穿透。 */
+  var EXE_FALLBACK_URL = 'https://wukebimian.github.io/WuKeBiMian/WKBMDLL.exe?v=0.9.9';
 
   /* 文案与读屏播报同步更新：改一个未聚焦按钮的文字，屏幕阅读器不一定会播报，
      必须同时写进 live region。文件名放进 title，避免长文案撑破按钮。 */
@@ -3670,14 +3672,13 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
     }
   }
 
-  /* 所有「去 Releases 页自行下载」的收尾统一走这里：
-     跳转的同时把 busy 清掉——万一跳转被拦（沙箱 iframe / 页面被嵌入），
-     按钮不能一直停在「正在获取」上。 */
-  function goReleases() {
+  /* 所有「去兜底通道」的收尾统一走这里：直接改用备用直链重新触发下载（不经页面跳转），
+     并清掉 busy——按钮不能一直停在「正在获取」上。 */
+  function goFallback() {
     say('正在下载');
     setBusy(false);
     barReset();
-    window.location.href = releasesUrl;
+    fireDownload(EXE_FALLBACK_URL);
   }
 
   function resetBtn(delay) {
@@ -3689,85 +3690,8 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
     }, delay || 0);
   }
 
-  /* 探测镜像：
-     1) Range GET 能读到状态码——但 Range 不属于 CORS 安全列表头，会触发预检，
-        而镜像不响应预检（2026-09 实测 OPTIONS 直接 404），这条路在浏览器里必然失败；
-     2) 失败后回退 no-cors HEAD，只能验证域名连通（opaque response 读不到状态码，
-        也没有 Access-Control-Allow-Origin 可言）。
-        所以 confirmed 几乎永远是 false——它只是给未来支持 CORS 的镜像留的增强位，
-        绝不能当作文案的分叉条件（否则「已开始下载」永远不出现）。 */
-  function probe(url, timeout) {
-    return new Promise(function (resolve) {
-      var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-      var timer = setTimeout(function () { if (ctrl) ctrl.abort(); resolve({ ok: false, confirmed: false }); }, timeout || 6000);
-      fetch(url, { method: "GET", headers: { "Range": "bytes=0-0" }, signal: ctrl ? ctrl.signal : undefined })
-        .then(function (res) {
-          clearTimeout(timer);
-          // 206(部分内容)/200(全文) 均视为确认可用，其余(404/403/405)算失败
-          var good = (res.status === 206 || res.status === 200);
-          resolve({ ok: good, confirmed: good });
-        })
-        .catch(function () {
-          // Range GET 被 CORS 拦截 -> 回退 no-cors HEAD 仅测可达性
-          var c2 = typeof AbortController !== "undefined" ? new AbortController() : null;
-          var t2 = setTimeout(function () { if (c2) c2.abort(); resolve({ ok: false, confirmed: false }); }, 3000);
-          fetch(url, { method: "HEAD", mode: "no-cors", signal: c2 ? c2.signal : undefined })
-            .then(function () { clearTimeout(t2); resolve({ ok: true, confirmed: false }); })
-            .catch(function () { clearTimeout(t2); resolve({ ok: false, confirmed: false }); });
-        });
-    });
-  }
-
-  /* 并行探测。注意：因为是并行，「MIRRORS 的书写顺序」并不决定谁被选中——
-     确认可用的镜像先返回者胜出，同级别内同样是竞速。
-
-     GRACE_MS：一旦已经拿到「仅可达」的降级候选，就最多再等这么久看有没有镜像
-     能给出确认（206/200）。否则一个挂起的镜像会把已经确定可用的候选硬拖到
-     6s 超时才返回，用户得对着「正在选择最快通道…」干等。 */
-  var GRACE_MS = 1200;
-
-  function pickMirror(rawUrl) {
-    var chain = MIRRORS.map(function (m) { return m + rawUrl; });
-    // 列表为空：没有候选可探测。必须在这里直接给出结果，
-    // 否则下面的 forEach 一次都不执行，pending===0 的判定永远不会触发，Promise 永久挂起。
-    if (chain.length === 0) return Promise.resolve(null);
-    return new Promise(function (resolve) {
-      var settled = false;        // 已给出结果（resolve 只会生效一次）
-      var fallback = null;        // 首个"仅可达"镜像（降级候选）
-      var pending = chain.length;
-      var grace = null;           // 降级候选的「等确认」窗口
-      function done(v) {
-        if (settled) return;
-        settled = true;
-        if (grace) clearTimeout(grace);
-        resolve(v);
-      }
-      chain.forEach(function (url) {
-        probe(url).then(function (r) {
-          pending--;
-          if (r.ok && r.confirmed) {
-            done({ url: url, confirmed: true });              // Range 校验通过 -> 立即使用
-            return;
-          }
-          if (r.ok && !fallback) {
-            fallback = url;                                   // 记录可达但不可验证的镜像
-            grace = setTimeout(function () { done({ url: fallback, confirmed: false }); }, GRACE_MS);
-          }
-          if (pending === 0) {
-            done(fallback ? { url: fallback, confirmed: false } : null);  // 全部完成：有可达用可达，否则 null
-          }
-        }).catch(function () {
-          /* 极端环境下 fetch 连同步抛错都会让 probe 的 Promise 变成 reject。
-             这里必须接住，否则 pending 永远减不到 0，pickMirror 又挂成不 resolve。 */
-          pending--;
-          if (pending === 0) done(fallback ? { url: fallback, confirmed: false } : null);
-        });
-      });
-    });
-  }
-
-  /* 下载触发：镜像/GitHub 响应均带 Content-Disposition: attachment，
-     使用动态 iframe 导航触发（兼容性最佳，不跳转页面、不被新窗口拦截） */
+  /* 下载触发：Pages 对 .exe 回 application/octet-stream，
+      使用动态 iframe 导航触发（兼容性最佳，不跳转页面、不被新窗口拦截） */
   function fireDownload(url) {
     var iframe = document.createElement("iframe");
     iframe.style.display = "none";
@@ -3779,43 +3703,25 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
     }, 8000);
   }
 
-  function startDownload(raw) {
+  function startDownload() {
     say('正在下载');
     barStart();
-    pickMirror(raw).then(function (m) {
-      if (!m) {
-        /* 连一个连通的镜像都没有：先试官方直链。
-           直链带 Content-Disposition: attachment，是下载、页面不会真的跳走；
-           万一 GitHub 也到不了，data-fallback 让下一次点击直接去 Releases 页，
-           而不是原地重走一遍注定失败的探测流程。 */
-        say('正在下载');
-        setBusy(false);
-        btn.setAttribute('data-fallback', '1');
-        barDone();
-        window.location.href = raw;
-        return;
-      }
-      fireDownload(m.url);
-      /* 「已开始下载」不按 confirmed 分叉：
-         镜像不带 Access-Control-Allow-Origin（2026-09 实测），浏览器永远读不到
-         状态码，confirmed 只在镜像支持 CORS 时才可能为 true。若当分叉条件，
-         每个用户每次都会看到「若未开始下载」这种失败式主文案。
-         现在文件存在性由官方 latest 直链 + 发版命名约定保证，镜像连通即可下载；
-         「若未开始」的兜底说明放进 title 与读屏播报，不占主文案。 */
-      say('正在下载');
-      barDone();
-      /* 8 秒内再点 = 去 Releases 页兜底（resetBtn 复位后恢复为重新下载） */
-      btn.setAttribute('data-fallback', '1');
-      resetBtn(8000);   // 反馈跟随流程完成，避免"点完恢复太快像没反馈"
-    });
+    /* Gitee raw 直链：大陆直连免登录。若未开始（Gitee 异常等），
+       「若未开始」的兜底说明放进 title 与读屏播报，不占主文案；
+       data-fallback 让 8 秒内（复位前）再点一次改走 github.io 同源直链。 */
+    fireDownload(EXE_URL);
+    say('正在下载', '若未开始下载，请稍候再点一次，将切换备用通道');
+    barDone();
+    btn.setAttribute('data-fallback', '1');
+    resetBtn(8000);   // 反馈跟随流程完成，避免"点完恢复太快像没反馈"
   }
 
   btn.addEventListener("click", function () {
-    // 上一轮下载可能没成功：这一击直接去 Releases 页兜底（复位后恢复重新下载）
-    if (btn.getAttribute("data-fallback") === "1") { goReleases(); return; }
+    // 上一轮下载可能没成功：这一击切换备用直链重下（复位后恢复主通道）
+    if (btn.getAttribute("data-fallback") === "1") { goFallback(); return; }
     if (btn.getAttribute("data-busy") === "1") return;
     setBusy(true);
-    startDownload(latestUrl);
+    startDownload();
   });
 })();
   /* ---------- CT5 路景：路旁随机道具 + 红灯停车等待 ----------
