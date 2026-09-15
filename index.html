@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://wukebimian.github.io/WuKeBiMian/og-image.png" data-page-node-id="H0VJFDX4kKv90GtoaJPh0J">
 <meta property="og:image:width" content="1200" data-page-node-id="cS5x4CAQIySGLLqrz1ia5A">
 <meta property="og:image:height" content="630" data-page-node-id="MXcEiuuBfYWhaEIYA1EyHR">
-<meta property="og:image:alt" content="将重复变得简单直接，22 个面向 Process Simulate 的插件" data-page-node-id="xB1HMwkEnjmsE0B5aqleYn">
+<meta property="og:image:alt" content="将重复变得简单直接 —— 面向 Process Simulate 的插件工具集" data-page-node-id="xB1HMwkEnjmsE0B5aqleYn">
 <meta name="twitter:card" content="summary_large_image" data-page-node-id="MPl1U1k68hOcDEGcCxETTu">
 <meta name="twitter:title" content="将重复变得简单直接" data-page-node-id="gDdWQjWHjB3f19oj9Hpx5U">
 <meta name="twitter:description" content="面向 Process Simulate 使用者的工具。" data-page-node-id="8ZU7twYyYwsAOWbY4AgEsm">
@@ -72,19 +72,10 @@
   --text: #1d1d1f;
   --text-2: #6e6e73;
 
-  --success: #096e37;
-  --success-bg: rgba(28,173,92,.1);
-  --success-border: rgba(10,124,62,.25);
-  --warning: #8f5200;
-  --warning-bg: rgba(217,124,6,.1);
-  --warning-border: rgba(161,92,0,.25);
-
-
   --hover-bg: #f7f7f9;
   --border: rgba(0,0,0,.07);
   --row-hover: rgba(0,0,0,.015);
   --glass: rgba(255,255,255,.72);
-  --glass-card: rgba(255,255,255,.55);
   --nav-bg: rgba(245,245,247,.65);
   --foot-bg: rgba(255,255,255,.68);
   --shadow: 0 8px 30px rgba(0,0,0,.07), 0 2px 10px rgba(0,0,0,.04);
@@ -96,7 +87,7 @@
   --h1-to: #6e6e73;
 
   /* Spacing Tokens（4px 基线）：只收录实际用到的档位，避免定义后无人引用 */
-  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s2: 8px; --s4: 16px;
   --s5: 24px; --s6: 32px; --s7: 48px;
 
   /* Z-index Layers（语义层级，不要直接写数字） */
@@ -115,7 +106,6 @@
      钉成同一个值后，切卡只影响卡片区，标题/按钮/更新日志卡一律不动。
      820px = 7 个磁贴一行（802px）+ 一点余量，别往下调到 802 以下，否则最后一个磁贴会换行。 */
   --card-w: 820px;
-  --r: 18px;
 }
 
 /* 深色即站点固定外观：原先跟随系统 prefers-color-scheme 切换，
@@ -140,19 +130,10 @@
     --accent-soft: rgba(var(--accent-fill-rgb),.14);
     --accent-border: rgba(var(--accent-text-rgb),.38);
 
-    --success: #32d158;
-    --success-bg: rgba(50,209,88,.14);
-    --success-border: rgba(50,209,88,.45);
-    --warning: #ffb340;
-    --warning-bg: rgba(255,179,52,.14);
-    --warning-border: rgba(255,179,52,.45);
-
-
     --hover-bg: #1b1b1e;
     --border: rgba(255,255,255,.09);
     --row-hover: rgba(255,255,255,.03);
     --glass: rgba(30,30,32,.72);
-    --glass-card: rgba(30,30,32,.55);
     --nav-bg: rgba(11,11,13,.66);
     --foot-bg: rgba(21,21,23,.68);
     --shadow: 0 8px 30px rgba(0,0,0,.55), 0 2px 10px rgba(0,0,0,.4);
@@ -360,15 +341,6 @@ button { font-family:inherit; }
 @media (min-width: 960px) {
   .hero-sub { max-width:none; white-space:nowrap; font-size:14px; line-height:1.6; }
 }
-.hero-stats { display:flex; gap:0; margin-top:34px;
-  opacity:0; animation:rise .7s .32s ease forwards; }
-.hero-stats .stat { padding:0 var(--s6); border-left:1px solid var(--border); }
-.hero-stats .stat:first-child { padding-left:0; border-left:none; }
-.hero-stats b { display:block; font-family:var(--font-h); font-size:24px;
-  font-weight:700; letter-spacing:-.02em; color:var(--text); line-height:1.2; }
-.hero-stats span { display:block; margin-top:2px; font-size:12.5px; color:var(--text-2); }
-/* 注：.hero-stats 规则现为遗留——版本统计已移入按钮（.btn-ver）。
-   保留待统一清理，不影响渲染。 */
 /* 按钮内版本行：与「获取」同处一行，竖线分隔；下载文案变化时不抖动 */
 .btn-ver { display:inline-flex; align-items:baseline; gap:6px; margin-left:14px;
   padding-left:14px; border-left:1px solid var(--border);
@@ -432,7 +404,7 @@ button { font-family:inherit; }
   color:var(--accent-text); letter-spacing:-.01em; }
 .cl-date { display:inline-block; margin-left:10px; font-size:11.5px; color:var(--text-2); }
 .cl-desc { margin:6px 0 0; font-size:12.5px; line-height:1.6; color:var(--text-2); }
-.changelog-list .muted { color:var(--text-3, rgba(255,255,255,.35)); }
+.changelog-list .muted { color:rgba(255,255,255,.35); }
 .changelog-list .placeholder { min-height:44px; }   /* 占位条目文案留空时保住占位高度 */
 .changelog-list .placeholder .cl-desc { font-style:italic; }
 @media (max-width: 720px) {
@@ -463,9 +435,8 @@ button { font-family:inherit; }
 
 /* 按钮内下载进度填充：从左侧填满整个按钮内部（不是细线条），
    作为按钮背景的一层，文字浮在其上方。
-   注意这不是字节级真实进度——镜像无 CORS、下载走 iframe，
-   浏览器拿不到 progress 事件，只能按「流程阶段」分步推进：
-   探测通道时分阶段缓动到 ~60%，确认下载后拉满 100%。 */
+   注意这不是字节级真实进度——顶层导航触发下载，浏览器拿不到 progress 事件，
+   只能按「流程阶段」分步推进：发起后分两步缓动到 ~58%，随后拉满 100% 再复位。 */
 .btn-progress { position:absolute; left:0; top:0; bottom:0; width:0;
   background:var(--accent-text); opacity:0; pointer-events:none; z-index:0;
   transition:width .45s cubic-bezier(.3,.7,.4,1), opacity .25s ease; }
@@ -639,15 +610,10 @@ footer { border-top:1px solid var(--border); padding:var(--s6) 0 40px;
    「转单列」与「折叠导航」是两件事，这里解耦。 */
 @media (max-width: 860px) {
 }
-@media (max-width: 700px) {
-  .hero-stats .stat { padding:0 20px; }
-}
 @media (max-width: 640px) {
   .hero { flex:1; padding:84px 0 32px; }
   .hero h1 { font-size:clamp(34px, 9vw, 48px); }
   .hero-sub { font-size:15.5px; }
-  .hero-stats { margin-top:26px; }
-  .hero-stats b { font-size:20px; }
   .hero-cta { margin-top:24px; }
   .btn { padding:12px 22px; font-size:14px; }
   /* 小屏下两个按钮各占一行，避免一长一短 */
@@ -658,7 +624,7 @@ footer { border-top:1px solid var(--border); padding:var(--s6) 0 40px;
   *, *::before, *::after { animation:none !important; transition:none !important; }
   /* 入场动画以 opacity:0 为起始态，这里必须强制复位，
      否则减少动效的用户会看到一片空白。 */
-  .reveal, .hero-sub, .hero-stats, .hero-cta, .hero h1 { opacity:1; transform:none; }
+  .reveal, .hero-sub, .hero-cta, .hero h1 { opacity:1; transform:none; }
 }
 /* 强制高对比度模式（Windows 高对比度等）：
    渐变标题依赖 color:transparent + background-clip，系统替换背景后文字会整段消失，
@@ -673,7 +639,7 @@ footer { border-top:1px solid var(--border); padding:var(--s6) 0 40px;
 }
 /* ---------- 打印 ---------- */
 @media print {
-  .navbar, .progress, .to-top, .hero-cta, .noscript-cta, .foot-links, .hero-stats, .modal-backdrop, .cursor-dot, .cursor-ring, .cursor-tail, .orb, .sr-only { display:none !important; }
+  .navbar, .progress, .to-top, .hero-cta, .noscript-cta, .foot-links, .modal-backdrop, .cursor-dot, .cursor-ring, .cursor-tail, .orb, .sr-only { display:none !important; }
   body { background:#fff; color:#1d1d1f; }
   section { padding:20px 0 !important; display:block !important; }
   .hero h1 {
@@ -784,9 +750,9 @@ footer { border-top:1px solid var(--border); padding:var(--s6) 0 40px;
         <h4 class="changelog-title">更新日志</h4>
         <ul class="changelog-list">
           <li>
-            <span class="cl-ver">V1.0.0.0</span>
-            <span class="cl-date">2026-09-14</span>
-            <p class="cl-desc">首个公开发布版本：焊接、时序图、姿态调整、机构搭建、模型归档等工具集首次整合，一键化操作上线。</p>
+            <span class="cl-ver">v1.0.0.0</span>
+            <span class="cl-date">2026-09-15</span>
+            <p class="cl-desc">部署工具正式发布：覆盖机构搭建、批量操作、路径生成与信息导出的全套插件一键部署，内置到期授权、国内直连下载与自动更新。</p>
           </li>
           <li class="placeholder" aria-hidden="true">
             <!-- 按要求文案暂时留空，只保留一条等高占位（后续版本在此追加更新条目） -->
@@ -798,11 +764,11 @@ footer { border-top:1px solid var(--border); padding:var(--s6) 0 40px;
       </aside>
           </div>
     <!-- 下载按钮是纯 JS 控件：脚本不可用时它点了没任何反应。
-         此时换成一条指向 Releases 页的静态链接（上方 noscript 样式已隐藏原按钮），
-         保证无 JS 环境下「拿到工具」这条主路径依然走得通。 -->
+         此时换成一条指向 Gitee 发行版附件的静态直链（上方 noscript 样式已隐藏原按钮），
+         保证无 JS 环境下「拿到工具」这条主路径依然走得通。注意 tag 变化需同步此 href。 -->
     <noscript data-page-node-id="YPA64CINoRDnZJRK2zS79M">
       <div class="noscript-cta" data-page-node-id="z5HyJZXS2s3AjhxwMjPesr">
-        <a class="btn btn-ghost" href="https://gitee.com/WKBM/WuKeBiMian/releases/download/v0.9.9/WKBMDLL.exe" data-page-node-id="xvAIS355KDAf5CpCtc0tgg">下载 WKBMDLL.exe</a>
+        <a class="btn btn-ghost" href="https://gitee.com/WKBM/WuKeBiMian/releases/download/v1.0.0.0/WKBMDLL.exe" data-page-node-id="xvAIS355KDAf5CpCtc0tgg">下载 WKBMDLL.exe</a>
       </div>
     </noscript>
   </div>
@@ -3614,31 +3580,33 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
   if (!btn) return;
   var status = document.getElementById('dlStatus');
   var bar = document.getElementById('downloadBtnProgress');
-  /* 进度填充（分阶段式，非字节级）：探测阶段分两步缓动到 ~60%，
-     确认下载后拉满 100%；resetBar 清理。progressTimer 用于在提前完成时
-     取消还没走完的缓动步。 */
-  var progressTimer = null;
+  /* 进度填充（分阶段式，非字节级）：发起后分两步缓动到 ~58%，
+     随后拉满 100% 再复位。定时器集中登记，提前完成时全部取消——
+     历史缺陷：单变量重复赋值导致 30% 步漏清，出现「100%→30%→0%」回跳。 */
+  var progressTimers = [];
+  function clearProgressTimers() {
+    progressTimers.forEach(clearTimeout);
+    progressTimers = [];
+  }
   function setBar(pct) { if (bar) bar.style.width = pct + '%'; }
   function barStart() {
     if (!bar) return;
     bar.classList.add('on');
-    bar.classList.remove('slow');
+    clearProgressTimers();
     setBar(8);
-    clearTimeout(progressTimer);
-    progressTimer = setTimeout(function () { setBar(30); }, 300);
-    progressTimer = setTimeout(function () { setBar(58); }, 1600);
+    progressTimers.push(setTimeout(function () { setBar(30); }, 300));
+    progressTimers.push(setTimeout(function () { setBar(58); }, 1600));
   }
   function barDone() {
     if (!bar) return;
-    clearTimeout(progressTimer);
-    bar.classList.remove('slow');
+    clearProgressTimers();
     setBar(100);
     setTimeout(function () { barReset(); }, 700);
   }
   function barReset() {
     if (!bar) return;
-    clearTimeout(progressTimer);
-    bar.classList.remove('on', 'slow');
+    clearProgressTimers();
+    bar.classList.remove('on');
     /* 先收回透明度再清宽度，避免「缩回」动画被看见 */
     setTimeout(function () { setBar(0); }, 300);
   }
@@ -3646,7 +3614,7 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
      2026-09-15 实测：raw 对二进制 exe 强制登录（301→/login，不可用）；
      发行版附件匿名 302→302→200，终响应 attachment，iframe 导航即下载。
      ⚠️ URL 含 tag 号：每次发版换了 tag 就要同步改这里（附件文件名恒为 WKBMDLL.exe）。 */
-  var EXE_URL = 'https://gitee.com/WKBM/WuKeBiMian/releases/download/v0.9.9/WKBMDLL.exe';
+  var EXE_URL = 'https://gitee.com/WKBM/WuKeBiMian/releases/download/v1.0.0.0/WKBMDLL.exe';
 
   /* 文案与读屏播报同步更新：改一个未聚焦按钮的文字，屏幕阅读器不一定会播报，
      必须同时写进 live region。文件名放进 title，避免长文案撑破按钮。 */
