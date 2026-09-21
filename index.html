@@ -242,7 +242,8 @@ body[data-view] .icon-strip-sec { display:none; }
 body[data-view="mechanism"] #card-mechanism,
 body[data-view="batch"]     #card-batch,
 body[data-view="path"]      #card-path,
-body[data-view="export"]    #card-export { display:block; }
+body[data-view="export"]    #card-export,
+body[data-view="layout"]    #card-layout { display:block; }
 
 /* 首屏性能：视口外的更新日志/页脚跳过初始布局与绘制，滚动进入视口时自动渲染。
    ⚠️ 插件卡片（.icon-strip-sec）不在此列：它的 .icon-strip-wrap 有 -56px 负上边距上提，
@@ -260,15 +261,11 @@ body[data-view="export"]    #card-export { display:block; }
   .view-tabs ~ .icon-strip-sec .icon-strip-wrap { margin-top:0; }
 }
 
-/* 切换栏下方一行白色小字提示：桌面端跟随固定栏悬在栏下方（栏底 ≈ 50% + 101px，留 17px 间距），
-   窄屏随切换栏一起回到文档流，与栏同左对齐。纯装饰不挡点击。 */
-.view-hint { position:fixed; left:22px; top:calc(50% + 118px); z-index:var(--z-float);
-  margin:0; color:#fff; font-size:12px; line-height:1; white-space:nowrap;
+/* 切换栏下方一行白色小字提示。它就在 .view-tabs 这个固定容器**内部**，
+   所以栏子随按钮数量变高时它会自然跟着走 —— 不要改回 position:fixed + calc(50% + Npx)，
+   那个 N 是按按钮个数手算的，加一个按钮就重叠一次（4→5 个时压住栏底 15px）。纯装饰不挡点击。 */
+.view-hint { margin:6px 2px 0; color:#fff; font-size:12px; line-height:1; white-space:nowrap;
   letter-spacing:.05em; opacity:.92; pointer-events:none; }
-@media (max-width: 1151px) {
-  .view-hint { position:static; transform:none;
-    margin:-8px 0 16px calc((100% - min(var(--max-w), 100%)) / 2 + 26px); }
-}
 
 /* ---------- 左上角：夜晚地球 + 城市灯光（电力点） ---------- */
 .earth { position:fixed; top:-80px; left:-160px; width:747px; height:747px; z-index:-1;
@@ -346,6 +343,7 @@ button { font-family:inherit; }
   padding-left:14px; border-left:1px solid var(--border);
   font-size:13px; color:var(--text-2); white-space:nowrap; position:relative; z-index:1; }
 .btn-ver b { font-family:var(--font-h); font-weight:600; color:var(--text); letter-spacing:-.01em; }
+.btn-ver[hidden] { display:none; }   /* 版本已并入按钮文字（获取V×.y.z.版本）；徽章保留 DOM 以兼容外部编辑器 node-id */
 /* ---------- 插件图标带 ---------- */
 .icon-strip-wrap { display:flex; align-items:center; gap:24px; padding:18px 24px;
   margin:-56px 0 56px calc((100% - min(var(--max-w), 100%)) / 2 + 26px); /* 左缘 = 容器轨道左缘 + 26px，与 hero 按钮严格同源对齐（不随视口漂移） */
@@ -354,8 +352,8 @@ button { font-family:inherit; }
 .strip-label { flex-shrink:0; font-size:17px; font-weight:600; letter-spacing:.02em; color:var(--text-2); }
 .icon-strip { flex:1; display:flex; flex-wrap:wrap; justify-content:flex-start; gap:12px; }
 /* 空卡占位机制（`.is-empty` + 一个不可见的同构磁贴，用来把空卡撑到与满卡等高）
-   已随「其他」空卡一起删除 —— 现在四张卡都有真磁贴。
-   将来若再加一张空卡，按 AGENTS.md §5.5/§5.6 的说明重加这两条规则即可，
+   已随「其他」空卡一起删除 —— 现在五张卡都有真磁贴。
+   将来若再加一张空卡，按 AGENTS.md §5.5/§5.6 的说明重加那条规则即可，
    关键点：占位磁贴必须与真磁贴同构（同样有 42px 的 svg 占位 + 一行名字），否则卡高不等、
    切卡时 hero 里居中的标题会跟着位移。 */
 .icon-item { width:84px; padding:12px 2px 9px; display:flex; flex-direction:column; align-items:center; gap:6px;
@@ -741,7 +739,7 @@ footer { border-top:1px solid var(--border); padding:var(--s6) 0 40px;
       <div class="hero-cta-left">
         <button class="btn btn-ghost" id="downloadBtn" type="button" data-page-node-id="IHoHjs1K7wpJVqdGH5Gj1r">
           <span class="btn-label" id="downloadBtnLabel" data-page-node-id="G7OCMa2ESccXCXNICzUHun">获取</span>
-          <span class="btn-ver" data-page-node-id="SefhrqaJedxanmKJj9oSqs"><b data-page-node-id="64a2vGtEWFmsV6vDfBTBb5">V1.0.0.0</b><span data-page-node-id="LBAaDiNEpUCXBghs3bv9Js">版本</span></span>
+          <span class="btn-ver" hidden data-page-node-id="SefhrqaJedxanmKJj9oSqs"><b data-page-node-id="64a2vGtEWFmsV6vDfBTBb5">V1.0.0.0</b><span data-page-node-id="LBAaDiNEpUCXBghs3bv9Js">版本</span></span>
           <span class="btn-progress" id="downloadBtnProgress" aria-hidden="true"></span>
         </button>
       </div>
@@ -750,22 +748,22 @@ footer { border-top:1px solid var(--border); padding:var(--s6) 0 40px;
         <h4 class="changelog-title">更新日志</h4>
         <ul class="changelog-list">
           <li>
-            <span class="cl-ver">v1.0.0.0</span>
+            <span class="cl-ver">v1.0.1</span>
+            <span class="cl-date">2026-09-21</span>
+            <p class="cl-desc">新增线槽绘制插件，可从 LAYOUT 提取线槽进行绘制；旋转气缸与伸缩气缸机构制作插件优化逻辑，新增建模状态检测能力；焊枪姿态导出插件修复界面不显示名称、以及只能识别一条运动轴的问题。</p>
+          </li>
+          <li>
+            <span class="cl-ver">v1.0.0</span>
             <span class="cl-date">2026-09-15</span>
             <p class="cl-desc">部署工具正式发布：覆盖机构搭建、批量操作、路径生成与信息导出的全套插件一键部署，内置到期授权、国内直连下载与自动更新。</p>
-          </li>
-          <li class="placeholder" aria-hidden="true">
-            <!-- 按要求文案暂时留空，只保留一条等高占位（后续版本在此追加更新条目） -->
-            <span class="cl-ver muted"></span>
-            <span class="cl-date muted"></span>
-            <p class="cl-desc muted"></p>
           </li>
         </ul>
       </aside>
           </div>
     <!-- 下载按钮是纯 JS 控件：脚本不可用时它点了没任何反应。
          此时换成一条指向 Gitee 发行版附件的静态直链（上方 noscript 样式已隐藏原按钮），
-         保证无 JS 环境下「拿到工具」这条主路径依然走得通。注意 tag 变化需同步此 href。 -->
+         保证无 JS 环境下「拿到工具」这条主路径依然走得通。注意 tag 变化需同步此 href。
+         （JS 场景由 API 自动查最新 tag，此处无 JS 无法动态化，仍需手动同步。） -->
     <noscript data-page-node-id="YPA64CINoRDnZJRK2zS79M">
       <div class="noscript-cta" data-page-node-id="z5HyJZXS2s3AjhxwMjPesr">
         <a class="btn btn-ghost" href="https://gitee.com/WKBM/WuKeBiMian/releases/download/v1.0.0.0/WKBMDLL.exe" data-page-node-id="xvAIS355KDAf5CpCtc0tgg">下载 WKBMDLL.exe</a>
@@ -783,10 +781,10 @@ footer { border-top:1px solid var(--border); padding:var(--s6) 0 40px;
   <button class="view-tab" type="button" data-target="#card-batch" aria-controls="card-batch" aria-pressed="false">批量操作</button>
   <button class="view-tab" type="button" data-target="#card-path" aria-controls="card-path" aria-pressed="false">路径</button>
   <button class="view-tab" type="button" data-target="#card-export" aria-controls="card-export" aria-pressed="false">信息导出</button>
+  <button class="view-tab" type="button" data-target="#card-layout" aria-controls="card-layout" aria-pressed="false">布局</button>
+  <!-- 栏内提示：跟随切换栏定位（桌面端固定栏 / 窄屏文档流都在栏里），见 CSS .view-hint -->
+  <p class="view-hint">点击插件图标查阅简介</p>
 </nav>
-
-<!-- 切换栏下方提示：点击插件图标可查阅简洁说明（桌面端固定在栏下方，窄屏回文档流，见 CSS） -->
-<p class="view-hint">点击插件图标查阅简介</p>
 
 <!-- 插件图标带：悬停放大。下方这些卡都由上方切换栏控制，默认显示机构链路 -->
 <section class="icon-strip-sec" id="card-mechanism" aria-label="机构链路插件">
@@ -885,6 +883,23 @@ footer { border-top:1px solid var(--border); padding:var(--s6) 0 40px;
       <div class="icon-item" role="listitem" tabindex="0" aria-label="资源结构导出（ObjectTreeExporter）" aria-haspopup="dialog" data-detail="detail-objecttree" data-desc="按 Object Tree 层级导出全部对象的名称与类型清单（v1.0.0.0）">
         <svg fill="currentColor" aria-hidden="true" viewBox="0 0 1194 1024" xmlns="http://www.w3.org/2000/svg"><path d="M213.335277 0h725.343054v213.335277H213.335277zM426.670555 298.672499h640.005832v170.674443H426.670555zM426.670555 554.668611h426.670555v170.674443H426.670555zM640.005832 810.664723h554.668611v170.674443H640.005832z"></path><path d="M426.670555 853.34111H85.337221V640.005832h127.998056v42.660835h127.998056v-127.998056h-127.998056v42.660834h-127.998056V384.00972h127.998056v42.660835h127.998056v-127.998056h-127.998056v42.660834h-127.998056V127.998056H127.998056V0H0v127.998056h42.660834v896.001944h42.676387v-127.998056h341.333334v42.676387h127.998056v-128.013608h-127.998056v42.676387z"></path></svg>
         <span class="icon-name">资源结构导出</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 布局卡：「自动布局」磁贴。图标取自 E:\2KUP\Resources\Icons\svg\线路.svg（按 §5.6 清洗：
+     只留 viewBox + path d，去掉 iconfont 的 t/class/version/p-id/width/height 与写死的 fill="#2c2c2c"，
+     改由外层 fill="currentColor" 继承）。
+     ⚠️ 该图标目前**只用于本站展示**，尚未加进 PDPS / 插件自身的资源（用户 2026-09-21 决定暂缓）。
+     ⚠️ aria-label 只写中文标题：插件 ID 与 AssemblyDescription 未取证，不臆造。 -->
+<section class="icon-strip-sec" id="card-layout" aria-label="布局插件">
+  <div class="container icon-strip-wrap reveal">
+    <span class="strip-label">布局</span>
+    <div class="icon-strip" role="list">
+      <div class="icon-item" role="listitem" tabindex="0" aria-label="自动布局" data-desc="从 LAYOUT 提取线槽进行绘制（v1.0.0）">
+        <svg fill="currentColor" aria-hidden="true" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h1024v128H0zM0 313.6h1024v256H0zM0 704h1024v320H0z"></path></svg>
+        <span class="icon-name">自动布局</span>
       </div>
     </div>
   </div>
@@ -3571,8 +3586,8 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
    ② Gitee raw 仓库文件：二进制 exe 强制登录（301→/login）→ 死路；
    ③ 隐藏 iframe 触发：Gitee 全站 CSP frame-ancestors 'self' *.gitee.com，第三方嵌入被 Chrome 硬拦
       （浏览器控制台实录）→ 只剩顶层导航一条路；终响应 attachment 保证页面不跳走。
-   ⚠️ 发版约定（必须遵守）：Gitee 发新发行版（tag 变化）+ 附件恒名 WKBMDLL.exe，
-   同步改 EXE_URL 里的 tag。改名/改 tag 不同步 = 静默 404（302 链无 CORS 检测不出来）。
+   ⚠️ 发版约定（必须遵守）：EXE_URL 写死值现为 API 失败兜底；页面加载时自动查 releases/latest 覆盖。
+   发新 tag 时仍建议同步改 EXE_URL 兜底值 + noscript href，保证 API 挂了也能拿到新版。
    独立提醒：GitHub Release 资产（工具自更新链路用）与本页无关，发版时另行同步。 */
 (function () {
   var btn = document.getElementById('downloadBtn');
@@ -3580,6 +3595,10 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
   if (!btn) return;
   var status = document.getElementById('dlStatus');
   var bar = document.getElementById('downloadBtnProgress');
+  /* 空闲文案单一来源：API 查到最新版后带上版本号，按钮复位也用它——
+     保证下载流程走完后按钮回到「进页面时那个词」（含版本），不会变回裸「获取」。 */
+  var idleLabel = '获取';
+  var verBadge = document.querySelector('.btn-ver b');
   /* 进度填充（分阶段式，非字节级）：发起后分两步缓动到 ~58%，
      随后拉满 100% 再复位。定时器集中登记，提前完成时全部取消——
      历史缺陷：单变量重复赋值导致 30% 步漏清，出现「100%→30%→0%」回跳。 */
@@ -3611,9 +3630,8 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
     setTimeout(function () { setBar(0); }, 300);
   }
   /* 下载通道（唯一）：Gitee 发行版附件直链（大陆直连、免登录、Content-Disposition 强制下载）。
-     2026-09-15 实测：raw 对二进制 exe 强制登录（301→/login，不可用）；
-     发行版附件匿名 302→302→200，终响应 attachment，iframe 导航即下载。
-     ⚠️ URL 含 tag 号：每次发版换了 tag 就要同步改这里（附件文件名恒为 WKBMDLL.exe）。 */
+     写死值 = 下方 API 查询失败时的兜底；页面加载时自动查 releases/latest 最新 tag 覆盖（见本 IIFE 尾部）。
+     附件文件名恒为 WKBMDLL.exe。 */
   var EXE_URL = 'https://gitee.com/WKBM/WuKeBiMian/releases/download/v1.0.0.0/WKBMDLL.exe';
 
   /* 文案与读屏播报同步更新：改一个未聚焦按钮的文字，屏幕阅读器不一定会播报，
@@ -3638,7 +3656,7 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
 
   function resetBtn(delay) {
     setTimeout(function () {
-      say('获取');
+      say(idleLabel);
       setBusy(false);
       barReset();
     }, delay || 0);
@@ -3663,6 +3681,52 @@ html,body{margin:0;padding:0;background:transparent;overflow:hidden}
     setBusy(true);
     startDownload();
   });
+
+  /* ---------- 自动指向 Gitee 最新发行版（2026-09-16，失败静默保持现状） ----------
+     实测：releases/latest 匿名可访问且带 Access-Control-Allow-Origin: *（跨域 fetch 可行）。
+     任何失败（超时/非 200/JSON 坏/tag 异常）都不动 EXE_URL 与文案 = 退化为写死兜底 v1.0.0.0。
+     无 JS 场景管不了：noscript 直链仍需发版时手动同步（见上方 noscript 注释）。 */
+  if (typeof fetch === 'function' && typeof window.AbortController === 'function') {
+    var ac = new AbortController();
+    var apiTimer = setTimeout(function () { ac.abort(); }, 5000);
+    fetch('https://gitee.com/api/v5/repos/WKBM/WuKeBiMian/releases/latest', { signal: ac.signal })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function (rel) {
+        var tag = rel && typeof rel.tag_name === 'string' ? rel.tag_name : '';
+        if (!/^v\d+[\w.+-]*$/i.test(tag)) return;
+        var ver = tag.toUpperCase();
+        var assetUrl = '';
+        if (rel.assets && rel.assets.length) {
+          for (var i = 0; i < rel.assets.length; i++) {
+            if (rel.assets[i] && rel.assets[i].name === 'WKBMDLL.exe' && rel.assets[i].browser_download_url) {
+              assetUrl = rel.assets[i].browser_download_url;
+              /* 附件直链只认本仓库路径：资产可能被换成任意外链，放行会把下载带去陌生域；
+                 不匹配即清空，让它落入下方按 tag 拼直链的兜底分支 */
+              if (assetUrl.indexOf('https://gitee.com/WKBM/WuKeBiMian/') !== 0) assetUrl = '';
+              break;
+            }
+          }
+        }
+        if (!assetUrl) {
+          assetUrl = 'https://gitee.com/WKBM/WuKeBiMian/releases/download/' + tag + '/WKBMDLL.exe';
+        }
+        EXE_URL = assetUrl;
+        idleLabel = '获取' + ver + '版本';
+        /* 用户已点按钮（busy）时不抢文案：复位路径会用新的 idleLabel */
+        if (btn.getAttribute('data-busy') !== '1') {
+          if (label) label.textContent = idleLabel; else btn.textContent = idleLabel;
+          btn.title = '';
+        }
+        /* 改未聚焦按钮文字读屏不一定播报 → 同步写 live region（AGENTS.md §5.3） */
+        if (status) status.textContent = '最新版本 ' + ver + ' 已就绪';
+        if (verBadge) verBadge.textContent = ver;
+      })
+      .catch(function () { /* 静默降级：写死 EXE_URL 兜底，不加报错噪音 */ })
+      .then(function () { clearTimeout(apiTimer); });
+  }
 })();
   /* ---------- CT5 路景：路旁随机道具 + 红灯停车等待 ----------
      道路虚线与道具同速向车尾滚动（= 车辆前行）；信号灯随机红绿切换，
